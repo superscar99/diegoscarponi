@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Diego Scarponi — Graphic & Web Designer</title>
+
+  <meta
+    name="description"
+    content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web & AI-assisted workflows."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f2f1ed;
+      color: #111;
+      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #f2f1ed;
+      --black: #111;
+      --gray: #8b8b86;
+      --line: #cfcfca;
+      --accent: #d7ff3f;
+
+      --pad: clamp(20px, 3vw, 48px);
+    }
+
+
+    /* =========================================================
+       GENERAL
+    ========================================================= */
+
+    .mono {
+      font-family: "DM Mono", monospace;
+    }
+
+    .container {
+      width: 100%;
+      padding-left: var(--pad);
+      padding-right: var(--pad);
+    }
+
+    .eyebrow {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray);
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      mix-blend-mode: difference;
+      color: white;
+      padding: 24px var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    header a {
+      pointer-events: auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .header-right {
+      display: flex;
+      gap: 30px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 120px;
+      padding-bottom: 30px;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .hero-intro {
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hero-title {
+      margin-top: auto;
+      margin-bottom: 25px;
+      font-size: clamp(70px, 14vw, 220px);
+      line-height: .78;
+      font-weight: 800;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .indent {
+      margin-left: 16vw;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .hero-bottom div {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       MARQUEE
+    ========================================================= */
+
+    .marquee {
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 18px 0;
+      background: var(--accent);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee span {
+      font-size: clamp(28px, 4vw, 60px);
+      font-weight: 700;
+      letter-spacing: -.04em;
+      padding-right: 50px;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+
+    /* =========================================================
+       SELECTED WORK
+    ========================================================= */
+
+    .works {
+      padding-top: 150px;
+      padding-bottom: 180px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      margin-bottom: 80px;
+    }
+
+    .section-number {
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(50px, 8vw, 130px);
+      line-height: .85;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    .project {
+      border-top: 1px solid var(--black);
+      padding: 22px 0 80px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+    }
+
+    .project-meta {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .project-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .project-name {
+      font-size: clamp(45px, 7vw, 100px);
+      line-height: .85;
+      letter-spacing: -.065em;
+      font-weight: 700;
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:hover .project-name {
+      transform: translateX(20px);
+    }
+
+    .project-description {
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 400px;
+      padding-top: 8px;
+    }
+
+    .project-image {
+      grid-column: 2;
+      margin-top: 50px;
+      overflow: hidden;
+      background: #ddd;
+      aspect-ratio: 16 / 10;
+    }
+
+    .project-image .fake-image {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(50px, 10vw, 160px);
+      font-weight: 800;
+      letter-spacing: -.08em;
+      transition: transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:hover .fake-image {
+      transform: scale(1.04);
+    }
+
+    .project:nth-child(2) .fake-image {
+      background: #111;
+      color: #f2f1ed;
+    }
+
+    .project:nth-child(3) .fake-image {
+      background: #d6d6d0;
+      color: #111;
+    }
+
+    .project:nth-child(4) .fake-image {
+      background: #ff6534;
+      color: #111;
+    }
+
+    .project:nth-child(5) .fake-image {
+      background: #2338ff;
+      color: white;
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about {
+      background: #111;
+      color: #f2f1ed;
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+
+    .about .line {
+      background: #444;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+    }
+
+    .about-text {
+      font-size: clamp(35px, 5.5vw, 85px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      max-width: 1100px;
+    }
+
+    .about-text em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .about-small {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .about-small p {
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 480px;
+      color: #aaa;
+    }
+
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    .skills {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+
+    .skills-list {
+      margin-top: 80px;
+      border-top: 1px solid var(--black);
+    }
+
+    .skill {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+      transition: background .3s ease;
+    }
+
+    .skill:hover {
+      background: var(--accent);
+    }
+
+    .skill-number {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+    }
+
+    .skill-name {
+      font-size: clamp(25px, 4vw, 55px);
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+
+    .skill-type {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .experience {
+      padding-bottom: 150px;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+    }
+
+    .experience-list {
+      border-top: 1px solid var(--black);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 30px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-company {
+      font-size: clamp(30px, 4vw, 60px);
+      letter-spacing: -.05em;
+      font-weight: 600;
+    }
+
+    .experience-role {
+      font-size: 13px;
+      margin-top: 7px;
+      color: var(--gray);
+    }
+
+    .experience-year {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-align: right;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+      min-height: 90svh;
+      background: var(--accent);
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .contact-title {
+      font-size: clamp(70px, 14vw, 220px);
+      font-weight: 800;
+      line-height: .78;
+      letter-spacing: -.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-title span {
+      display: block;
+    }
+
+    .contact-title .right {
+      text-align: right;
+    }
+
+    .contact-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      border-top: 1px solid #111;
+      padding-top: 15px;
+    }
+
+    .contact-link {
+      font-size: clamp(22px, 3vw, 40px);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      position: relative;
+    }
+
+    .contact-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #111;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .4s ease;
+    }
+
+    .contact-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: #111;
+      color: #f2f1ed;
+      padding: 20px var(--pad);
+      display: flex;
+      justify-content: space-between;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      .header-right {
+        gap: 12px;
+      }
+
+      .header-right a:nth-child(2) {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .hero-top {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 19vw;
+        margin-top: 120px;
+      }
+
+      .hero-title .indent {
+        margin-left: 10vw;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .hero-bottom div:last-child {
+        display: none;
+      }
+
+      .section-heading,
+      .project,
+      .about-grid,
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-number {
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 18vw;
+      }
+
+      .project {
+        padding-bottom: 60px;
+      }
+
+      .project-content {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        grid-column: 1;
+        margin-top: 30px;
+      }
+
+      .project-name {
+        font-size: 15vw;
+      }
+
+      .about-text {
+        font-size: 11vw;
+      }
+
+      .about-small {
+        grid-template-columns: 1fr;
+      }
+
+      .skill {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .skill-type {
+        display: none;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-year {
+        text-align: left;
+      }
+
+      .contact-title {
+        font-size: 19vw;
+      }
+
+      .contact-title .right {
+        text-align: left;
+        margin-left: 15vw;
+      }
+
+      .contact-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+      }
+
+      footer {
+        gap: 20px;
+        flex-direction: column;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header>
+
+    <a href="#" class="logo">
+      DS / 26
+    </a>
+
+    <nav class="header-right">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="hero container">
+
+      <div class="hero-top">
+
+        <div class="eyebrow">
+          Graphic & Web Designer<br>
+          Italy / EU
+        </div>
+
+        <p class="hero-intro">
+          Designer con 4+ anni di esperienza tra
+          identità visiva, comunicazione, packaging
+          e progettazione digitale.
+        </p>
+
+      </div>
+
+
+      <h1 class="hero-title">
+
+        <span>Diego</span>
+
+        <span class="indent">
+          Scarponi
+        </span>
+
+      </h1>
+
+
+      <div class="hero-bottom">
+
+        <div>
+          Brand
+        </div>
+
+        <div>
+          Digital
+        </div>
+
+        <div>
+          Web / AI
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MARQUEE
+    ====================================================== -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span>
+          DESIGN → BRAND → WEB → AI →
+        </span>
+
+        <span>
+          DESIGN → BRAND → WEB → AI →
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         WORK
+    ====================================================== -->
+
+    <section
+      class="works container"
+      id="work"
+    >
+
+      <div class="section-heading reveal">
+
+        <div class="section-number">
+          01 / 05
+        </div>
+
+        <h2 class="section-title">
+          Selected<br>
+          Work
+        </h2>
+
+      </div>
+
+
+      <!-- PROJECT 01 -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+          001<br>
+          Brand Identity
+        </div>
+
+        <div class="project-content">
+
+          <div>
+
+            <h3 class="project-name">
+              Brand<br>
+              Identity
+            </h3>
+
+          </div>
+
+          <p class="project-description">
+            Identità visiva sviluppata dalla definizione
+            del concept fino alle applicazioni finali.
+            Sistema grafico, tipografia, colore e materiali
+            di comunicazione.
+          </p>
+
+          <div class="project-image">
+
+            <div class="fake-image">
+              BRAND
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT 02 -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+          002<br>
+          Packaging
+        </div>
+
+        <div class="project-content">
+
+          <div>
+
+            <h3 class="project-name">
+              Pack<br>
+              Aging
+            </h3>
+
+          </div>
+
+          <p class="project-description">
+            Progettazione di packaging e sistema visivo
+            coordinato per valorizzare il prodotto e
+            costruire una presenza coerente a scaffale.
+          </p>
+
+          <div class="project-image">
+
+            <div class="fake-image">
+              PACK
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT 03 -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+          003<br>
+          Digital
+        </div>
+
+        <div class="project-content">
+
+          <div>
+
+            <h3 class="project-name">
+              Digital<br>
+              Design
+            </h3>
+
+          </div>
+
+          <p class="project-description">
+            Art direction e progettazione di contenuti
+            digitali, social media e materiali per la
+            comunicazione online.
+          </p>
+
+          <div class="project-image">
+
+            <div class="fake-image">
+              DIGITAL
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT 04 -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+          004<br>
+          Web Design
+        </div>
+
+        <div class="project-content">
+
+          <div>
+
+            <h3 class="project-name">
+              Web<br>
+              Design
+            </h3>
+
+          </div>
+
+          <p class="project-description">
+            Progettazione e sviluppo di siti web,
+            landing page e interfacce responsive
+            utilizzando WordPress ed Elementor Pro.
+          </p>
+
+          <div class="project-image">
+
+            <div class="fake-image">
+              WEB
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+      class="about container"
+      id="about"
+    >
+
+      <div class="about-grid">
+
+        <div class="section-number">
+          02 / 05
+        </div>
+
+        <div>
+
+          <p class="about-text reveal">
+
+            Progetto identità,
+            comunicazione e
+            <em>digital experiences</em>
+            unendo pensiero
+            visivo e tecnologia.
+
+          </p>
+
+
+          <div class="about-small">
+
+            <p class="reveal">
+
+              Sono un Graphic & Web Designer con
+              esperienza nella progettazione di brand,
+              packaging, comunicazione digitale e siti web.
+
+            </p>
+
+            <p class="reveal">
+
+              Negli ultimi anni ho iniziato a integrare
+              strumenti di AI nei miei workflow creativi
+              e nello sviluppo web, sperimentando nuovi
+              modi di progettare, prototipare e produrre.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SKILLS
+    ====================================================== -->
+
+    <section class="skills container">
+
+      <div class="section-heading reveal">
+
+        <div class="section-number">
+          03 / 05
+        </div>
+
+        <h2 class="section-title">
+          Skills
+        </h2>
+
+      </div>
+
+
+      <div class="skills-list">
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            01
+          </div>
+
+          <div class="skill-name">
+            Graphic Design
+          </div>
+
+          <div class="skill-type">
+            Core
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            02
+          </div>
+
+          <div class="skill-name">
+            Brand Identity
+          </div>
+
+          <div class="skill-type">
+            Branding
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            03
+          </div>
+
+          <div class="skill-name">
+            Packaging
+          </div>
+
+          <div class="skill-type">
+            Print
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            04
+          </div>
+
+          <div class="skill-name">
+            Web Design
+          </div>
+
+          <div class="skill-type">
+            Digital
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            05
+          </div>
+
+          <div class="skill-name">
+            WordPress / Elementor
+          </div>
+
+          <div class="skill-type">
+            Development
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            06
+          </div>
+
+          <div class="skill-name">
+            AI-assisted Workflows
+          </div>
+
+          <div class="skill-type">
+            Experiment
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EXPERIENCE
+    ====================================================== -->
+
+    <section class="experience container">
+
+      <div class="experience-grid">
+
+        <div class="section-number">
+          04 / 05
+        </div>
+
+        <div>
+
+          <h2 class="section-title reveal">
+            Experience
+          </h2>
+
+          <div class="experience-list">
+
+            <div class="experience-item reveal">
+
+              <div>
+
+                <div class="experience-company">
+                  DreamAdv
+                </div>
+
+                <div class="experience-role">
+                  Graphic & Web Designer
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                CURRENT
+              </div>
+
+            </div>
+
+
+            <div class="experience-item reveal">
+
+              <div>
+
+                <div class="experience-company">
+                  Freelance
+                </div>
+
+                <div class="experience-role">
+                  Graphic Design · Branding · Packaging · SMM
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                2020 — NOW
+              </div>
+
+            </div>
+
+
+            <div class="experience-item reveal">
+
+              <div>
+
+                <div class="experience-company">
+                  Metro
+                </div>
+
+                <div class="experience-role">
+                  Graphic / Communication Projects
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                PROJECT
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+      class="contact container"
+      id="contact"
+    >
+
+      <div class="eyebrow">
+        05 / 05 — Contact
+      </div>
+
+      <h2 class="contact-title">
+
+        <span>
+          Let's
+        </span>
+
+        <span class="right">
+          talk.
+        </span>
+
+      </h2>
+
+
+      <div class="contact-bottom">
+
+        <a
+          class="contact-link"
+          href="mailto:tuamail@email.com"
+        >
+          tuamail@email.com
+        </a>
+
+        <div class="eyebrow">
+          Available for selected opportunities
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <span>
+      Diego Scarponi © 2026
+    </span>
+
+    <span>
+      Graphic & Web Designer
+    </span>
+
+    <span>
+      Back to top ↑
+    </span>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /*
+      SCROLL REVEAL
+    */
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+    reveals.forEach((element) => {
+
+      observer.observe(element);
+
+    });
+
+
+    /*
+      CUSTOM CURSOR
+      Attivabile in una fase successiva.
+    */
+
+
+    /*
+      HEADER SCROLL EFFECT
+    */
+
+    const header = document.querySelector("header");
+
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > 80) {
+
+        header.style.opacity = "0.75";
+
+      } else {
+
+        header.style.opacity = "1";
+
+      }
+
+      lastScroll = currentScroll;
+
+    });
+
+  </script>
+
+</body>
+</html>
