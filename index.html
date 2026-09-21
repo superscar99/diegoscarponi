@@ -1,8 +1,19 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
+  <!-- =========================================================
+       IMPOSTAZIONI BASE
+  ========================================================== -->
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Diego Scarponi — Graphic & Web Designer</title>
 
@@ -11,18 +22,35 @@
     content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web & AI-assisted workflows."
   />
 
+
+  <!-- =========================================================
+       FONT
+  ========================================================== -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
+
+  <!-- =========================================================
+       CSS
+  ========================================================== -->
+
   <style>
 
+
     /* =========================================================
-       RESET
-    ========================================================= */
+       01 — RESET
+    ========================================================== */
 
     * {
       margin: 0;
@@ -53,8 +81,8 @@
 
 
     /* =========================================================
-       VARIABLES
-    ========================================================= */
+       02 — VARIABILI
+    ========================================================== */
 
     :root {
       --bg: #f2f1ed;
@@ -68,8 +96,8 @@
 
 
     /* =========================================================
-       GENERAL
-    ========================================================= */
+       03 — ELEMENTI GENERALI
+    ========================================================== */
 
     .mono {
       font-family: "DM Mono", monospace;
@@ -97,8 +125,8 @@
 
 
     /* =========================================================
-       HEADER
-    ========================================================= */
+       04 — HEADER
+    ========================================================== */
 
     header {
       position: fixed;
@@ -106,12 +134,16 @@
       left: 0;
       width: 100%;
       z-index: 100;
+
       mix-blend-mode: difference;
       color: white;
+
       padding: 24px var(--pad);
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       pointer-events: none;
     }
 
@@ -128,6 +160,7 @@
     .header-right {
       display: flex;
       gap: 30px;
+
       font-family: "DM Mono", monospace;
       font-size: 11px;
       text-transform: uppercase;
@@ -135,14 +168,17 @@
 
 
     /* =========================================================
-       HERO
-    ========================================================= */
+       05 — HERO
+       Titolo + introduzione + categorie
+    ========================================================== */
 
     .hero {
       min-height: 100svh;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       padding-top: 120px;
       padding-bottom: 30px;
     }
@@ -155,6 +191,7 @@
 
     .hero-intro {
       max-width: 420px;
+
       font-size: 14px;
       line-height: 1.5;
     }
@@ -162,10 +199,13 @@
     .hero-title {
       margin-top: auto;
       margin-bottom: 25px;
+
       font-size: clamp(70px, 14vw, 220px);
       line-height: .78;
+
       font-weight: 800;
       letter-spacing: -.075em;
+
       text-transform: uppercase;
     }
 
@@ -180,7 +220,9 @@
     .hero-bottom {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+
       border-top: 1px solid var(--line);
+
       padding-top: 12px;
     }
 
@@ -192,31 +234,39 @@
 
 
     /* =========================================================
-       MARQUEE
-    ========================================================= */
+       06 — MARQUEE
+       DESIGN → BRAND → WEB → AI
+    ========================================================== */
 
     .marquee {
       border-top: 1px solid var(--black);
       border-bottom: 1px solid var(--black);
+
       overflow: hidden;
       white-space: nowrap;
+
       padding: 18px 0;
+
       background: var(--accent);
     }
 
     .marquee-track {
       display: inline-flex;
+
       animation: marquee 22s linear infinite;
     }
 
     .marquee span {
       font-size: clamp(28px, 4vw, 60px);
+
       font-weight: 700;
       letter-spacing: -.04em;
+
       padding-right: 50px;
     }
 
     @keyframes marquee {
+
       from {
         transform: translateX(0);
       }
@@ -224,21 +274,26 @@
       to {
         transform: translateX(-50%);
       }
+
     }
 
 
     /* =========================================================
-       SELECTED WORK
-    ========================================================= */
+       07 — LAVORI SELEZIONATI
+    ========================================================== */
 
     .works {
       padding-top: 150px;
       padding-bottom: 180px;
     }
 
+
+    /* Titolo della sezione */
+
     .section-heading {
       display: grid;
       grid-template-columns: 120px 1fr;
+
       margin-bottom: 80px;
     }
 
@@ -249,45 +304,59 @@
 
     .section-title {
       font-size: clamp(50px, 8vw, 130px);
+
       line-height: .85;
       letter-spacing: -.07em;
+
       text-transform: uppercase;
       font-weight: 700;
     }
 
 
     /* =========================================================
-       PROJECTS
-    ========================================================= */
+       07.1 — STRUTTURA SINGOLO LAVORO
+    ========================================================== */
 
     .project {
       border-top: 1px solid var(--black);
+
       padding: 22px 0 80px;
+
       display: grid;
       grid-template-columns: 120px 1fr;
+
       gap: 30px;
     }
 
     .project-meta {
       font-family: "DM Mono", monospace;
+
       font-size: 10px;
       line-height: 1.5;
+
       text-transform: uppercase;
     }
 
     .project-content {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
+
       gap: 40px;
+
       align-items: start;
     }
 
     .project-name {
       font-size: clamp(45px, 7vw, 100px);
+
       line-height: .85;
       letter-spacing: -.065em;
+
       font-weight: 700;
-      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+
+      transition:
+        transform .5s cubic-bezier(.2,.8,.2,1);
     }
 
     .project:hover .project-name {
@@ -297,33 +366,50 @@
     .project-description {
       font-size: 14px;
       line-height: 1.5;
+
       max-width: 400px;
+
       padding-top: 8px;
     }
 
     .project-image {
       grid-column: 2;
+
       margin-top: 50px;
+
       overflow: hidden;
+
       background: #ddd;
+
       aspect-ratio: 16 / 10;
     }
 
     .project-image .fake-image {
       width: 100%;
       height: 100%;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: clamp(50px, 10vw, 160px);
+
       font-weight: 800;
       letter-spacing: -.08em;
-      transition: transform .8s cubic-bezier(.2,.8,.2,1);
+
+      transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
     }
 
     .project:hover .fake-image {
       transform: scale(1.04);
     }
+
+
+    /* =========================================================
+       07.2 — COLORI TEMPORANEI DEI LAVORI
+       Questi verranno sostituiti con le vere immagini
+    ========================================================== */
 
     .project:nth-child(2) .fake-image {
       background: #111;
@@ -347,12 +433,14 @@
 
 
     /* =========================================================
-       ABOUT
-    ========================================================= */
+       08 — COME LAVORO
+       Sezione nera
+    ========================================================== */
 
     .about {
       background: #111;
       color: #f2f1ed;
+
       padding-top: 150px;
       padding-bottom: 150px;
     }
@@ -363,14 +451,18 @@
 
     .about-grid {
       display: grid;
+
       grid-template-columns: 120px 1fr;
+
       gap: 30px;
     }
 
     .about-text {
       font-size: clamp(35px, 5.5vw, 85px);
+
       line-height: .95;
       letter-spacing: -.055em;
+
       max-width: 1100px;
     }
 
@@ -381,22 +473,26 @@
 
     .about-small {
       margin-top: 80px;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
+
       gap: 50px;
     }
 
     .about-small p {
       font-size: 14px;
       line-height: 1.55;
+
       max-width: 480px;
+
       color: #aaa;
     }
 
 
     /* =========================================================
-       SKILLS
-    ========================================================= */
+       09 — SKILLS
+    ========================================================== */
 
     .skills {
       padding-top: 150px;
@@ -405,17 +501,25 @@
 
     .skills-list {
       margin-top: 80px;
+
       border-top: 1px solid var(--black);
     }
 
     .skill {
       display: grid;
+
       grid-template-columns: 120px 1fr auto;
+
       align-items: center;
+
       gap: 30px;
+
       padding: 25px 0;
+
       border-bottom: 1px solid var(--line);
-      transition: background .3s ease;
+
+      transition:
+        background .3s ease;
     }
 
     .skill:hover {
@@ -429,20 +533,23 @@
 
     .skill-name {
       font-size: clamp(25px, 4vw, 55px);
+
       font-weight: 600;
       letter-spacing: -.04em;
     }
 
     .skill-type {
       font-family: "DM Mono", monospace;
+
       font-size: 10px;
+
       text-transform: uppercase;
     }
 
 
     /* =========================================================
-       EXPERIENCE
-    ========================================================= */
+       10 — ESPERIENZA
+    ========================================================== */
 
     .experience {
       padding-bottom: 150px;
@@ -450,7 +557,9 @@
 
     .experience-grid {
       display: grid;
+
       grid-template-columns: 120px 1fr;
+
       gap: 30px;
     }
 
@@ -460,51 +569,68 @@
 
     .experience-item {
       display: grid;
+
       grid-template-columns: 1fr 180px;
+
       gap: 30px;
+
       padding: 25px 0;
+
       border-bottom: 1px solid var(--line);
     }
 
     .experience-company {
       font-size: clamp(30px, 4vw, 60px);
+
       letter-spacing: -.05em;
+
       font-weight: 600;
     }
 
     .experience-role {
       font-size: 13px;
+
       margin-top: 7px;
+
       color: var(--gray);
     }
 
     .experience-year {
       font-family: "DM Mono", monospace;
+
       font-size: 11px;
+
       text-align: right;
     }
 
 
     /* =========================================================
-       CONTACT
-    ========================================================= */
+       11 — CONTATTI
+    ========================================================== */
 
     .contact {
       min-height: 90svh;
+
       background: var(--accent);
       color: #111;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
       padding-top: 30px;
       padding-bottom: 30px;
     }
 
     .contact-title {
       font-size: clamp(70px, 14vw, 220px);
+
       font-weight: 800;
+
       line-height: .78;
+
       letter-spacing: -.08em;
+
       text-transform: uppercase;
     }
 
@@ -518,61 +644,84 @@
 
     .contact-bottom {
       display: flex;
+
       justify-content: space-between;
       align-items: end;
+
       border-top: 1px solid #111;
+
       padding-top: 15px;
     }
 
     .contact-link {
       font-size: clamp(22px, 3vw, 40px);
+
       font-weight: 600;
+
       letter-spacing: -.04em;
+
       position: relative;
     }
 
     .contact-link::after {
       content: "";
+
       position: absolute;
+
       bottom: -4px;
       left: 0;
+
       width: 100%;
       height: 2px;
+
       background: #111;
+
       transform: scaleX(0);
+
       transform-origin: right;
-      transition: transform .4s ease;
+
+      transition:
+        transform .4s ease;
     }
 
     .contact-link:hover::after {
       transform: scaleX(1);
+
       transform-origin: left;
     }
 
 
     /* =========================================================
-       FOOTER
-    ========================================================= */
+       12 — FOOTER
+    ========================================================== */
 
     footer {
       background: #111;
       color: #f2f1ed;
+
       padding: 20px var(--pad);
+
       display: flex;
+
       justify-content: space-between;
+
       font-family: "DM Mono", monospace;
+
       font-size: 10px;
+
       text-transform: uppercase;
     }
 
 
     /* =========================================================
-       REVEAL ANIMATION
-    ========================================================= */
+       13 — ANIMAZIONI REVEAL
+    ========================================================== */
 
     .reveal {
       opacity: 0;
+
       transform: translateY(40px);
+
       transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.2,.8,.2,1);
@@ -580,15 +729,19 @@
 
     .reveal.visible {
       opacity: 1;
+
       transform: translateY(0);
     }
 
 
     /* =========================================================
-       MOBILE
-    ========================================================= */
+       14 — RESPONSIVE / MOBILE
+    ========================================================== */
 
     @media (max-width: 800px) {
+
+
+      /* HEADER */
 
       .header-right {
         gap: 12px;
@@ -597,6 +750,9 @@
       .header-right a:nth-child(2) {
         display: none;
       }
+
+
+      /* HERO */
 
       .hero {
         padding-top: 100px;
@@ -608,6 +764,7 @@
 
       .hero-title {
         font-size: 19vw;
+
         margin-top: 120px;
       }
 
@@ -617,12 +774,16 @@
 
       .hero-bottom {
         grid-template-columns: 1fr 1fr;
+
         gap: 12px;
       }
 
       .hero-bottom div:last-child {
         display: none;
       }
+
+
+      /* TITOLI SEZIONE */
 
       .section-heading,
       .project,
@@ -639,6 +800,9 @@
         font-size: 18vw;
       }
 
+
+      /* LAVORI */
+
       .project {
         padding-bottom: 60px;
       }
@@ -649,12 +813,16 @@
 
       .project-image {
         grid-column: 1;
+
         margin-top: 30px;
       }
 
       .project-name {
         font-size: 15vw;
       }
+
+
+      /* COME LAVORO */
 
       .about-text {
         font-size: 11vw;
@@ -664,6 +832,9 @@
         grid-template-columns: 1fr;
       }
 
+
+      /* SKILLS */
+
       .skill {
         grid-template-columns: 40px 1fr;
       }
@@ -671,6 +842,9 @@
       .skill-type {
         display: none;
       }
+
+
+      /* ESPERIENZA */
 
       .experience-item {
         grid-template-columns: 1fr;
@@ -680,38 +854,49 @@
         text-align: left;
       }
 
+
+      /* CONTATTI */
+
       .contact-title {
         font-size: 19vw;
       }
 
       .contact-title .right {
         text-align: left;
+
         margin-left: 15vw;
       }
 
       .contact-bottom {
         flex-direction: column;
+
         align-items: flex-start;
+
         gap: 25px;
       }
 
+
+      /* FOOTER */
+
       footer {
         gap: 20px;
+
         flex-direction: column;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =======================================================
+  <!-- =========================================================
        HEADER
-  ======================================================== -->
+  ========================================================== -->
 
   <header>
 
@@ -720,33 +905,55 @@
     </a>
 
     <nav class="header-right">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
     </nav>
 
   </header>
 
 
-  <!-- =======================================================
-       HERO
-  ======================================================== -->
+
+  <!-- =========================================================
+       CONTENUTO PRINCIPALE
+  ========================================================== -->
 
   <main>
+
+
+    <!-- =======================================================
+         01 — HERO
+         Titolo + testi introduttivi
+    ======================================================== -->
 
     <section class="hero container">
 
       <div class="hero-top">
 
         <div class="eyebrow">
+
           Graphic & Web Designer<br>
           Italy / EU
+
         </div>
 
+
         <p class="hero-intro">
+
           Designer con 4+ anni di esperienza tra
           identità visiva, comunicazione, packaging
           e progettazione digitale.
+
         </p>
 
       </div>
@@ -754,7 +961,9 @@
 
       <h1 class="hero-title">
 
-        <span>Diego</span>
+        <span>
+          Diego
+        </span>
 
         <span class="indent">
           Scarponi
@@ -782,9 +991,11 @@
     </section>
 
 
-    <!-- =====================================================
-         MARQUEE
-    ====================================================== -->
+
+    <!-- =======================================================
+         02 — MARQUEE
+         DESIGN → BRAND → WEB → AI
+    ======================================================== -->
 
     <div class="marquee">
 
@@ -803,14 +1014,18 @@
     </div>
 
 
-    <!-- =====================================================
-         WORK
-    ====================================================== -->
+
+    <!-- =======================================================
+         03 — LAVORI SELEZIONATI
+    ======================================================== -->
 
     <section
       class="works container"
       id="work"
     >
+
+
+      <!-- TITOLO SEZIONE -->
 
       <div class="section-heading reveal">
 
@@ -819,39 +1034,53 @@
         </div>
 
         <h2 class="section-title">
+
           Selected<br>
           Work
+
         </h2>
 
       </div>
 
 
-      <!-- PROJECT 01 -->
+
+      <!-- =====================================================
+           LAVORO 01 — BRAND IDENTITY
+      ====================================================== -->
 
       <article class="project reveal">
 
         <div class="project-meta">
+
           001<br>
           Brand Identity
+
         </div>
+
 
         <div class="project-content">
 
           <div>
 
             <h3 class="project-name">
+
               Brand<br>
               Identity
+
             </h3>
 
           </div>
 
+
           <p class="project-description">
+
             Identità visiva sviluppata dalla definizione
             del concept fino alle applicazioni finali.
             Sistema grafico, tipografia, colore e materiali
             di comunicazione.
+
           </p>
+
 
           <div class="project-image">
 
@@ -866,14 +1095,20 @@
       </article>
 
 
-      <!-- PROJECT 02 -->
+
+      <!-- =====================================================
+           LAVORO 02 — PACKAGING
+      ====================================================== -->
 
       <article class="project reveal">
 
         <div class="project-meta">
+
           002<br>
           Packaging
+
         </div>
+
 
         <div class="project-content">
 
@@ -885,11 +1120,15 @@
 
           </div>
 
+
           <p class="project-description">
+
             Progettazione di packaging e sistema visivo
             coordinato per valorizzare il prodotto e
             costruire una presenza coerente a scaffale.
+
           </p>
+
 
           <div class="project-image">
 
@@ -904,31 +1143,43 @@
       </article>
 
 
-      <!-- PROJECT 03 -->
+
+      <!-- =====================================================
+           LAVORO 03 — DIGITAL DESIGN
+      ====================================================== -->
 
       <article class="project reveal">
 
         <div class="project-meta">
+
           003<br>
           Digital
+
         </div>
+
 
         <div class="project-content">
 
           <div>
 
             <h3 class="project-name">
+
               Digital<br>
               Design
+
             </h3>
 
           </div>
 
+
           <p class="project-description">
+
             Art direction e progettazione di contenuti
             digitali, social media e materiali per la
             comunicazione online.
+
           </p>
+
 
           <div class="project-image">
 
@@ -943,31 +1194,43 @@
       </article>
 
 
-      <!-- PROJECT 04 -->
+
+      <!-- =====================================================
+           LAVORO 04 — WEB DESIGN
+      ====================================================== -->
 
       <article class="project reveal">
 
         <div class="project-meta">
+
           004<br>
           Web Design
+
         </div>
+
 
         <div class="project-content">
 
           <div>
 
             <h3 class="project-name">
+
               Web<br>
               Design
+
             </h3>
 
           </div>
 
+
           <p class="project-description">
+
             Progettazione e sviluppo di siti web,
             landing page e interfacce responsive
             utilizzando WordPress ed Elementor Pro.
+
           </p>
+
 
           <div class="project-image">
 
@@ -984,9 +1247,11 @@
     </section>
 
 
-    <!-- =====================================================
-         ABOUT
-    ====================================================== -->
+
+    <!-- =======================================================
+         04 — COME LAVORO
+         Sezione nera
+    ======================================================== -->
 
     <section
       class="about container"
@@ -995,11 +1260,14 @@
 
       <div class="about-grid">
 
+
         <div class="section-number">
           02 / 05
         </div>
 
+
         <div>
+
 
           <p class="about-text reveal">
 
@@ -1012,7 +1280,9 @@
           </p>
 
 
+
           <div class="about-small">
+
 
             <p class="reveal">
 
@@ -1021,6 +1291,7 @@
               packaging, comunicazione digitale e siti web.
 
             </p>
+
 
             <p class="reveal">
 
@@ -1031,7 +1302,9 @@
 
             </p>
 
+
           </div>
+
 
         </div>
 
@@ -1040,11 +1313,15 @@
     </section>
 
 
-    <!-- =====================================================
-         SKILLS
-    ====================================================== -->
+
+    <!-- =======================================================
+         05 — SKILLS
+    ======================================================== -->
 
     <section class="skills container">
+
+
+      <!-- TITOLO SEZIONE -->
 
       <div class="section-heading reveal">
 
@@ -1059,7 +1336,13 @@
       </div>
 
 
+
+      <!-- LISTA SKILLS -->
+
       <div class="skills-list">
+
+
+        <!-- SKILL 01 -->
 
         <div class="skill reveal">
 
@@ -1078,6 +1361,8 @@
         </div>
 
 
+        <!-- SKILL 02 -->
+
         <div class="skill reveal">
 
           <div class="skill-number">
@@ -1094,6 +1379,8 @@
 
         </div>
 
+
+        <!-- SKILL 03 -->
 
         <div class="skill reveal">
 
@@ -1112,6 +1399,8 @@
         </div>
 
 
+        <!-- SKILL 04 -->
+
         <div class="skill reveal">
 
           <div class="skill-number">
@@ -1128,6 +1417,8 @@
 
         </div>
 
+
+        <!-- SKILL 05 -->
 
         <div class="skill reveal">
 
@@ -1146,6 +1437,8 @@
         </div>
 
 
+        <!-- SKILL 06 -->
+
         <div class="skill reveal">
 
           <div class="skill-number">
@@ -1162,30 +1455,40 @@
 
         </div>
 
+
       </div>
 
     </section>
 
 
-    <!-- =====================================================
-         EXPERIENCE
-    ====================================================== -->
+
+    <!-- =======================================================
+         06 — ESPERIENZA
+    ======================================================== -->
 
     <section class="experience container">
 
+
       <div class="experience-grid">
+
 
         <div class="section-number">
           04 / 05
         </div>
 
+
         <div>
+
 
           <h2 class="section-title reveal">
             Experience
           </h2>
 
+
           <div class="experience-list">
+
+
+            <!-- ESPERIENZA 01 -->
 
             <div class="experience-item reveal">
 
@@ -1208,6 +1511,9 @@
             </div>
 
 
+
+            <!-- ESPERIENZA 02 -->
+
             <div class="experience-item reveal">
 
               <div>
@@ -1229,6 +1535,9 @@
             </div>
 
 
+
+            <!-- ESPERIENZA 03 -->
+
             <div class="experience-item reveal">
 
               <div>
@@ -1249,6 +1558,7 @@
 
             </div>
 
+
           </div>
 
         </div>
@@ -1258,18 +1568,21 @@
     </section>
 
 
-    <!-- =====================================================
-         CONTACT
-    ====================================================== -->
+
+    <!-- =======================================================
+         07 — CONTATTI
+    ======================================================== -->
 
     <section
       class="contact container"
       id="contact"
     >
 
+
       <div class="eyebrow">
         05 / 05 — Contact
       </div>
+
 
       <h2 class="contact-title">
 
@@ -1286,6 +1599,7 @@
 
       <div class="contact-bottom">
 
+
         <a
           class="contact-link"
           href="mailto:tuamail@email.com"
@@ -1293,19 +1607,23 @@
           tuamail@email.com
         </a>
 
+
         <div class="eyebrow">
           Available for selected opportunities
         </div>
+
 
       </div>
 
     </section>
 
+
   </main>
 
 
+
   <!-- =======================================================
-       FOOTER
+       08 — FOOTER
   ======================================================== -->
 
   <footer>
@@ -1325,19 +1643,23 @@
   </footer>
 
 
+
   <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
+       09 — JAVASCRIPT
+    ======================================================== -->
 
   <script>
 
-    /*
-      SCROLL REVEAL
-    */
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================== */
 
     const reveals = document.querySelectorAll(".reveal");
 
+
     const observer = new IntersectionObserver(
+
       (entries) => {
 
         entries.forEach((entry) => {
@@ -1351,9 +1673,11 @@
         });
 
       },
+
       {
         threshold: 0.12
       }
+
     );
 
 
@@ -1364,23 +1688,20 @@
     });
 
 
-    /*
-      CUSTOM CURSOR
-      Attivabile in una fase successiva.
-    */
 
-
-    /*
-      HEADER SCROLL EFFECT
-    */
+    /* =========================================================
+       HEADER — EFFETTO SCROLL
+    ========================================================== */
 
     const header = document.querySelector("header");
 
     let lastScroll = 0;
 
+
     window.addEventListener("scroll", () => {
 
       const currentScroll = window.scrollY;
+
 
       if (currentScroll > 80) {
 
@@ -1392,11 +1713,16 @@
 
       }
 
+
       lastScroll = currentScroll;
 
     });
 
+
   </script>
 
+
 </body>
+
 </html>
+```
