@@ -392,11 +392,11 @@
     /* =========================================================
        07.1 — PROJECT ACCORDION
        
-       Struttura:
+       DESKTOP:
        
-       COLONNA 1 → categoria
-       COLONNA 2 → titolo + descrizione
-       COLONNA 3 → immagine
+       15% = categoria
+       40% = titolo + testo
+       40% = immagine
     ========================================================== */
 
     .projects {
@@ -410,17 +410,23 @@
       display: grid;
 
       grid-template-columns:
-        minmax(130px, 20%)
-        minmax(280px, 1fr)
-        minmax(180px, 35%);
+        15%
+        40%
+        40%;
 
-      column-gap: 40px;
+      column-gap: 2.5%;
 
       border-bottom: 1px solid var(--black);
 
+      cursor: pointer;
+
       padding: 28px 0;
 
-      cursor: pointer;
+      /*
+        La foto determina l'altezza.
+      */
+
+      align-items: stretch;
 
       transition:
         padding .7s cubic-bezier(.2,.8,.2,1);
@@ -429,7 +435,7 @@
 
 
     /* =========================================================
-       CATEGORIA
+       COLONNA 1 — CATEGORIA
     ========================================================== */
 
     .project-meta {
@@ -450,7 +456,7 @@
 
 
     /* =========================================================
-       COLONNA CENTRALE
+       COLONNA 2 — TITOLO + TESTO
     ========================================================== */
 
     .project-middle {
@@ -463,15 +469,20 @@
 
       justify-content: space-between;
 
-      min-height: 150px;
+      /*
+        La colonna centrale segue l'altezza
+        della foto.
+      */
+
+      min-height: 100%;
 
     }
 
     .project-name {
 
-      font-size: clamp(40px, 5.5vw, 85px);
+      font-size: clamp(40px, 5vw, 82px);
 
-      line-height: .85;
+      line-height: .86;
 
       letter-spacing: -.065em;
 
@@ -485,16 +496,13 @@
 
     .project:hover .project-name {
 
-      transform: translateX(12px);
+      transform: translateX(10px);
 
     }
 
 
     /* =========================================================
        DESCRIZIONE
-       
-       Chiusa → nascosta
-       Aperta → compare in basso
     ========================================================== */
 
     .project-description {
@@ -527,14 +535,12 @@
 
 
     /* =========================================================
-       COLONNA FOTO
+       COLONNA 3 — FOTO
     ========================================================== */
 
     .project-image {
 
       width: 100%;
-
-      max-width: 180px;
 
       aspect-ratio: 1 / 1;
 
@@ -544,9 +550,14 @@
 
       background: #ddd;
 
-      transition:
+      /*
+        IMPORTANTE:
+        la foto determina l'altezza del progetto.
+      */
 
-        max-width .8s cubic-bezier(.2,.8,.2,1),
+      align-self: start;
+
+      transition:
 
         transform .8s cubic-bezier(.2,.8,.2,1);
 
@@ -595,12 +606,6 @@
 
     }
 
-    .project.open .project-middle {
-
-      min-height: 520px;
-
-    }
-
     .project.open .project-description {
 
       opacity: 1;
@@ -608,12 +613,6 @@
       max-height: 300px;
 
       transform: translateY(0);
-
-    }
-
-    .project.open .project-image {
-
-      max-width: min(100%, 600px);
 
     }
 
@@ -680,7 +679,9 @@
     }
 
     .about .section-number {
+
       color: #aaa;
+
     }
 
     .about-grid {
@@ -928,11 +929,15 @@
     }
 
     .contact-title span {
+
       display: block;
+
     }
 
     .contact-title .right {
+
       text-align: right;
+
     }
 
     .contact-bottom {
@@ -982,6 +987,7 @@
       transform-origin: right;
 
       transition:
+
         transform .4s ease;
 
     }
@@ -1048,13 +1054,90 @@
 
 
     /* =========================================================
-       14 — MOBILE
+       14 — TABLET / SCHERMI INTERMEDI
+       
+       Evitiamo che il desktop venga semplicemente
+       schiacciato su una finestra stretta.
     ========================================================== */
 
-    @media (max-width: 800px) {
+    @media (max-width: 1100px) and (min-width: 701px) {
+
+      .hero-title {
+
+        font-size: 12vw;
+
+      }
+
+      .project {
+
+        grid-template-columns:
+          15%
+          40%
+          40%;
+
+        column-gap: 2.5%;
+
+      }
+
+      .project-name {
+
+        font-size: clamp(35px, 4.5vw, 65px);
+
+      }
+
+      .project-description {
+
+        font-size: 13px;
+
+      }
+
+      .about-grid {
+
+        grid-template-columns:
+          80px
+          1fr
+          1fr;
+
+        gap: 30px;
+
+      }
+
+    }
 
 
-      /* HEADER */
+    /* =========================================================
+       15 — MOBILE
+       
+       CHIUSO:
+       
+       ┌──────────────────────┬──────────────┐
+       │ categoria            │              │
+       │ titolo               │     FOTO     │
+       │                      │              │
+       └──────────────────────┴──────────────┘
+       
+       APERTO:
+       
+       categoria
+       titolo
+       testo
+       foto
+    ========================================================== */
+
+    @media (max-width: 700px) {
+
+
+      /* =====================================================
+         HEADER
+      ====================================================== */
+
+      header {
+
+        padding-top: 20px;
+
+        padding-bottom: 20px;
+
+      }
 
       .header-right {
 
@@ -1069,7 +1152,9 @@
       }
 
 
-      /* HERO */
+      /* =====================================================
+         HERO
+      ====================================================== */
 
       .hero {
 
@@ -1079,17 +1164,24 @@
 
       .hero-title {
 
-        font-size: 19vw;
+        /*
+          Ridotto rispetto al desktop:
+          evita che "SCARPONI" venga tagliato.
+        */
 
-        margin-top: auto;
+        font-size: 17vw;
+
+        line-height: .82;
 
         margin-bottom: 40px;
+
+        letter-spacing: -.065em;
 
       }
 
       .hero-title .indent {
 
-        margin-left: 10vw;
+        margin-left: 7vw;
 
       }
 
@@ -1101,91 +1193,263 @@
 
       }
 
+      .hero-role {
 
-      /* MARQUEE */
-
-      .marquee span {
-
-        font-size: 9vw;
+        font-size: 10px;
 
       }
 
+      .hero-intro {
 
-      /* SECTION TITLES */
-
-      .section-heading {
-
-        grid-template-columns: 1fr;
-
-      }
-
-      .section-number {
-
-        margin-bottom: 20px;
-
-      }
-
-      .section-title {
-
-        font-size: 18vw;
-
-      }
-
-
-      /* =====================================================
-         MOBILE — PROJECTS
-      ====================================================== */
-
-      .project {
-
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-
-        padding: 25px 0;
-
-      }
-
-      .project-meta {
-
-        padding-top: 0;
-
-      }
-
-      .project-middle {
-
-        min-height: auto;
-
-        gap: 30px;
-
-      }
-
-      .project-name {
-
-        font-size: 15vw;
-
-      }
-
-      .project-description {
+        font-size: 13px;
 
         max-width: 100%;
 
       }
 
-      .project-image {
 
-        width: 100%;
+      /* =====================================================
+         MARQUEE
+      ====================================================== */
 
-        max-width: 160px;
+      .marquee {
 
-        justify-self: end;
+        padding: 14px 0;
+
+      }
+
+      .marquee span {
+
+        font-size: 8vw;
+
+        padding-right: 35px;
 
       }
 
 
-      /* PROJECT OPEN MOBILE */
+      /* =====================================================
+         GENERAL SECTION HEADINGS
+      ====================================================== */
+
+      .section-heading {
+
+        grid-template-columns: 1fr;
+
+        margin-bottom: 70px;
+
+      }
+
+      .section-number {
+
+        margin-bottom: 18px;
+
+      }
+
+      /*
+        I titoli generali rimangono grandi.
+      */
+
+      .section-title {
+
+        font-size: 17vw;
+
+        line-height: .8;
+
+      }
+
+
+      /* =====================================================
+         SELECTED WORK
+      ====================================================== */
+
+      .works {
+
+        padding-top: 110px;
+
+        padding-bottom: 120px;
+
+      }
+
+      .projects {
+
+        width: 100%;
+
+      }
+
+
+      /* =====================================================
+         PROJECT CHIUSO
+         
+         2 COLONNE:
+         
+         SINISTRA → categoria + titolo
+         DESTRA → foto quadrata
+      ====================================================== */
+
+      .project {
+
+        display: grid;
+
+        grid-template-columns:
+          minmax(0, 1fr)
+          minmax(110px, 42%);
+
+        column-gap: 20px;
+
+        row-gap: 25px;
+
+        padding: 25px 0;
+
+        align-items: start;
+
+      }
+
+
+      /* =====================================================
+         CATEGORIA
+      ====================================================== */
+
+      .project-meta {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+        padding-top: 0;
+
+        font-size: 9px;
+
+        line-height: 1.4;
+
+      }
+
+
+      /* =====================================================
+         COLONNA CENTRALE MOBILE
+         
+         Categoria + titolo stanno visivamente
+         nella colonna sinistra.
+      ====================================================== */
+
+      .project-middle {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: flex-start;
+
+        min-height: 0;
+
+        gap: 18px;
+
+      }
+
+      /*
+        Per evitare che categoria e titolo
+        si sovrappongano, la categoria viene
+        mantenuta sopra il titolo tramite
+        una modifica strutturale nel layout.
+      */
+
+      .project-meta {
+
+        position: relative;
+
+        z-index: 2;
+
+      }
+
+      .project-name {
+
+        /*
+          Molto più piccolo rispetto ai
+          titoli generali della pagina.
+        */
+
+        font-size: clamp(34px, 9vw, 58px);
+
+        line-height: .88;
+
+        letter-spacing: -.055em;
+
+        margin-top: 24px;
+
+      }
+
+      .project:hover .project-name {
+
+        transform: none;
+
+      }
+
+
+      /* =====================================================
+         FOTO MOBILE
+      ====================================================== */
+
+      .project-image {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        max-width: none;
+
+        justify-self: stretch;
+
+        align-self: start;
+
+      }
+
+
+      /* =====================================================
+         DESCRIZIONE MOBILE
+         
+         DA CHIUSO → NON ESISTE VISIVAMENTE
+         
+         DA APERTO → compare sotto titolo
+      ====================================================== */
+
+      .project-description {
+
+        font-size: 13px;
+
+        line-height: 1.55;
+
+        max-width: 100%;
+
+        opacity: 0;
+
+        max-height: 0;
+
+        transform: translateY(10px);
+
+      }
+
+
+      /* =====================================================
+         PROJECT APERTO MOBILE
+         
+         Ora diventano:
+         
+         categoria
+         titolo
+         testo
+         foto
+      ====================================================== */
 
       .project.open {
+
+        grid-template-columns: 1fr;
 
         padding-top: 35px;
 
@@ -1193,20 +1457,66 @@
 
       }
 
+      .project.open .project-meta {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+      }
+
       .project.open .project-middle {
 
-        min-height: auto;
+        grid-column: 1;
+
+        grid-row: 2;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        min-height: 0;
+
+      }
+
+      .project.open .project-name {
+
+        margin-top: 0;
+
+      }
+
+      .project.open .project-description {
+
+        opacity: 1;
+
+        max-height: 500px;
+
+        transform: translateY(0);
 
       }
 
       .project.open .project-image {
 
-        max-width: 100%;
+        grid-column: 1;
+
+        grid-row: 3;
+
+        width: 100%;
+
+        max-width: none;
+
+        aspect-ratio: 1 / 1;
+
+        margin-top: 10px;
 
       }
 
 
-      /* ABOUT */
+      /* =====================================================
+         ABOUT
+      ====================================================== */
 
       .about {
 
@@ -1220,7 +1530,7 @@
 
         grid-template-columns: 1fr;
 
-        gap: 50px;
+        gap: 45px;
 
       }
 
@@ -1240,12 +1550,38 @@
 
       }
 
+      .about-text-column p {
 
-      /* SKILLS */
+        font-size: 14px;
+
+      }
+
+
+      /* =====================================================
+         SKILLS
+      ====================================================== */
+
+      .skills {
+
+        padding-top: 110px;
+
+        padding-bottom: 110px;
+
+      }
+
+      .skills-list {
+
+        margin-top: 60px;
+
+      }
 
       .skill {
 
-        grid-template-columns: 40px 1fr;
+        grid-template-columns: 35px 1fr;
+
+        gap: 15px;
+
+        padding: 22px 0;
 
       }
 
@@ -1255,8 +1591,22 @@
 
       }
 
+      .skill-name {
 
-      /* EXPERIENCE */
+        font-size: clamp(24px, 7vw, 40px);
+
+      }
+
+
+      /* =====================================================
+         EXPERIENCE
+      ====================================================== */
+
+      .experience {
+
+        padding-bottom: 110px;
+
+      }
 
       .experience-grid {
 
@@ -1264,9 +1614,23 @@
 
       }
 
+      .experience-list {
+
+        margin-top: 50px;
+
+      }
+
       .experience-item {
 
         grid-template-columns: 1fr;
+
+        gap: 15px;
+
+      }
+
+      .experience-company {
+
+        font-size: 9vw;
 
       }
 
@@ -1277,7 +1641,15 @@
       }
 
 
-      /* CONTACT */
+      /* =====================================================
+         CONTACT
+      ====================================================== */
+
+      .contact {
+
+        min-height: 80svh;
+
+      }
 
       .contact-title {
 
@@ -1303,8 +1675,16 @@
 
       }
 
+      .contact-link {
 
-      /* FOOTER */
+        font-size: 6vw;
+
+      }
+
+
+      /* =====================================================
+         FOOTER
+      ====================================================== */
 
       footer {
 
@@ -1487,15 +1867,11 @@
 
 
 
-      <!-- =====================================================
-           PROJECTS
-      ====================================================== -->
-
       <div class="projects">
 
 
         <!-- ===================================================
-             PROJECT 01 — CONERO SPORTS HUB
+             PROJECT 01
         ==================================================== -->
 
         <article
@@ -1503,8 +1879,6 @@
           data-project="1"
         >
 
-
-          <!-- COLONNA 1 -->
 
           <div class="project-meta">
 
@@ -1514,10 +1888,7 @@
           </div>
 
 
-          <!-- COLONNA 2 -->
-
           <div class="project-middle">
-
 
             <h3 class="project-name">
 
@@ -1539,11 +1910,8 @@
 
             </p>
 
-
           </div>
 
-
-          <!-- COLONNA 3 -->
 
           <div class="project-image">
 
@@ -1561,7 +1929,7 @@
 
 
         <!-- ===================================================
-             PROJECT 02 — ATS 13
+             PROJECT 02
         ==================================================== -->
 
         <article
@@ -1569,8 +1937,6 @@
           data-project="2"
         >
 
-
-          <!-- COLONNA 1 -->
 
           <div class="project-meta">
 
@@ -1580,10 +1946,7 @@
           </div>
 
 
-          <!-- COLONNA 2 -->
-
           <div class="project-middle">
-
 
             <h3 class="project-name">
 
@@ -1601,11 +1964,8 @@
 
             </p>
 
-
           </div>
 
-
-          <!-- COLONNA 3 -->
 
           <div class="project-image">
 
@@ -1623,7 +1983,7 @@
 
 
         <!-- ===================================================
-             PROJECT 03 — PACKAGING
+             PROJECT 03
         ==================================================== -->
 
         <article
@@ -1642,7 +2002,6 @@
 
           <div class="project-middle">
 
-
             <h3 class="project-name">
 
               Packaging
@@ -1657,7 +2016,6 @@
               costruire una presenza coerente e riconoscibile.
 
             </p>
-
 
           </div>
 
@@ -1678,7 +2036,7 @@
 
 
         <!-- ===================================================
-             PROJECT 04 — DIGITAL
+             PROJECT 04
         ==================================================== -->
 
         <article
@@ -1697,7 +2055,6 @@
 
           <div class="project-middle">
 
-
             <h3 class="project-name">
 
               Digital<br>
@@ -1713,7 +2070,6 @@
               comunicazione online.
 
             </p>
-
 
           </div>
 
@@ -1734,7 +2090,7 @@
 
 
         <!-- ===================================================
-             PROJECT 05 — WEB DESIGN
+             PROJECT 05
         ==================================================== -->
 
         <article
@@ -1753,7 +2109,6 @@
 
           <div class="project-middle">
 
-
             <h3 class="project-name">
 
               Web<br>
@@ -1770,7 +2125,6 @@
               visiva e all'esperienza dell'utente.
 
             </p>
-
 
           </div>
 
