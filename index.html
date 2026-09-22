@@ -15,10 +15,12 @@
 
   <meta
     name="description"
-    content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
+    content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web & AI-assisted workflows."
   >
 
-  <!-- FONT -->
+  <!-- =========================================================
+       FONT
+  ========================================================== -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -64,7 +66,7 @@
 
     img {
       display: block;
-      width: 100%;
+      max-width: 100%;
     }
 
 
@@ -80,12 +82,34 @@
       --accent: #d7ff3f;
 
       --pad: clamp(20px, 3vw, 48px);
+
+      /*
+        DIMENSIONI ACCORDION
+        --------------------
+        CHIUSO:
+        foto piccola
+
+        APERTO:
+        foto grande
+
+        Il margine verticale della foto rimane SEMPRE 50px.
+      */
+
+      --photo-small: 150px;
+      --photo-large: min(42vw, 620px);
+
+      --photo-gap-top: 50px;
+      --photo-gap-bottom: 50px;
     }
 
 
     /* =========================================================
        03 — GENERALI
     ========================================================== */
+
+    .mono {
+      font-family: "DM Mono", monospace;
+    }
 
     .container {
       width: 100%;
@@ -129,8 +153,6 @@
       align-items: center;
 
       pointer-events: none;
-
-      transition: opacity .3s ease;
     }
 
     header a {
@@ -164,22 +186,38 @@
       flex-direction: column;
       justify-content: space-between;
 
-      padding-top: 130px;
+      padding-top: 120px;
       padding-bottom: 30px;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+
+      order: 2;
+    }
+
+    .hero-intro {
+      max-width: 420px;
+
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .hero-title {
       margin-top: auto;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
 
-      font-size: clamp(58px, 13vw, 210px);
-
+      font-size: clamp(70px, 14vw, 220px);
       line-height: .78;
 
       font-weight: 800;
       letter-spacing: -.075em;
 
       text-transform: uppercase;
+
+      order: 1;
     }
 
     .hero-title span {
@@ -187,33 +225,23 @@
     }
 
     .hero-title .indent {
-      margin-left: 13vw;
-    }
-
-    .hero-intro {
-      max-width: 500px;
-
-      margin-left: auto;
-
-      font-size: 15px;
-      line-height: 1.5;
+      margin-left: 16vw;
     }
 
     .hero-bottom {
       display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1fr;
 
       border-top: 1px solid var(--line);
 
       padding-top: 12px;
+
+      order: 3;
     }
 
     .hero-bottom div {
       font-family: "DM Mono", monospace;
-
       font-size: 10px;
-
       text-transform: uppercase;
     }
 
@@ -227,7 +255,6 @@
       border-bottom: 1px solid var(--black);
 
       overflow: hidden;
-
       white-space: nowrap;
 
       padding: 18px 0;
@@ -237,10 +264,9 @@
 
     .marquee-track {
       display: flex;
-
       width: max-content;
 
-      animation: marquee 22s linear infinite;
+      animation: marquee 18s linear infinite;
     }
 
     .marquee-group {
@@ -252,7 +278,6 @@
       font-size: clamp(28px, 4vw, 60px);
 
       font-weight: 700;
-
       letter-spacing: -.04em;
 
       padding-right: 50px;
@@ -277,182 +302,197 @@
 
     .works {
       padding-top: 150px;
-      padding-bottom: 150px;
+      padding-bottom: 180px;
     }
-
-
-    /* TITOLO SEZIONE */
 
     .section-heading {
       display: grid;
-
       grid-template-columns: 120px 1fr;
 
-      margin-bottom: 90px;
+      margin-bottom: 80px;
     }
 
     .section-number {
       font-family: "DM Mono", monospace;
-
       font-size: 12px;
     }
 
     .section-title {
-      font-size: clamp(55px, 9vw, 145px);
+      font-size: clamp(50px, 8vw, 130px);
 
-      line-height: .82;
-
-      letter-spacing: -.075em;
+      line-height: .85;
+      letter-spacing: -.07em;
 
       text-transform: uppercase;
-
       font-weight: 700;
     }
 
 
     /* =========================================================
-       07.1 — ACCORDION
+       07.1 — PROJECT ACCORDION
     ========================================================== */
 
-    .projects {
-      border-top: 1px solid var(--black);
-    }
-
     .project {
-      border-bottom: 1px solid var(--black);
+      border-top: 1px solid var(--black);
 
-      position: relative;
-    }
+      /*
+        IMPORTANTE:
+        La riga non ha un'altezza artificiale.
+        L'altezza viene determinata dal contenuto reale.
+      */
 
-
-    /*
-      La riga NON ha un'altezza impostata.
-
-      È l'immagine a determinare l'altezza attraverso
-      il padding verticale di 50px.
-    */
-
-    .project-row {
       display: grid;
 
-      grid-template-columns: 15% 40% 40%;
+      grid-template-columns:
+        15%
+        40%
+        40%;
 
       column-gap: 2.5%;
 
-      align-items: stretch;
-
       position: relative;
     }
 
 
     /* =========================================================
-       CATEGORIA
+       META — COLONNA 1
     ========================================================== */
 
-    .project-category {
-      padding-top: 50px;
-
+    .project-meta {
       font-family: "DM Mono", monospace;
 
       font-size: 10px;
-
-      line-height: 1.4;
+      line-height: 1.5;
 
       text-transform: uppercase;
 
-      color: var(--gray);
+      padding-top: 25px;
     }
 
 
     /* =========================================================
-       COLONNA CENTRALE
+       COLONNA 2
     ========================================================== */
 
-    .project-info {
+    .project-main {
+      min-width: 0;
+
+      /*
+        La colonna centrale contiene:
+
+        titolo
+        testo
+
+        mentre la foto vive realmente nella colonna 3.
+      */
+
       padding-top: 50px;
       padding-bottom: 50px;
 
       display: flex;
-
       flex-direction: column;
-
       justify-content: space-between;
 
-      min-height: 100%;
+      min-height:
+        calc(
+          var(--photo-small)
+          + var(--photo-gap-top)
+          + var(--photo-gap-bottom)
+        );
     }
 
-    .project-title {
-      font-size: clamp(42px, 5vw, 78px);
+    .project-name {
+      font-size: clamp(42px, 5vw, 82px);
 
       line-height: .88;
-
       letter-spacing: -.065em;
 
       font-weight: 700;
 
-      max-width: 620px;
+      margin: 0;
 
       transition:
         transform .6s cubic-bezier(.2,.8,.2,1);
     }
 
-    .project:hover .project-title {
-      transform: translateX(8px);
-    }
-
-
-    /*
-      La descrizione è nascosta quando l'accordion è chiuso.
-      Quando si apre compare senza influenzare l'altezza
-      minima dell'immagine.
-    */
-
-    .project-description {
-      max-width: 470px;
-
-      font-size: 14px;
-
-      line-height: 1.55;
-
-      margin-top: 40px;
-
-      opacity: 0;
-
-      transform: translateY(20px);
-
-      transition:
-        opacity .45s ease .1s,
-        transform .6s cubic-bezier(.2,.8,.2,1);
-
-      pointer-events: none;
-    }
-
-    .project.open .project-description {
-      opacity: 1;
-
-      transform: translateY(0);
-
-      pointer-events: auto;
+    .project:hover .project-name {
+      transform: translateX(10px);
     }
 
 
     /* =========================================================
-       IMMAGINE
+       DESCRIZIONE
     ========================================================== */
 
-    .project-media {
-      padding-top: 50px;
-      padding-bottom: 50px;
+    .project-description {
+      font-size: 14px;
+      line-height: 1.5;
+
+      max-width: 430px;
+
+      margin-top: 50px;
+
+      opacity: 0;
+
+      transform: translateY(15px);
+
+      /*
+        Quando chiuso non occupa spazio.
+      */
+
+      height: 0;
+
+      overflow: hidden;
+
+      transition:
+        opacity .45s ease,
+        transform .55s cubic-bezier(.2,.8,.2,1),
+        height .65s cubic-bezier(.2,.8,.2,1),
+        margin .65s cubic-bezier(.2,.8,.2,1);
+    }
+
+
+    /* =========================================================
+       COLONNA 3 — FOTO
+    ========================================================== */
+
+    .project-visual {
+      min-width: 0;
+
+      /*
+        QUESTO È IL PUNTO IMPORTANTE:
+
+        La foto ha SEMPRE:
+
+        50px sopra
+        foto
+        50px sotto
+
+        sia chiusa che aperta.
+      */
+
+      padding-top: var(--photo-gap-top);
+      padding-bottom: var(--photo-gap-bottom);
 
       display: flex;
-
-      align-items: center;
-
+      align-items: flex-start;
       justify-content: flex-end;
+
+      /*
+        L'altezza della colonna dipende esclusivamente
+        dalla foto + i due margini.
+      */
+
+      min-height:
+        calc(
+          var(--photo-small)
+          + var(--photo-gap-top)
+          + var(--photo-gap-bottom)
+        );
     }
 
     .project-image {
-      width: 115px;
+      width: var(--photo-small);
       aspect-ratio: 1 / 1;
 
       overflow: hidden;
@@ -462,12 +502,7 @@
       flex-shrink: 0;
 
       transition:
-        width .8s cubic-bezier(.2,.8,.2,1),
-        transform .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .project.open .project-image {
-      width: 100%;
+        width .75s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-image img {
@@ -477,57 +512,79 @@
       object-fit: cover;
 
       transition:
-        transform 1s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .project:hover .project-image img {
-      transform: scale(1.03);
+        transform .9s cubic-bezier(.2,.8,.2,1);
     }
 
 
     /* =========================================================
-       IMMAGINI TEMPORANEE
+       HOVER FOTO
     ========================================================== */
 
-    .fake-image {
+    .project:hover .project-image img {
+      transform: scale(1.025);
+    }
+
+
+    /* =========================================================
+       PROJECT APERTO
+    ========================================================== */
+
+    .project.open {
+
+      /*
+        La riga cresce naturalmente perché
+        project-visual contiene realmente:
+
+        50px
+        + foto grande
+        + 50px
+      */
+    }
+
+    .project.open .project-image {
+      width: var(--photo-large);
+    }
+
+    .project.open .project-description {
+
+      /*
+        Il testo torna a occupare spazio.
+      */
+
+      height: auto;
+
+      opacity: 1;
+
+      transform: translateY(0);
+
+      margin-top: 50px;
+
+      /*
+        Non usiamo display:none.
+        L'altezza della colonna rimane naturale.
+      */
+    }
+
+
+    /* =========================================================
+       PULSANTE / AREA CLICCABILE
+    ========================================================== */
+
+    .project-trigger {
+      appearance: none;
+
+      border: 0;
+      background: transparent;
+
+      color: inherit;
+
       width: 100%;
-      height: 100%;
 
-      display: flex;
+      cursor: pointer;
 
-      align-items: center;
-      justify-content: center;
+      text-align: left;
 
-      font-size: clamp(30px, 5vw, 80px);
-
-      font-weight: 800;
-
-      letter-spacing: -.08em;
-    }
-
-    .project:nth-child(1) .fake-image {
-      background: #111;
-      color: #f2f1ed;
-    }
-
-    .project:nth-child(2) .fake-image {
-      background: #d6d6d0;
-      color: #111;
-    }
-
-    .project:nth-child(3) .fake-image {
-      background: #ff6534;
-      color: #111;
-    }
-
-    .project:nth-child(4) .fake-image {
-      background: #2338ff;
-      color: white;
-    }
-
-    .project:nth-child(5) .fake-image {
-      background: #d7ff3f;
-      color: #111;
+      font: inherit;
     }
 
 
@@ -537,59 +594,52 @@
 
     .about {
       background: #111;
-
       color: #f2f1ed;
 
       padding-top: 150px;
       padding-bottom: 150px;
     }
 
+    .about .line {
+      background: #444;
+    }
+
     .about-grid {
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 120px 1fr;
 
-      gap: 80px;
-    }
-
-    .about-main {
-      grid-column: 1;
+      gap: 30px;
     }
 
     .about-text {
-      font-size: clamp(42px, 5vw, 75px);
+      font-size: clamp(35px, 5.5vw, 85px);
 
       line-height: .95;
-
       letter-spacing: -.055em;
 
-      max-width: 700px;
+      max-width: 1100px;
     }
 
     .about-text em {
       color: var(--accent);
-
       font-style: normal;
     }
 
     .about-small {
-      grid-column: 2;
+      margin-top: 80px;
 
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      min-height: 100%;
+      gap: 50px;
     }
 
     .about-small p {
       font-size: 14px;
-
       line-height: 1.55;
 
-      max-width: 430px;
+      max-width: 480px;
 
       color: #aaa;
     }
@@ -633,7 +683,6 @@
 
     .skill-number {
       font-family: "DM Mono", monospace;
-
       font-size: 10px;
     }
 
@@ -641,7 +690,6 @@
       font-size: clamp(25px, 4vw, 55px);
 
       font-weight: 600;
-
       letter-spacing: -.04em;
     }
 
@@ -671,8 +719,6 @@
     }
 
     .experience-list {
-      margin-top: 80px;
-
       border-top: 1px solid var(--black);
     }
 
@@ -721,13 +767,10 @@
       min-height: 90svh;
 
       background: var(--accent);
-
       color: #111;
 
       display: flex;
-
       flex-direction: column;
-
       justify-content: space-between;
 
       padding-top: 30px;
@@ -758,7 +801,6 @@
       display: flex;
 
       justify-content: space-between;
-
       align-items: end;
 
       border-top: 1px solid #111;
@@ -810,7 +852,6 @@
 
     footer {
       background: #111;
-
       color: #f2f1ed;
 
       padding: 20px var(--pad);
@@ -834,7 +875,7 @@
     .reveal {
       opacity: 0;
 
-      transform: translateY(35px);
+      transform: translateY(40px);
 
       transition:
         opacity .8s ease,
@@ -849,27 +890,38 @@
 
 
     /* =========================================================
-       14 — MOBILE
+       14 — TABLET / MOBILE
     ========================================================== */
 
     @media (max-width: 800px) {
 
+      :root {
+        --pad: 18px;
 
-      /* HEADER */
+        /*
+          Foto chiusa piccola.
+          Foto aperta grande ma sempre quadrata.
+        */
+
+        --photo-small: 92px;
+        --photo-large: min(72vw, 420px);
+
+        --photo-gap-top: 50px;
+        --photo-gap-bottom: 50px;
+      }
+
+
+      /* =======================================================
+         HEADER
+      ======================================================== */
 
       header {
         padding-top: 20px;
         padding-bottom: 20px;
       }
 
-      .logo {
-        font-size: 12px;
-      }
-
       .header-right {
-        gap: 15px;
-
-        font-size: 9px;
+        gap: 12px;
       }
 
       .header-right a:nth-child(2) {
@@ -877,36 +929,44 @@
       }
 
 
-      /* HERO */
+      /* =======================================================
+         HERO
+      ======================================================== */
 
       .hero {
         padding-top: 100px;
       }
 
+      .hero-top {
+        grid-template-columns: 1fr;
+
+        order: 2;
+      }
+
+      .hero-intro {
+        font-size: 13px;
+
+        max-width: 330px;
+      }
+
       .hero-title {
-        font-size: 17vw;
+        font-size: clamp(58px, 16vw, 110px);
 
-        line-height: .82;
+        margin-top: 120px;
 
-        margin-top: 100px;
+        order: 1;
       }
 
       .hero-title .indent {
         margin-left: 7vw;
       }
 
-      .hero-intro {
-        max-width: 100%;
-
-        font-size: 13px;
-
-        margin-top: 30px;
-      }
-
       .hero-bottom {
         grid-template-columns: 1fr 1fr;
 
-        gap: 10px;
+        gap: 12px;
+
+        order: 3;
       }
 
       .hero-bottom div:last-child {
@@ -914,184 +974,222 @@
       }
 
 
-      /* MARQUEE */
+      /* =======================================================
+         SECTION TITLES
+      ======================================================== */
 
-      .marquee {
-        padding: 14px 0;
-      }
-
-      .marquee span {
-        font-size: 28px;
-
-        padding-right: 35px;
-      }
-
-
-      /* SEZIONI */
-
-      .works {
-        padding-top: 100px;
-        padding-bottom: 100px;
-      }
-
-      .section-heading {
+      .section-heading,
+      .about-grid,
+      .experience-grid {
         grid-template-columns: 1fr;
-
-        margin-bottom: 55px;
       }
 
       .section-number {
-        margin-bottom: 18px;
-
-        font-size: 10px;
+        margin-bottom: 20px;
       }
 
       .section-title {
-        font-size: 17vw;
-
-        line-height: .85;
+        font-size: 18vw;
       }
 
 
-      /* =====================================================
+      /* =======================================================
+         SELECTED WORK
+      ======================================================== */
+
+      .works {
+        padding-top: 110px;
+        padding-bottom: 120px;
+      }
+
+      .section-heading {
+        margin-bottom: 55px;
+      }
+
+
+      /* =======================================================
          ACCORDION MOBILE
-      ====================================================== */
+         
+         IMPORTANTISSIMO:
 
-      .project-row {
-        /*
-          Da chiuso:
+         Rimangono 3 colonne anche su mobile.
 
-          sinistra = categoria + titolo
-          destra = immagine piccola
-        */
+         Colonna 1 = categoria
+         Colonna 2 = titolo + testo
+         Colonna 3 = foto
+      ======================================================== */
 
-        grid-template-columns: 1fr 95px;
+      .project {
 
-        column-gap: 20px;
+        grid-template-columns:
+          15%
+          minmax(0, 1fr)
+          var(--photo-small);
+
+        column-gap: 10px;
 
         align-items: stretch;
       }
 
-      .project-category {
+
+      /* =======================================================
+         META MOBILE
+      ======================================================== */
+
+      .project-meta {
+
         padding-top: 50px;
 
-        font-size: 9px;
+        font-size: 8px;
+
+        line-height: 1.45;
+
+        min-width: 0;
       }
 
-      .project-info {
+
+      /* =======================================================
+         MAIN MOBILE
+      ======================================================== */
+
+      .project-main {
+
         padding-top: 50px;
         padding-bottom: 50px;
 
-        justify-content: flex-start;
+        min-height:
+          calc(
+            var(--photo-small)
+            + var(--photo-gap-top)
+            + var(--photo-gap-bottom)
+          );
+
+        min-width: 0;
       }
 
-      .project-title {
-        font-size: 10vw;
+      .project-name {
+
+        /*
+          Titolo più piccolo rispetto ai titoli
+          generali del sito.
+        */
+
+        font-size: clamp(25px, 7vw, 40px);
 
         line-height: .9;
+
+        letter-spacing: -.055em;
+
+        overflow-wrap: break-word;
       }
 
+
+      /* =======================================================
+         DESCRIZIONE MOBILE
+      ======================================================== */
+
       .project-description {
+
         font-size: 12px;
 
         line-height: 1.5;
 
-        margin-top: 30px;
-      }
+        max-width: none;
 
-      .project-media {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        margin-top: 35px;
 
-        align-items: center;
-      }
-
-      .project-image {
-        width: 95px;
-      }
-
-      .project.open .project-image {
-        width: 100%;
-      }
-
-      /*
-        Quando aperto su mobile:
-
-        categoria + titolo
-        descrizione
-        immagine
-
-        La griglia diventa una colonna,
-        ma l'immagine mantiene sempre
-        i suoi 50px sopra e sotto.
-      */
-
-      .project.open .project-row {
-        grid-template-columns: 1fr;
-      }
-
-      .project.open .project-media {
-        grid-column: 1;
-
-        width: 100%;
-
-        padding-top: 50px;
-        padding-bottom: 50px;
-      }
-
-      .project.open .project-image {
-        width: 100%;
-
-        aspect-ratio: 1 / 1;
+        padding-right: 5px;
       }
 
       .project.open .project-description {
-        margin-bottom: 0;
+        margin-top: 35px;
       }
 
 
-      /* ABOUT */
+      /* =======================================================
+         FOTO MOBILE
+      ======================================================== */
+
+      .project-visual {
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        min-height:
+          calc(
+            var(--photo-small)
+            + var(--photo-gap-top)
+            + var(--photo-gap-bottom)
+          );
+
+        min-width: 0;
+      }
+
+      .project-image {
+
+        width: var(--photo-small);
+
+        aspect-ratio: 1 / 1;
+
+        max-width: none;
+      }
+
+      .project.open .project-image {
+
+        width: var(--photo-large);
+
+      }
+
+
+      /* =======================================================
+         OPEN MOBILE
+      ======================================================== */
+
+      .project.open {
+
+        /*
+          Manteniamo SEMPRE le 3 colonne.
+
+          La foto rimane nella terza colonna.
+          La sua altezza determina realmente
+          l'altezza dell'intera riga.
+        */
+      }
+
+
+      /* =======================================================
+         ABOUT
+      ======================================================== */
 
       .about {
-        padding-top: 100px;
-        padding-bottom: 100px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-
-        gap: 60px;
-      }
-
-      .about-main,
-      .about-small {
-        grid-column: 1;
+        padding-top: 110px;
+        padding-bottom: 110px;
       }
 
       .about-text {
         font-size: 10vw;
-
-        line-height: .95;
       }
 
       .about-small {
-        min-height: auto;
+        grid-template-columns: 1fr;
 
-        gap: 35px;
+        gap: 30px;
+
+        margin-top: 60px;
       }
 
       .about-small p {
-        font-size: 12px;
-
-        line-height: 1.55;
+        font-size: 13px;
       }
 
 
-      /* SKILLS */
+      /* =======================================================
+         SKILLS
+      ======================================================== */
 
       .skills {
-        padding-top: 100px;
-        padding-bottom: 100px;
+        padding-top: 110px;
+        padding-bottom: 110px;
       }
 
       .skills-list {
@@ -1099,19 +1197,15 @@
       }
 
       .skill {
-        grid-template-columns: 30px 1fr;
+        grid-template-columns: 35px 1fr;
 
         gap: 15px;
 
         padding: 20px 0;
       }
 
-      .skill-number {
-        font-size: 9px;
-      }
-
       .skill-name {
-        font-size: 7vw;
+        font-size: clamp(21px, 6vw, 32px);
       }
 
       .skill-type {
@@ -1119,57 +1213,45 @@
       }
 
 
-      /* EXPERIENCE */
+      /* =======================================================
+         EXPERIENCE
+      ======================================================== */
 
       .experience {
-        padding-bottom: 100px;
-      }
-
-      .experience-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .experience-list {
-        margin-top: 55px;
+        padding-bottom: 110px;
       }
 
       .experience-item {
         grid-template-columns: 1fr;
 
-        gap: 10px;
-
-        padding: 20px 0;
+        gap: 12px;
       }
 
       .experience-company {
-        font-size: 8vw;
-      }
-
-      .experience-role {
-        font-size: 11px;
+        font-size: clamp(28px, 8vw, 45px);
       }
 
       .experience-year {
         text-align: left;
-
-        font-size: 9px;
       }
 
 
-      /* CONTACT */
+      /* =======================================================
+         CONTACT
+      ======================================================== */
 
       .contact {
         min-height: 80svh;
       }
 
       .contact-title {
-        font-size: 18vw;
+        font-size: 19vw;
       }
 
       .contact-title .right {
         text-align: left;
 
-        margin-left: 12vw;
+        margin-left: 15vw;
       }
 
       .contact-bottom {
@@ -1180,66 +1262,86 @@
         gap: 25px;
       }
 
-      .contact-link {
-        font-size: 20px;
-      }
 
-
-      /* FOOTER */
+      /* =======================================================
+         FOOTER
+      ======================================================== */
 
       footer {
+        gap: 20px;
+
         flex-direction: column;
-
-        gap: 12px;
-
-        font-size: 9px;
       }
 
     }
 
 
     /* =========================================================
-       15 — VERY SMALL MOBILE
+       15 — MOBILE MOLTO PICCOLO
     ========================================================== */
 
     @media (max-width: 420px) {
 
+      :root {
+
+        --photo-small: 78px;
+
+        --photo-large: min(70vw, 320px);
+
+      }
+
       .hero-title {
-        font-size: 16vw;
+        font-size: 15vw;
       }
 
-      .hero-intro {
-        font-size: 12px;
+      .project {
+
+        grid-template-columns:
+          16%
+          minmax(0, 1fr)
+          var(--photo-small);
+
+        column-gap: 8px;
+
       }
 
-      .project-row {
-        grid-template-columns: minmax(0, 1fr) 80px;
-
-        column-gap: 15px;
+      .project-meta {
+        font-size: 7px;
       }
 
-      .project-title {
-        font-size: 8.5vw;
-      }
-
-      .project-category {
-        font-size: 8px;
-      }
-
-      .project-image {
-        width: 80px;
+      .project-name {
+        font-size: clamp(22px, 6.8vw, 30px);
       }
 
       .project-description {
         font-size: 11px;
       }
 
-      .about-text {
-        font-size: 9.5vw;
+    }
+
+
+    /* =========================================================
+       16 — RIDOTTA ANIMAZIONE
+    ========================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
       }
 
-      .skill-name {
-        font-size: 6.5vw;
+      *,
+      *::before,
+      *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
       }
 
     }
@@ -1282,10 +1384,6 @@
 
 
 
-  <!-- =========================================================
-       MAIN
-  ========================================================== -->
-
   <main>
 
 
@@ -1294,7 +1392,6 @@
     ======================================================== -->
 
     <section class="hero container">
-
 
       <h1 class="hero-title">
 
@@ -1309,13 +1406,24 @@
       </h1>
 
 
-      <p class="hero-intro">
+      <div class="hero-top">
 
-        Graphic & Web Designer con esperienza nella
-        progettazione di identità visive, comunicazione,
-        packaging e soluzioni digitali.
+        <div class="eyebrow">
 
-      </p>
+          Graphic & Web Designer
+
+        </div>
+
+
+        <p class="hero-intro">
+
+          Designer con 4+ anni di esperienza tra
+          identità visiva, comunicazione, packaging
+          e progettazione digitale.
+
+        </p>
+
+      </div>
 
 
       <div class="hero-bottom">
@@ -1385,7 +1493,6 @@
       id="work"
     >
 
-
       <div class="section-heading reveal">
 
         <div class="section-number">
@@ -1393,282 +1500,318 @@
         </div>
 
         <h2 class="section-title">
+
           Selected<br>
           Work
+
         </h2>
 
       </div>
 
 
-      <div class="projects">
+
+      <!-- =====================================================
+           PROJECT 01
+      ====================================================== -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+
+          001<br>
+          Brand Identity
+
+        </div>
 
 
-        <!-- ===================================================
-             PROJECT 01
-        ==================================================== -->
+        <div class="project-main">
 
-        <article class="project reveal">
+          <button
+            class="project-trigger"
+            type="button"
+            aria-expanded="false"
+          >
 
-          <div class="project-row">
+            <h3 class="project-name">
+              Conero<br>
+              Sports Hub
+            </h3>
 
-
-            <div class="project-category">
-              001<br>
-              Brand Identity
-            </div>
-
-
-            <div class="project-info">
-
-              <h3 class="project-title">
-                Conero<br>
-                Sports Hub
-              </h3>
-
-              <p class="project-description">
-
-                Conero Sports Hub è una nuova polisportiva
-                con sede a Sirolo. L'identità visiva è stata
-                sviluppata ispirandosi agli stemmi delle
-                società sportive, creando un marchio essenziale,
-                riconoscibile e strettamente legato al territorio.
-
-              </p>
-
-            </div>
+          </button>
 
 
-            <div class="project-media">
+          <p class="project-description">
 
-              <div class="project-image">
+            Conero Sports Hub è una nuova polisportiva
+            con sede a Sirolo. L’identità visiva è stata
+            sviluppata ispirandosi agli stemmi delle
+            società sportive, creando un marchio
+            essenziale, riconoscibile e strettamente
+            legato al territorio attraverso forme pulite
+            e una palette cromatica che richiama il mare
+            della Riviera del Conero.
 
-                <div class="fake-image">
-                  CSH
-                </div>
+          </p>
 
-              </div>
-
-            </div>
-
-
-          </div>
-
-        </article>
+        </div>
 
 
+        <div class="project-visual">
 
-        <!-- ===================================================
-             PROJECT 02
-        ==================================================== -->
+          <!--
+            SOSTITUISCI SOLO IL VALORE DI src
+            QUANDO AVRAI LA FOTO DEFINITIVA.
 
-        <article class="project reveal">
+            Esempio:
+            src="images/conero-sports-hub.jpg"
+          -->
 
-          <div class="project-row">
+          <div class="project-image">
 
-
-            <div class="project-category">
-              002<br>
-              Comunicazione
-            </div>
-
-
-            <div class="project-info">
-
-              <h3 class="project-title">
-                Evento<br>
-                ATS 13
-              </h3>
-
-              <p class="project-description">
-
-                Progettazione della comunicazione visiva
-                per un evento promosso dall'Ambito Territoriale
-                Sociale 13 e rivolto a diversi comuni della
-                Regione Marche.
-
-              </p>
-
-            </div>
-
-
-            <div class="project-media">
-
-              <div class="project-image">
-
-                <div class="fake-image">
-                  ATS
-                </div>
-
-              </div>
-
-            </div>
-
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+              alt="Conero Sports Hub"
+            >
 
           </div>
 
-        </article>
+        </div>
+
+      </article>
 
 
 
-        <!-- ===================================================
-             PROJECT 03
-        ==================================================== -->
+      <!-- =====================================================
+           PROJECT 02
+      ====================================================== -->
 
-        <article class="project reveal">
+      <article class="project reveal">
 
-          <div class="project-row">
+        <div class="project-meta">
+
+          002<br>
+          Comunicazione
+
+        </div>
 
 
-            <div class="project-category">
-              003<br>
+        <div class="project-main">
+
+          <button
+            class="project-trigger"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <h3 class="project-name">
+              Evento<br>
+              ATS 13
+            </h3>
+
+          </button>
+
+
+          <p class="project-description">
+
+            Progettazione della comunicazione visiva
+            per un evento promosso dall’Ambito
+            Territoriale Sociale 13 e rivolto a diversi
+            comuni della Regione Marche.
+
+          </p>
+
+        </div>
+
+
+        <div class="project-visual">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"
+              alt="Evento ATS 13"
+            >
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =====================================================
+           PROJECT 03
+      ====================================================== -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+
+          003<br>
+          Packaging
+
+        </div>
+
+
+        <div class="project-main">
+
+          <button
+            class="project-trigger"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <h3 class="project-name">
               Packaging
-            </div>
+            </h3>
+
+          </button>
 
 
-            <div class="project-info">
+          <p class="project-description">
 
-              <h3 class="project-title">
-                Packaging
-              </h3>
+            Progettazione di packaging e sistema visivo
+            coordinato per valorizzare il prodotto e
+            costruire una presenza coerente e
+            riconoscibile.
 
+          </p>
 
-              <p class="project-description">
-
-                Progettazione di packaging e sistema visivo
-                coordinato per valorizzare il prodotto e
-                costruire una presenza coerente e riconoscibile.
-
-              </p>
-
-            </div>
+        </div>
 
 
-            <div class="project-media">
+        <div class="project-visual">
 
-              <div class="project-image">
+          <div class="project-image">
 
-                <div class="fake-image">
-                  PACK
-                </div>
-
-              </div>
-
-            </div>
-
+            <img
+              src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1200&q=80"
+              alt="Packaging design"
+            >
 
           </div>
 
-        </article>
+        </div>
+
+      </article>
 
 
 
-        <!-- ===================================================
-             PROJECT 04
-        ==================================================== -->
+      <!-- =====================================================
+           PROJECT 04
+      ====================================================== -->
 
-        <article class="project reveal">
+      <article class="project reveal">
 
-          <div class="project-row">
+        <div class="project-meta">
 
+          004<br>
+          Digital
 
-            <div class="project-category">
-              004<br>
-              Digital
-            </div>
-
-
-            <div class="project-info">
-
-              <h3 class="project-title">
-                Digital<br>
-                Design
-              </h3>
+        </div>
 
 
-              <p class="project-description">
+        <div class="project-main">
 
-                Art direction e progettazione di contenuti
-                digitali, social media e materiali per la
-                comunicazione online.
+          <button
+            class="project-trigger"
+            type="button"
+            aria-expanded="false"
+          >
 
-              </p>
+            <h3 class="project-name">
+              Digital<br>
+              Design
+            </h3>
 
-            </div>
-
-
-            <div class="project-media">
-
-              <div class="project-image">
-
-                <div class="fake-image">
-                  DIGITAL
-                </div>
-
-              </div>
-
-            </div>
+          </button>
 
 
-          </div>
+          <p class="project-description">
 
-        </article>
+            Art direction e progettazione di contenuti
+            digitali, social media e materiali per la
+            comunicazione online.
 
+          </p>
 
-
-        <!-- ===================================================
-             PROJECT 05
-        ==================================================== -->
-
-        <article class="project reveal">
-
-          <div class="project-row">
+        </div>
 
 
-            <div class="project-category">
-              005<br>
-              Web Design
-            </div>
+        <div class="project-visual">
 
+          <div class="project-image">
 
-            <div class="project-info">
-
-              <h3 class="project-title">
-                Web<br>
-                Design
-              </h3>
-
-
-              <p class="project-description">
-
-                Progettazione di siti web, landing page
-                e interfacce responsive con particolare
-                attenzione alla struttura, alla tipografia
-                e all'esperienza di navigazione.
-
-              </p>
-
-            </div>
-
-
-            <div class="project-media">
-
-              <div class="project-image">
-
-                <div class="fake-image">
-                  WEB
-                </div>
-
-              </div>
-
-            </div>
-
+            <img
+              src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
+              alt="Digital design"
+            >
 
           </div>
 
-        </article>
+        </div>
+
+      </article>
 
 
-      </div>
+
+      <!-- =====================================================
+           PROJECT 05
+      ====================================================== -->
+
+      <article class="project reveal">
+
+        <div class="project-meta">
+
+          005<br>
+          Web Design
+
+        </div>
+
+
+        <div class="project-main">
+
+          <button
+            class="project-trigger"
+            type="button"
+            aria-expanded="false"
+          >
+
+            <h3 class="project-name">
+              Web<br>
+              Design
+            </h3>
+
+          </button>
+
+
+          <p class="project-description">
+
+            Progettazione e sviluppo di siti web,
+            landing page e interfacce responsive,
+            con particolare attenzione alla struttura,
+            alla gerarchia visiva e all’esperienza utente.
+
+          </p>
+
+        </div>
+
+
+        <div class="project-visual">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80"
+              alt="Web design"
+            >
+
+          </div>
+
+        </div>
+
+      </article>
 
     </section>
 
@@ -1685,47 +1828,47 @@
 
       <div class="about-grid">
 
+        <div class="section-number">
+          02 / 05
+        </div>
 
-        <div class="about-main">
 
-          <div class="section-number">
-            02 / 05
-          </div>
+        <div>
 
           <p class="about-text reveal">
 
             Creo identità,
             comunicazione e
-            <em>esperienze digitali</em>
-            attraverso design,
-            strategia e tecnologia.
+            <em>digital experiences</em>
+            unendo pensiero
+            visivo e tecnologia.
 
           </p>
+
+
+          <div class="about-small">
+
+            <p class="reveal">
+
+              Sono un Graphic & Web Designer con
+              esperienza nella progettazione di brand,
+              packaging, comunicazione digitale e siti web.
+
+            </p>
+
+
+            <p class="reveal">
+
+              Negli ultimi anni ho iniziato a integrare
+              strumenti di AI nei miei workflow creativi
+              e nello sviluppo web, sperimentando nuovi
+              modi di progettare, prototipare e produrre.
+
+            </p>
+
+          </div>
 
         </div>
-
-
-        <div class="about-small">
-
-          <p class="reveal">
-
-            Sono un Graphic & Web Designer con esperienza
-            nella progettazione di brand, packaging,
-            comunicazione digitale e siti web.
-
-          </p>
-
-          <p class="reveal">
-
-            Negli ultimi anni ho iniziato a integrare
-            strumenti di AI nei miei workflow creativi
-            e nello sviluppo web, sperimentando nuovi
-            modi di progettare, prototipare e produrre.
-
-          </p>
-
-        </div>
-
 
       </div>
 
@@ -1738,7 +1881,6 @@
     ======================================================== -->
 
     <section class="skills container">
-
 
       <div class="section-heading reveal">
 
@@ -1754,7 +1896,6 @@
 
 
       <div class="skills-list">
-
 
         <div class="skill reveal">
 
@@ -1857,7 +1998,6 @@
 
         </div>
 
-
       </div>
 
     </section>
@@ -1870,9 +2010,7 @@
 
     <section class="experience container">
 
-
       <div class="experience-grid">
-
 
         <div class="section-number">
           04 / 05
@@ -1887,9 +2025,6 @@
 
 
           <div class="experience-list">
-
-
-            <!-- Studio attuale volutamente nascosto -->
 
             <div class="experience-item reveal">
 
@@ -1953,7 +2088,6 @@
 
             </div>
 
-
           </div>
 
         </div>
@@ -1974,7 +2108,7 @@
     >
 
       <div class="eyebrow">
-        05 / 05 — Contatti
+        05 / 05 — Contact
       </div>
 
 
@@ -2000,14 +2134,14 @@
           tuamail@email.com
         </a>
 
+
         <div class="eyebrow">
-          Disponibile per nuovi progetti
+          Available for selected opportunities
         </div>
 
       </div>
 
     </section>
-
 
   </main>
 
@@ -2028,7 +2162,7 @@
     </span>
 
     <a href="#">
-      Torna su ↑
+      Back to top ↑
     </a>
 
   </footer>
@@ -2040,7 +2174,6 @@
   ========================================================== -->
 
   <script>
-
 
     /* =========================================================
        SCROLL REVEAL
@@ -2081,6 +2214,8 @@
 
     /* =========================================================
        ACCORDION
+       
+       Un solo progetto aperto alla volta.
     ========================================================== */
 
     const projects = document.querySelectorAll(".project");
@@ -2088,36 +2223,60 @@
 
     projects.forEach((project) => {
 
-      const row = project.querySelector(".project-row");
+      const trigger =
+        project.querySelector(".project-trigger");
 
 
-      row.addEventListener("click", () => {
+      trigger.addEventListener("click", () => {
 
-
-        const isOpen = project.classList.contains("open");
+        const isOpen =
+          project.classList.contains("open");
 
 
         /*
-          Chiudiamo tutti gli altri progetti.
-          In questo modo ne rimane sempre uno aperto
-          al massimo.
+          Chiude tutti gli altri.
         */
 
-        projects.forEach((item) => {
+        projects.forEach((otherProject) => {
 
-          item.classList.remove("open");
+          if (otherProject !== project) {
+
+            otherProject.classList.remove("open");
+
+            const otherTrigger =
+              otherProject.querySelector(".project-trigger");
+
+            otherTrigger.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
 
         });
 
 
         /*
-          Se quello cliccato era chiuso,
-          lo apriamo.
+          Apre / chiude quello cliccato.
         */
 
-        if (!isOpen) {
+        if (isOpen) {
+
+          project.classList.remove("open");
+
+          trigger.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        } else {
 
           project.classList.add("open");
+
+          trigger.setAttribute(
+            "aria-expanded",
+            "true"
+          );
 
         }
 
@@ -2128,10 +2287,11 @@
 
 
     /* =========================================================
-       HEADER — OPACITÀ DURANTE LO SCROLL
+       HEADER OPACITY
     ========================================================== */
 
-    const header = document.querySelector("header");
+    const header =
+      document.querySelector("header");
 
 
     window.addEventListener("scroll", () => {
@@ -2147,7 +2307,6 @@
       }
 
     });
-
 
   </script>
 
