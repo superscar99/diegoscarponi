@@ -76,6 +76,7 @@
     ========================================================== */
 
     :root {
+
       --bg: #f2f1ed;
       --black: #111;
       --gray: #8b8b86;
@@ -83,6 +84,7 @@
       --accent: #d7ff3f;
 
       --pad: clamp(20px, 3vw, 48px);
+
     }
 
 
@@ -95,23 +97,36 @@
     }
 
     .container {
+
       width: 100%;
+
       padding-left: var(--pad);
       padding-right: var(--pad);
+
     }
 
     .eyebrow {
+
       font-family: "DM Mono", monospace;
+
       font-size: 11px;
+
       text-transform: uppercase;
+
       letter-spacing: .08em;
+
       color: var(--gray);
+
     }
 
     .line {
+
       width: 100%;
+
       height: 1px;
+
       background: var(--line);
+
     }
 
 
@@ -120,22 +135,32 @@
     ========================================================== */
 
     header {
+
       position: fixed;
+
       top: 0;
       left: 0;
+
       width: 100%;
+
       z-index: 100;
 
       mix-blend-mode: difference;
+
       color: white;
 
       padding: 24px var(--pad);
 
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
 
       pointer-events: none;
+
+      transition: opacity .3s ease;
+
     }
 
     header a {
@@ -143,18 +168,27 @@
     }
 
     .logo {
+
       font-weight: 700;
+
       font-size: 14px;
+
       letter-spacing: -.02em;
+
     }
 
     .header-right {
+
       display: flex;
+
       gap: 30px;
 
       font-family: "DM Mono", monospace;
+
       font-size: 11px;
+
       text-transform: uppercase;
+
     }
 
 
@@ -163,33 +197,37 @@
     ========================================================== */
 
     .hero {
+
       min-height: 100svh;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: space-between;
 
       padding-top: 120px;
+
       padding-bottom: 30px;
+
     }
 
-    /*
-      Il nome viene prima.
-      Il ruolo viene sotto.
-      La descrizione rimane sulla destra.
-    */
-
     .hero-title {
+
       margin-top: auto;
+
       margin-bottom: 45px;
 
       font-size: clamp(70px, 14vw, 220px);
+
       line-height: .78;
 
       font-weight: 800;
+
       letter-spacing: -.075em;
 
       text-transform: uppercase;
+
     }
 
     .hero-title span {
@@ -201,6 +239,7 @@
     }
 
     .hero-bottom {
+
       display: grid;
 
       grid-template-columns: 1fr 1fr;
@@ -210,9 +249,11 @@
       border-top: 1px solid var(--line);
 
       padding-top: 15px;
+
     }
 
     .hero-role {
+
       font-family: "DM Mono", monospace;
 
       font-size: 11px;
@@ -220,31 +261,38 @@
       text-transform: uppercase;
 
       color: var(--gray);
+
     }
 
     .hero-intro {
+
       max-width: 430px;
 
       font-size: 14px;
+
       line-height: 1.5;
+
     }
 
 
     /* =========================================================
        06 — MARQUEE
-       LOOP CONTINUO
     ========================================================== */
 
     .marquee {
+
       border-top: 1px solid var(--black);
+
       border-bottom: 1px solid var(--black);
 
       overflow: hidden;
+
       white-space: nowrap;
 
       padding: 18px 0;
 
       background: var(--accent);
+
     }
 
     .marquee-track {
@@ -256,6 +304,7 @@
       animation: marquee 24s linear infinite;
 
       will-change: transform;
+
     }
 
     .marquee-group {
@@ -263,6 +312,7 @@
       display: flex;
 
       flex-shrink: 0;
+
     }
 
     .marquee span {
@@ -278,6 +328,7 @@
       letter-spacing: -.04em;
 
       padding-right: 50px;
+
     }
 
     @keyframes marquee {
@@ -298,8 +349,11 @@
     ========================================================== */
 
     .works {
+
       padding-top: 150px;
+
       padding-bottom: 180px;
+
     }
 
     .section-heading {
@@ -309,6 +363,7 @@
       grid-template-columns: 120px 1fr;
 
       margin-bottom: 100px;
+
     }
 
     .section-number {
@@ -316,6 +371,7 @@
       font-family: "DM Mono", monospace;
 
       font-size: 12px;
+
     }
 
     .section-title {
@@ -329,30 +385,52 @@
       text-transform: uppercase;
 
       font-weight: 800;
+
     }
 
 
     /* =========================================================
-       07.1 — SINGOLO PROGETTO
+       07.1 — PROJECT ACCORDION
+       
+       Struttura:
+       
+       COLONNA 1 → categoria
+       COLONNA 2 → titolo + descrizione
+       COLONNA 3 → immagine
     ========================================================== */
 
-    .project {
+    .projects {
 
       border-top: 1px solid var(--black);
 
-      /*
-        Spazio sopra il contenuto del progetto.
-        Il titolo non parte più attaccato alla linea.
-      */
+    }
 
-      padding: 70px 0 100px;
+    .project {
 
       display: grid;
 
-      grid-template-columns: 120px 1fr;
+      grid-template-columns:
+        minmax(130px, 20%)
+        minmax(280px, 1fr)
+        minmax(180px, 35%);
 
-      gap: 30px;
+      column-gap: 40px;
+
+      border-bottom: 1px solid var(--black);
+
+      padding: 28px 0;
+
+      cursor: pointer;
+
+      transition:
+        padding .7s cubic-bezier(.2,.8,.2,1);
+
     }
+
+
+    /* =========================================================
+       CATEGORIA
+    ========================================================== */
 
     .project-meta {
 
@@ -363,48 +441,35 @@
       line-height: 1.5;
 
       text-transform: uppercase;
+
+      color: var(--gray);
+
+      padding-top: 8px;
+
     }
 
-    /*
-      Struttura:
 
-      ┌──────────────────┬───────────────┐
-      │                  │               │
-      │ TITOLO           │               │
-      │                  │    FOTO       │
-      │                  │   QUADRATA    │
-      │ DESCRIZIONE      │               │
-      │                  │               │
-      └──────────────────┴───────────────┘
-    */
+    /* =========================================================
+       COLONNA CENTRALE
+    ========================================================== */
 
-    .project-content {
+    .project-middle {
 
-      display: grid;
+      min-width: 0;
 
-      grid-template-columns: minmax(0, 1fr) minmax(400px, 1fr);
+      display: flex;
 
-      grid-template-rows: 1fr auto;
+      flex-direction: column;
 
-      column-gap: 70px;
+      justify-content: space-between;
 
-      row-gap: 40px;
+      min-height: 150px;
 
-      min-height: 620px;
-
-      align-items: stretch;
     }
 
     .project-name {
 
-      grid-column: 1;
-      grid-row: 1;
-
-      align-self: start;
-
-      padding-top: 5px;
-
-      font-size: clamp(45px, 6vw, 90px);
+      font-size: clamp(40px, 5.5vw, 85px);
 
       line-height: .85;
 
@@ -413,89 +478,188 @@
       font-weight: 700;
 
       transition:
+
         transform .5s cubic-bezier(.2,.8,.2,1);
+
     }
 
     .project:hover .project-name {
-      transform: translateX(15px);
+
+      transform: translateX(12px);
+
     }
+
+
+    /* =========================================================
+       DESCRIZIONE
+       
+       Chiusa → nascosta
+       Aperta → compare in basso
+    ========================================================== */
 
     .project-description {
 
-      grid-column: 1;
-      grid-row: 2;
-
-      align-self: end;
-
-      max-width: 470px;
+      max-width: 500px;
 
       font-size: 14px;
 
       line-height: 1.55;
 
-      padding-bottom: 0;
+      color: #333;
+
+      opacity: 0;
+
+      max-height: 0;
+
+      overflow: hidden;
+
+      transform: translateY(15px);
+
+      transition:
+
+        opacity .5s ease .1s,
+
+        max-height .7s cubic-bezier(.2,.8,.2,1),
+
+        transform .6s cubic-bezier(.2,.8,.2,1);
+
     }
 
-    /*
-      FOTO QUADRATA
-    */
+
+    /* =========================================================
+       COLONNA FOTO
+    ========================================================== */
 
     .project-image {
 
-      grid-column: 2;
-
-      grid-row: 1 / span 2;
-
-      align-self: center;
-
       width: 100%;
 
+      max-width: 180px;
+
       aspect-ratio: 1 / 1;
+
+      justify-self: end;
 
       overflow: hidden;
 
       background: #ddd;
+
+      transition:
+
+        max-width .8s cubic-bezier(.2,.8,.2,1),
+
+        transform .8s cubic-bezier(.2,.8,.2,1);
+
     }
 
     .project-image .fake-image {
 
       width: 100%;
+
       height: 100%;
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
-      font-size: clamp(50px, 8vw, 140px);
+      font-size: clamp(35px, 6vw, 100px);
 
       font-weight: 800;
 
       letter-spacing: -.08em;
 
       transition:
+
         transform .8s cubic-bezier(.2,.8,.2,1);
+
     }
 
     .project:hover .fake-image {
+
       transform: scale(1.04);
+
     }
 
 
-    /* TEMPORARY PROJECT COLORS */
+    /* =========================================================
+       PROJECT OPEN
+    ========================================================== */
 
-    .project:nth-of-type(2) .fake-image {
+    .project.open {
+
+      padding-top: 50px;
+
+      padding-bottom: 50px;
+
+    }
+
+    .project.open .project-middle {
+
+      min-height: 520px;
+
+    }
+
+    .project.open .project-description {
+
+      opacity: 1;
+
+      max-height: 300px;
+
+      transform: translateY(0);
+
+    }
+
+    .project.open .project-image {
+
+      max-width: min(100%, 600px);
+
+    }
+
+
+    /* =========================================================
+       PROJECT COLORS — TEMPORANEI
+    ========================================================== */
+
+    .project:nth-child(1) .fake-image {
 
       background: #111;
 
       color: #f2f1ed;
+
     }
 
-    .project:nth-of-type(3) .fake-image {
+    .project:nth-child(2) .fake-image {
 
       background: #d6d6d0;
 
       color: #111;
+
+    }
+
+    .project:nth-child(3) .fake-image {
+
+      background: #ff6534;
+
+      color: #111;
+
+    }
+
+    .project:nth-child(4) .fake-image {
+
+      background: #2338ff;
+
+      color: white;
+
+    }
+
+    .project:nth-child(5) .fake-image {
+
+      background: #d7ff3f;
+
+      color: #111;
+
     }
 
 
@@ -512,6 +676,7 @@
       padding-top: 150px;
 
       padding-bottom: 150px;
+
     }
 
     .about .section-number {
@@ -522,14 +687,14 @@
 
       display: grid;
 
-      grid-template-columns: 120px 1.1fr 1fr;
+      grid-template-columns:
+        120px
+        1.1fr
+        1fr;
 
       gap: 50px;
-    }
 
-    /*
-      Frase principale più corta e più incisiva.
-    */
+    }
 
     .about-main {
 
@@ -540,6 +705,7 @@
       letter-spacing: -.055em;
 
       max-width: 760px;
+
     }
 
     .about-main em {
@@ -547,12 +713,8 @@
       color: var(--accent);
 
       font-style: normal;
-    }
 
-    /*
-      Colonna testuale più ricca per bilanciare
-      visivamente la frase principale.
-    */
+    }
 
     .about-text-column {
 
@@ -563,6 +725,7 @@
       gap: 35px;
 
       padding-top: 10px;
+
     }
 
     .about-text-column p {
@@ -574,6 +737,7 @@
       max-width: 500px;
 
       color: #aaa;
+
     }
 
 
@@ -586,6 +750,7 @@
       padding-top: 150px;
 
       padding-bottom: 150px;
+
     }
 
     .skills-list {
@@ -593,6 +758,7 @@
       margin-top: 80px;
 
       border-top: 1px solid var(--black);
+
     }
 
     .skill {
@@ -610,11 +776,15 @@
       border-bottom: 1px solid var(--line);
 
       transition:
+
         background .3s ease;
+
     }
 
     .skill:hover {
+
       background: var(--accent);
+
     }
 
     .skill-number {
@@ -622,6 +792,7 @@
       font-family: "DM Mono", monospace;
 
       font-size: 10px;
+
     }
 
     .skill-name {
@@ -631,6 +802,7 @@
       font-weight: 600;
 
       letter-spacing: -.04em;
+
     }
 
     .skill-type {
@@ -640,6 +812,7 @@
       font-size: 10px;
 
       text-transform: uppercase;
+
     }
 
 
@@ -650,6 +823,7 @@
     .experience {
 
       padding-bottom: 150px;
+
     }
 
     .experience-grid {
@@ -659,6 +833,7 @@
       grid-template-columns: 120px 1fr;
 
       gap: 30px;
+
     }
 
     .experience-list {
@@ -666,6 +841,7 @@
       margin-top: 60px;
 
       border-top: 1px solid var(--black);
+
     }
 
     .experience-item {
@@ -679,6 +855,7 @@
       padding: 25px 0;
 
       border-bottom: 1px solid var(--line);
+
     }
 
     .experience-company {
@@ -688,6 +865,7 @@
       letter-spacing: -.05em;
 
       font-weight: 600;
+
     }
 
     .experience-role {
@@ -697,6 +875,7 @@
       margin-top: 7px;
 
       color: var(--gray);
+
     }
 
     .experience-year {
@@ -706,6 +885,7 @@
       font-size: 11px;
 
       text-align: right;
+
     }
 
 
@@ -730,6 +910,7 @@
       padding-top: 30px;
 
       padding-bottom: 30px;
+
     }
 
     .contact-title {
@@ -743,6 +924,7 @@
       letter-spacing: -.08em;
 
       text-transform: uppercase;
+
     }
 
     .contact-title span {
@@ -764,6 +946,7 @@
       border-top: 1px solid #111;
 
       padding-top: 15px;
+
     }
 
     .contact-link {
@@ -775,6 +958,7 @@
       letter-spacing: -.04em;
 
       position: relative;
+
     }
 
     .contact-link::after {
@@ -799,6 +983,7 @@
 
       transition:
         transform .4s ease;
+
     }
 
     .contact-link:hover::after {
@@ -806,6 +991,7 @@
       transform: scaleX(1);
 
       transform-origin: left;
+
     }
 
 
@@ -830,6 +1016,7 @@
       font-size: 10px;
 
       text-transform: uppercase;
+
     }
 
 
@@ -844,8 +1031,11 @@
       transform: translateY(40px);
 
       transition:
+
         opacity .8s ease,
+
         transform .8s cubic-bezier(.2,.8,.2,1);
+
     }
 
     .reveal.visible {
@@ -853,6 +1043,7 @@
       opacity: 1;
 
       transform: translateY(0);
+
     }
 
 
@@ -862,14 +1053,19 @@
 
     @media (max-width: 800px) {
 
+
       /* HEADER */
 
       .header-right {
+
         gap: 12px;
+
       }
 
       .header-right a:nth-child(2) {
+
         display: none;
+
       }
 
 
@@ -878,6 +1074,7 @@
       .hero {
 
         padding-top: 100px;
+
       }
 
       .hero-title {
@@ -887,10 +1084,13 @@
         margin-top: auto;
 
         margin-bottom: 40px;
+
       }
 
       .hero-title .indent {
+
         margin-left: 10vw;
+
       }
 
       .hero-bottom {
@@ -898,6 +1098,7 @@
         grid-template-columns: 1fr;
 
         gap: 20px;
+
       }
 
 
@@ -906,6 +1107,7 @@
       .marquee span {
 
         font-size: 9vw;
+
       }
 
 
@@ -914,74 +1116,93 @@
       .section-heading {
 
         grid-template-columns: 1fr;
+
       }
 
       .section-number {
 
         margin-bottom: 20px;
+
       }
 
       .section-title {
 
         font-size: 18vw;
+
       }
 
 
-      /* PROJECTS */
+      /* =====================================================
+         MOBILE — PROJECTS
+      ====================================================== */
 
       .project {
 
         grid-template-columns: 1fr;
 
-        padding-top: 50px;
+        gap: 25px;
 
-        padding-bottom: 70px;
+        padding: 25px 0;
+
       }
 
-      .project-content {
+      .project-meta {
+
+        padding-top: 0;
+
+      }
+
+      .project-middle {
 
         min-height: auto;
 
-        display: grid;
-
-        grid-template-columns: 1fr;
-
-        grid-template-rows: auto auto auto;
-
         gap: 30px;
+
       }
 
       .project-name {
 
-        grid-column: 1;
-
-        grid-row: 1;
-
         font-size: 15vw;
+
       }
 
       .project-description {
 
-        grid-column: 1;
-
-        grid-row: 2;
-
         max-width: 100%;
 
-        align-self: auto;
       }
 
       .project-image {
 
-        grid-column: 1;
-
-        grid-row: 3;
-
         width: 100%;
 
-        aspect-ratio: 1 / 1;
+        max-width: 160px;
 
-        min-height: 0;
+        justify-self: end;
+
+      }
+
+
+      /* PROJECT OPEN MOBILE */
+
+      .project.open {
+
+        padding-top: 35px;
+
+        padding-bottom: 35px;
+
+      }
+
+      .project.open .project-middle {
+
+        min-height: auto;
+
+      }
+
+      .project.open .project-image {
+
+        max-width: 100%;
+
       }
 
 
@@ -992,6 +1213,7 @@
         padding-top: 100px;
 
         padding-bottom: 100px;
+
       }
 
       .about-grid {
@@ -999,6 +1221,7 @@
         grid-template-columns: 1fr;
 
         gap: 50px;
+
       }
 
       .about-main {
@@ -1006,6 +1229,7 @@
         font-size: 11vw;
 
         max-width: none;
+
       }
 
       .about-text-column {
@@ -1013,6 +1237,7 @@
         padding-top: 0;
 
         gap: 25px;
+
       }
 
 
@@ -1021,10 +1246,13 @@
       .skill {
 
         grid-template-columns: 40px 1fr;
+
       }
 
       .skill-type {
+
         display: none;
+
       }
 
 
@@ -1033,16 +1261,19 @@
       .experience-grid {
 
         grid-template-columns: 1fr;
+
       }
 
       .experience-item {
 
         grid-template-columns: 1fr;
+
       }
 
       .experience-year {
 
         text-align: left;
+
       }
 
 
@@ -1051,6 +1282,7 @@
       .contact-title {
 
         font-size: 19vw;
+
       }
 
       .contact-title .right {
@@ -1058,6 +1290,7 @@
         text-align: left;
 
         margin-left: 15vw;
+
       }
 
       .contact-bottom {
@@ -1067,6 +1300,7 @@
         align-items: flex-start;
 
         gap: 25px;
+
       }
 
 
@@ -1077,6 +1311,7 @@
         gap: 20px;
 
         flex-direction: column;
+
       }
 
     }
@@ -1129,8 +1364,6 @@
     <section class="hero container">
 
 
-      <!-- NOME PRINCIPALE -->
-
       <h1 class="hero-title">
 
         <span>
@@ -1143,8 +1376,6 @@
 
       </h1>
 
-
-      <!-- RUOLO + DESCRIZIONE -->
 
       <div class="hero-bottom">
 
@@ -1178,8 +1409,6 @@
       <div class="marquee-track">
 
 
-        <!-- GRUPPO 1 -->
-
         <div class="marquee-group">
 
           <span>
@@ -1200,8 +1429,6 @@
 
         </div>
 
-
-        <!-- GRUPPO 2 — DUPLICATO PER LOOP -->
 
         <div class="marquee-group">
 
@@ -1243,8 +1470,11 @@
       <div class="section-heading reveal">
 
         <div class="section-number">
+
           01 / 05
+
         </div>
+
 
         <h2 class="section-title">
 
@@ -1258,107 +1488,308 @@
 
 
       <!-- =====================================================
-           PROJECT 01
+           PROJECTS
       ====================================================== -->
 
-      <article class="project reveal">
+      <div class="projects">
 
 
-        <div class="project-meta">
+        <!-- ===================================================
+             PROJECT 01 — CONERO SPORTS HUB
+        ==================================================== -->
 
-          001<br>
-          Brand Identity
-
-        </div>
-
-
-        <div class="project-content">
-
-
-          <h3 class="project-name">
-
-            Conero<br>
-            Sports Hub
-
-          </h3>
+        <article
+          class="project open reveal"
+          data-project="1"
+        >
 
 
-          <p class="project-description">
+          <!-- COLONNA 1 -->
 
-            Conero Sports Hub è una nuova polisportiva
-            con sede a Sirolo. L'identità visiva è stata
-            sviluppata ispirandosi agli stemmi delle
-            società sportive, creando un marchio essenziale,
-            riconoscibile e strettamente legato al territorio
-            attraverso forme pulite e una palette cromatica
-            che richiama il mare della Riviera del Conero.
+          <div class="project-meta">
 
-          </p>
+            001<br>
+            Brand Identity
 
+          </div>
+
+
+          <!-- COLONNA 2 -->
+
+          <div class="project-middle">
+
+
+            <h3 class="project-name">
+
+              Conero<br>
+              Sports Hub
+
+            </h3>
+
+
+            <p class="project-description">
+
+              Conero Sports Hub è una nuova polisportiva
+              con sede a Sirolo. L'identità visiva è stata
+              sviluppata ispirandosi agli stemmi delle
+              società sportive, creando un marchio essenziale,
+              riconoscibile e strettamente legato al territorio
+              attraverso forme pulite e una palette cromatica
+              che richiama il mare della Riviera del Conero.
+
+            </p>
+
+
+          </div>
+
+
+          <!-- COLONNA 3 -->
 
           <div class="project-image">
 
             <div class="fake-image">
+
               CSH
+
             </div>
 
           </div>
 
 
-        </div>
-
-      </article>
+        </article>
 
 
 
-      <!-- =====================================================
-           PROJECT 02
-      ====================================================== -->
+        <!-- ===================================================
+             PROJECT 02 — ATS 13
+        ==================================================== -->
 
-      <article class="project reveal">
-
-
-        <div class="project-meta">
-
-          002<br>
-          Communication Design
-
-        </div>
+        <article
+          class="project reveal"
+          data-project="2"
+        >
 
 
-        <div class="project-content">
+          <!-- COLONNA 1 -->
+
+          <div class="project-meta">
+
+            002<br>
+            Communication Design
+
+          </div>
 
 
-          <h3 class="project-name">
+          <!-- COLONNA 2 -->
 
-            Communication<br>
-            Design
-
-          </h3>
+          <div class="project-middle">
 
 
-          <p class="project-description">
+            <h3 class="project-name">
 
-            Progettazione della comunicazione visiva
-            per un evento promosso dall'Ambito Territoriale
-            Sociale 13 e rivolto a diversi comuni della
-            Regione Marche.
+              ATS 13
 
-          </p>
+            </h3>
+
+
+            <p class="project-description">
+
+              Progettazione della comunicazione visiva
+              per un evento promosso dall'Ambito Territoriale
+              Sociale 13 e rivolto a diversi comuni della
+              Regione Marche.
+
+            </p>
+
+
+          </div>
+
+
+          <!-- COLONNA 3 -->
+
+          <div class="project-image">
+
+            <div class="fake-image">
+
+              ATS 13
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+
+
+        <!-- ===================================================
+             PROJECT 03 — PACKAGING
+        ==================================================== -->
+
+        <article
+          class="project reveal"
+          data-project="3"
+        >
+
+
+          <div class="project-meta">
+
+            003<br>
+            Packaging
+
+          </div>
+
+
+          <div class="project-middle">
+
+
+            <h3 class="project-name">
+
+              Packaging
+
+            </h3>
+
+
+            <p class="project-description">
+
+              Progettazione di packaging e sistema visivo
+              coordinato per valorizzare il prodotto e
+              costruire una presenza coerente e riconoscibile.
+
+            </p>
+
+
+          </div>
 
 
           <div class="project-image">
 
             <div class="fake-image">
-              ATS 13
+
+              PACK
+
             </div>
 
           </div>
 
 
-        </div>
+        </article>
 
-      </article>
+
+
+        <!-- ===================================================
+             PROJECT 04 — DIGITAL
+        ==================================================== -->
+
+        <article
+          class="project reveal"
+          data-project="4"
+        >
+
+
+          <div class="project-meta">
+
+            004<br>
+            Digital Design
+
+          </div>
+
+
+          <div class="project-middle">
+
+
+            <h3 class="project-name">
+
+              Digital<br>
+              Design
+
+            </h3>
+
+
+            <p class="project-description">
+
+              Art direction e progettazione di contenuti
+              digitali, social media e materiali per la
+              comunicazione online.
+
+            </p>
+
+
+          </div>
+
+
+          <div class="project-image">
+
+            <div class="fake-image">
+
+              DIGITAL
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+
+
+        <!-- ===================================================
+             PROJECT 05 — WEB DESIGN
+        ==================================================== -->
+
+        <article
+          class="project reveal"
+          data-project="5"
+        >
+
+
+          <div class="project-meta">
+
+            005<br>
+            Web Design
+
+          </div>
+
+
+          <div class="project-middle">
+
+
+            <h3 class="project-name">
+
+              Web<br>
+              Design
+
+            </h3>
+
+
+            <p class="project-description">
+
+              Progettazione di siti web, landing page
+              e interfacce responsive con particolare
+              attenzione alla struttura, alla gerarchia
+              visiva e all'esperienza dell'utente.
+
+            </p>
+
+
+          </div>
+
+
+          <div class="project-image">
+
+            <div class="fake-image">
+
+              WEB
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+
+      </div>
 
 
     </section>
@@ -1385,8 +1816,6 @@
         </div>
 
 
-        <!-- FRASE GRANDE -->
-
         <div>
 
           <p class="about-main reveal">
@@ -1399,8 +1828,6 @@
 
         </div>
 
-
-        <!-- TESTO -->
 
         <div class="about-text-column">
 
@@ -1459,14 +1886,20 @@
       <div class="section-heading reveal">
 
         <div class="section-number">
+
           03 / 05
+
         </div>
 
+
         <h2 class="section-title">
+
           Skills
+
         </h2>
 
       </div>
+
 
 
       <div class="skills-list">
@@ -1610,8 +2043,6 @@
           <div class="experience-list">
 
 
-            <!-- ESPERIENZA ATTUALE -->
-
             <div class="experience-item reveal">
 
               <div>
@@ -1640,7 +2071,6 @@
             </div>
 
 
-            <!-- FREELANCE -->
 
             <div class="experience-item reveal">
 
@@ -1748,15 +2178,23 @@
   <footer>
 
     <span>
+
       Diego Scarponi © 2026
+
     </span>
 
+
     <span>
+
       Graphic & Web Designer
+
     </span>
 
+
     <span>
+
       Back to top ↑
+
     </span>
 
   </footer>
@@ -1774,30 +2212,34 @@
        SCROLL REVEAL
     ========================================================== */
 
-    const reveals = document.querySelectorAll(".reveal");
+    const reveals =
+      document.querySelectorAll(".reveal");
 
 
-    const observer = new IntersectionObserver(
+    const observer =
+      new IntersectionObserver(
 
-      (entries) => {
+        (entries) => {
 
-        entries.forEach((entry) => {
+          entries.forEach((entry) => {
 
-          if (entry.isIntersecting) {
+            if (entry.isIntersecting) {
 
-            entry.target.classList.add("visible");
+              entry.target
+                .classList
+                .add("visible");
 
-          }
+            }
 
-        });
+          });
 
-      },
+        },
 
-      {
-        threshold: 0.12
-      }
+        {
+          threshold: 0.12
+        }
 
-    );
+      );
 
 
     reveals.forEach((element) => {
@@ -1809,15 +2251,68 @@
 
 
     /* =========================================================
+       PROJECT ACCORDION
+       
+       Un solo progetto aperto alla volta.
+    ========================================================== */
+
+    const projects =
+      document.querySelectorAll(".project");
+
+
+    projects.forEach((project) => {
+
+
+      project.addEventListener("click", () => {
+
+
+        const isOpen =
+          project.classList.contains("open");
+
+
+        /*
+          Chiude tutti i progetti.
+        */
+
+        projects.forEach((item) => {
+
+          item.classList.remove("open");
+
+        });
+
+
+        /*
+          Se quello cliccato era chiuso,
+          lo apre.
+        */
+
+        if (!isOpen) {
+
+          project.classList.add("open");
+
+        }
+
+
+      });
+
+
+    });
+
+
+
+    /* =========================================================
        HEADER — OPACITY ON SCROLL
     ========================================================== */
 
-    const header = document.querySelector("header");
+    const header =
+      document.querySelector("header");
 
 
     window.addEventListener("scroll", () => {
 
-      const currentScroll = window.scrollY;
+
+      const currentScroll =
+        window.scrollY;
 
 
       if (currentScroll > 80) {
@@ -1829,6 +2324,7 @@
         header.style.opacity = "1";
 
       }
+
 
     });
 
