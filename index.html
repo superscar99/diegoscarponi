@@ -18,7 +18,10 @@
     content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
   />
 
-  <!-- FONT -->
+
+  <!-- =========================================================
+       FONT
+  ========================================================== -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -170,32 +173,15 @@
       padding-bottom: 30px;
     }
 
-    .hero-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .hero-role {
-      font-family: "DM Mono", monospace;
-
-      font-size: 12px;
-
-      text-transform: uppercase;
-
-      color: var(--gray);
-    }
-
-    .hero-intro {
-      max-width: 430px;
-
-      font-size: 14px;
-      line-height: 1.5;
-    }
+    /*
+      Il nome viene prima.
+      Il ruolo viene sotto.
+      La descrizione rimane sulla destra.
+    */
 
     .hero-title {
       margin-top: auto;
-      margin-bottom: 25px;
+      margin-bottom: 45px;
 
       font-size: clamp(70px, 14vw, 220px);
       line-height: .78;
@@ -214,9 +200,39 @@
       margin-left: 16vw;
     }
 
+    .hero-bottom {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 30px;
+
+      border-top: 1px solid var(--line);
+
+      padding-top: 15px;
+    }
+
+    .hero-role {
+      font-family: "DM Mono", monospace;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      color: var(--gray);
+    }
+
+    .hero-intro {
+      max-width: 430px;
+
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
 
     /* =========================================================
        06 — MARQUEE
+       LOOP CONTINUO
     ========================================================== */
 
     .marquee {
@@ -232,15 +248,33 @@
     }
 
     .marquee-track {
-      display: inline-flex;
 
-      animation: marquee 22s linear infinite;
+      display: flex;
+
+      width: max-content;
+
+      animation: marquee 24s linear infinite;
+
+      will-change: transform;
+    }
+
+    .marquee-group {
+
+      display: flex;
+
+      flex-shrink: 0;
     }
 
     .marquee span {
+
+      display: block;
+
+      flex-shrink: 0;
+
       font-size: clamp(28px, 4vw, 60px);
 
       font-weight: 700;
+
       letter-spacing: -.04em;
 
       padding-right: 50px;
@@ -269,6 +303,7 @@
     }
 
     .section-heading {
+
       display: grid;
 
       grid-template-columns: 120px 1fr;
@@ -277,29 +312,40 @@
     }
 
     .section-number {
+
       font-family: "DM Mono", monospace;
+
       font-size: 12px;
     }
 
     .section-title {
+
       font-size: clamp(70px, 11vw, 180px);
 
       line-height: .78;
+
       letter-spacing: -.075em;
 
       text-transform: uppercase;
+
       font-weight: 800;
     }
 
 
     /* =========================================================
-       07.1 — PROJECT
+       07.1 — SINGOLO PROGETTO
     ========================================================== */
 
     .project {
+
       border-top: 1px solid var(--black);
 
-      padding: 22px 0 100px;
+      /*
+        Spazio sopra il contenuto del progetto.
+        Il titolo non parte più attaccato alla linea.
+      */
+
+      padding: 70px 0 100px;
 
       display: grid;
 
@@ -309,34 +355,59 @@
     }
 
     .project-meta {
+
       font-family: "DM Mono", monospace;
 
       font-size: 10px;
+
       line-height: 1.5;
 
       text-transform: uppercase;
     }
 
-    .project-content {
+    /*
+      Struttura:
 
-      min-height: 650px;
+      ┌──────────────────┬───────────────┐
+      │                  │               │
+      │ TITOLO           │               │
+      │                  │    FOTO       │
+      │                  │   QUADRATA    │
+      │ DESCRIZIONE      │               │
+      │                  │               │
+      └──────────────────┴───────────────┘
+    */
+
+    .project-content {
 
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(400px, 1fr);
 
       grid-template-rows: 1fr auto;
 
-      gap: 30px;
+      column-gap: 70px;
 
-      align-items: start;
+      row-gap: 40px;
+
+      min-height: 620px;
+
+      align-items: stretch;
     }
 
     .project-name {
 
+      grid-column: 1;
+      grid-row: 1;
+
+      align-self: start;
+
+      padding-top: 5px;
+
       font-size: clamp(45px, 6vw, 90px);
 
       line-height: .85;
+
       letter-spacing: -.065em;
 
       font-weight: 700;
@@ -351,25 +422,35 @@
 
     .project-description {
 
+      grid-column: 1;
+      grid-row: 2;
+
       align-self: end;
 
-      max-width: 430px;
+      max-width: 470px;
 
       font-size: 14px;
+
       line-height: 1.55;
 
-      padding-bottom: 5px;
+      padding-bottom: 0;
     }
+
+    /*
+      FOTO QUADRATA
+    */
 
     .project-image {
 
       grid-column: 2;
+
       grid-row: 1 / span 2;
 
-      width: 100%;
-      height: 100%;
+      align-self: center;
 
-      min-height: 600px;
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
 
       overflow: hidden;
 
@@ -389,6 +470,7 @@
       font-size: clamp(50px, 8vw, 140px);
 
       font-weight: 800;
+
       letter-spacing: -.08em;
 
       transition:
@@ -400,15 +482,19 @@
     }
 
 
-    /* COLORI TEMPORANEI */
+    /* TEMPORARY PROJECT COLORS */
 
     .project:nth-of-type(2) .fake-image {
+
       background: #111;
+
       color: #f2f1ed;
     }
 
     .project:nth-of-type(3) .fake-image {
+
       background: #d6d6d0;
+
       color: #111;
     }
 
@@ -418,10 +504,13 @@
     ========================================================== */
 
     .about {
+
       background: #111;
+
       color: #f2f1ed;
 
       padding-top: 150px;
+
       padding-bottom: 150px;
     }
 
@@ -438,14 +527,19 @@
       gap: 50px;
     }
 
+    /*
+      Frase principale più corta e più incisiva.
+    */
+
     .about-main {
 
-      font-size: clamp(40px, 5.2vw, 82px);
+      font-size: clamp(40px, 5vw, 78px);
 
       line-height: .94;
+
       letter-spacing: -.055em;
 
-      max-width: 850px;
+      max-width: 760px;
     }
 
     .about-main em {
@@ -454,6 +548,11 @@
 
       font-style: normal;
     }
+
+    /*
+      Colonna testuale più ricca per bilanciare
+      visivamente la frase principale.
+    */
 
     .about-text-column {
 
@@ -469,9 +568,10 @@
     .about-text-column p {
 
       font-size: 15px;
+
       line-height: 1.6;
 
-      max-width: 480px;
+      max-width: 500px;
 
       color: #aaa;
     }
@@ -482,7 +582,9 @@
     ========================================================== */
 
     .skills {
+
       padding-top: 150px;
+
       padding-bottom: 150px;
     }
 
@@ -616,6 +718,7 @@
       min-height: 90svh;
 
       background: var(--accent);
+
       color: #111;
 
       display: flex;
@@ -625,6 +728,7 @@
       justify-content: space-between;
 
       padding-top: 30px;
+
       padding-bottom: 30px;
     }
 
@@ -680,9 +784,11 @@
       position: absolute;
 
       bottom: -4px;
+
       left: 0;
 
       width: 100%;
+
       height: 2px;
 
       background: #111;
@@ -770,43 +876,53 @@
       /* HERO */
 
       .hero {
+
         padding-top: 100px;
-      }
-
-      .hero-top {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-intro {
-        max-width: 340px;
       }
 
       .hero-title {
 
         font-size: 19vw;
 
-        margin-top: 120px;
+        margin-top: auto;
+
+        margin-bottom: 40px;
       }
 
       .hero-title .indent {
         margin-left: 10vw;
       }
 
+      .hero-bottom {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+      }
+
+
+      /* MARQUEE */
+
+      .marquee span {
+
+        font-size: 9vw;
+      }
+
 
       /* SECTION TITLES */
 
-      .section-heading,
-      .project,
-      .experience-grid {
+      .section-heading {
 
         grid-template-columns: 1fr;
       }
 
       .section-number {
+
         margin-bottom: 20px;
       }
 
       .section-title {
+
         font-size: 18vw;
       }
 
@@ -814,6 +930,11 @@
       /* PROJECTS */
 
       .project {
+
+        grid-template-columns: 1fr;
+
+        padding-top: 50px;
+
         padding-bottom: 70px;
       }
 
@@ -831,34 +952,47 @@
       }
 
       .project-name {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
         font-size: 15vw;
       }
 
       .project-description {
 
-        grid-row: auto;
+        grid-column: 1;
 
-        align-self: auto;
+        grid-row: 2;
 
         max-width: 100%;
 
-        padding-bottom: 0;
+        align-self: auto;
       }
 
       .project-image {
 
         grid-column: 1;
-        grid-row: auto;
 
-        min-height: 450px;
+        grid-row: 3;
 
-        height: auto;
+        width: 100%;
 
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 1 / 1;
+
+        min-height: 0;
       }
 
 
       /* ABOUT */
+
+      .about {
+
+        padding-top: 100px;
+
+        padding-bottom: 100px;
+      }
 
       .about-grid {
 
@@ -870,6 +1004,8 @@
       .about-main {
 
         font-size: 11vw;
+
+        max-width: none;
       }
 
       .about-text-column {
@@ -893,6 +1029,11 @@
 
 
       /* EXPERIENCE */
+
+      .experience-grid {
+
+        grid-template-columns: 1fr;
+      }
 
       .experience-item {
 
@@ -987,12 +1128,29 @@
 
     <section class="hero container">
 
-      <div class="hero-top">
+
+      <!-- NOME PRINCIPALE -->
+
+      <h1 class="hero-title">
+
+        <span>
+          Diego
+        </span>
+
+        <span class="indent">
+          Scarponi
+        </span>
+
+      </h1>
+
+
+      <!-- RUOLO + DESCRIZIONE -->
+
+      <div class="hero-bottom">
 
         <div class="hero-role">
 
-          Graphic & Web Designer<br>
-          Italy / EU
+          Graphic & Web Designer
 
         </div>
 
@@ -1007,19 +1165,6 @@
 
       </div>
 
-
-      <h1 class="hero-title">
-
-        <span>
-          Diego
-        </span>
-
-        <span class="indent">
-          Scarponi
-        </span>
-
-      </h1>
-
     </section>
 
 
@@ -1032,13 +1177,52 @@
 
       <div class="marquee-track">
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
+        <!-- GRUPPO 1 -->
+
+        <div class="marquee-group">
+
+          <span>
+            DESIGN →
+          </span>
+
+          <span>
+            BRAND →
+          </span>
+
+          <span>
+            WEB →
+          </span>
+
+          <span>
+            AI →
+          </span>
+
+        </div>
+
+
+        <!-- GRUPPO 2 — DUPLICATO PER LOOP -->
+
+        <div class="marquee-group">
+
+          <span>
+            DESIGN →
+          </span>
+
+          <span>
+            BRAND →
+          </span>
+
+          <span>
+            WEB →
+          </span>
+
+          <span>
+            AI →
+          </span>
+
+        </div>
+
 
       </div>
 
@@ -1055,6 +1239,7 @@
       id="work"
     >
 
+
       <div class="section-heading reveal">
 
         <div class="section-number">
@@ -1062,8 +1247,10 @@
         </div>
 
         <h2 class="section-title">
+
           Selected<br>
           Work
+
         </h2>
 
       </div>
@@ -1075,6 +1262,7 @@
       ====================================================== -->
 
       <article class="project reveal">
+
 
         <div class="project-meta">
 
@@ -1116,6 +1304,7 @@
 
           </div>
 
+
         </div>
 
       </article>
@@ -1127,6 +1316,7 @@
       ====================================================== -->
 
       <article class="project reveal">
+
 
         <div class="project-meta">
 
@@ -1165,6 +1355,7 @@
 
           </div>
 
+
         </div>
 
       </article>
@@ -1183,30 +1374,36 @@
       id="about"
     >
 
+
       <div class="about-grid">
 
 
         <div class="section-number">
+
           02 / 05
+
         </div>
 
+
+        <!-- FRASE GRANDE -->
 
         <div>
 
           <p class="about-main reveal">
 
-            Progetto identità,
-            comunicazione e
-            <em>digital experiences</em>
-            unendo pensiero
-            visivo e tecnologia.
+            Identità.
+            Comunicazione.
+            <em>Impatto.</em>
 
           </p>
 
         </div>
 
 
+        <!-- TESTO -->
+
         <div class="about-text-column">
+
 
           <p class="reveal">
 
@@ -1214,18 +1411,34 @@
             nella progettazione di identità visive,
             materiali di comunicazione e soluzioni digitali.
 
+            Collaboro con aziende, enti e associazioni
+            sviluppando progetti che uniscono creatività,
+            strategia e attenzione ai dettagli.
+
           </p>
 
 
           <p class="reveal">
 
-            Collaboro con aziende, enti e associazioni
-            sviluppando progetti che uniscono creatività,
-            strategia e attenzione ai dettagli, con
-            l'obiettivo di creare una comunicazione chiara,
-            funzionale e riconoscibile.
+            Il mio approccio parte dall'idea e si sviluppa
+            attraverso sistemi visivi coerenti, funzionali
+            e riconoscibili.
+
+            Dalla definizione di un'identità alla sua
+            applicazione su materiali stampati, packaging,
+            comunicazione digitale e progetti web.
 
           </p>
+
+
+          <p class="reveal">
+
+            L'obiettivo è costruire una comunicazione
+            capace di essere chiara, contemporanea
+            e coerente con il contesto in cui viene utilizzata.
+
+          </p>
+
 
         </div>
 
@@ -1378,7 +1591,9 @@
 
 
         <div class="section-number">
+
           04 / 05
+
         </div>
 
 
@@ -1386,7 +1601,9 @@
 
 
           <h2 class="section-title reveal">
+
             Experience
+
           </h2>
 
 
@@ -1400,17 +1617,24 @@
               <div>
 
                 <div class="experience-company">
+
                   Graphic & Web Design
+
                 </div>
 
                 <div class="experience-role">
+
                   Graphic Design · Web Design · Communication
+
                 </div>
 
               </div>
 
+
               <div class="experience-year">
+
                 CURRENT
+
               </div>
 
             </div>
@@ -1423,17 +1647,24 @@
               <div>
 
                 <div class="experience-company">
+
                   Freelance
+
                 </div>
 
                 <div class="experience-role">
+
                   Graphic Design · Branding · Packaging · SMM
+
                 </div>
 
               </div>
 
+
               <div class="experience-year">
+
                 2020 — NOW
+
               </div>
 
             </div>
@@ -1442,6 +1673,7 @@
           </div>
 
         </div>
+
 
       </div>
 
@@ -1458,8 +1690,11 @@
       id="contact"
     >
 
+
       <div class="eyebrow">
+
         05 / 05 — Contact
+
       </div>
 
 
@@ -1483,16 +1718,21 @@
           class="contact-link"
           href="mailto:tuamail@email.com"
         >
+
           tuamail@email.com
+
         </a>
 
 
         <div class="eyebrow">
+
           Available for selected opportunities
+
         </div>
 
 
       </div>
+
 
     </section>
 
@@ -1529,9 +1769,13 @@
 
   <script>
 
-    /* SCROLL REVEAL */
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================== */
 
     const reveals = document.querySelectorAll(".reveal");
+
 
     const observer = new IntersectionObserver(
 
@@ -1564,13 +1808,17 @@
 
 
 
-    /* HEADER */
+    /* =========================================================
+       HEADER — OPACITY ON SCROLL
+    ========================================================== */
 
     const header = document.querySelector("header");
+
 
     window.addEventListener("scroll", () => {
 
       const currentScroll = window.scrollY;
+
 
       if (currentScroll > 80) {
 
@@ -1583,6 +1831,7 @@
       }
 
     });
+
 
   </script>
 
