@@ -1,21 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
 
   <title>Diego Scarponi — Graphic & Web Designer</title>
 
-  <meta
-    name="description"
-    content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
-  >
+<meta
+name="description"
+content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
+
+>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,52 +222,98 @@
 
 
     /* =========================================================
-       06 — MARQUEE
+       06 — INTRO SERVICES
     ========================================================== */
 
-    .marquee {
+    .intro-services {
+      padding-top: 70px;
+      padding-bottom: 40px;
+    }
+
+    .intro-services-head {
+      display: grid;
+
+      grid-template-columns: 120px 1fr;
+
+      gap: 30px;
+
       border-top: 1px solid var(--black);
-      border-bottom: 1px solid var(--black);
 
-      overflow: hidden;
+      padding-top: 12px;
 
-      white-space: nowrap;
+      margin-bottom: 35px;
+    }
 
-      padding: 18px 0;
+    .intro-services-copy {
+      font-size: clamp(22px, 3vw, 42px);
 
+      line-height: .98;
+
+      letter-spacing: -.045em;
+
+      max-width: 850px;
+    }
+
+    .intro-services-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 1px;
+
+      background: var(--black);
+
+      border: 1px solid var(--black);
+    }
+
+    .service-block {
+      background: var(--bg);
+
+      min-height: 230px;
+
+      padding: 22px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      transition:
+        background .35s ease,
+        color .35s ease;
+    }
+
+    .service-block:hover {
       background: var(--accent);
     }
 
-    .marquee-track {
-      display: flex;
+    .service-number {
+      font-family: "DM Mono", monospace;
 
-      width: max-content;
+      font-size: 10px;
 
-      animation: marquee 22s linear infinite;
+      color: var(--gray);
     }
 
-    .marquee span {
-      flex-shrink: 0;
+    .service-name {
+      font-size: clamp(26px, 3vw, 48px);
 
-      font-size: clamp(28px, 4vw, 60px);
+      line-height: .9;
+
+      letter-spacing: -.055em;
 
       font-weight: 700;
-
-      letter-spacing: -.04em;
-
-      padding-right: 50px;
     }
 
-    @keyframes marquee {
+    .service-description {
+      font-size: 12px;
 
-      from {
-        transform: translateX(0);
-      }
+      line-height: 1.45;
 
-      to {
-        transform: translateX(-50%);
-      }
+      max-width: 230px;
 
+      color: var(--gray);
     }
 
 
@@ -273,7 +322,7 @@
     ========================================================== */
 
     .works {
-      padding-top: 150px;
+      padding-top: 110px;
       padding-bottom: 180px;
     }
 
@@ -319,16 +368,6 @@
     .project:last-child {
       border-bottom: 1px solid var(--black);
     }
-
-    /*
-      DESKTOP
-
-      15%  /  40%  /  40%
-
-      colonna 1 = categoria
-      colonna 2 = titolo + descrizione
-      colonna 3 = immagine
-    */
 
     .project-content {
 
@@ -411,9 +450,10 @@
       transform: translateY(-10px);
 
       transition:
-        opacity .45s ease,
-        max-height .6s cubic-bezier(.2,.8,.2,1),
-        transform .6s cubic-bezier(.2,.8,.2,1);
+        opacity .5s ease,
+        max-height .7s cubic-bezier(.2,.8,.2,1),
+        padding-top .6s cubic-bezier(.2,.8,.2,1),
+        transform .7s cubic-bezier(.2,.8,.2,1);
     }
 
 
@@ -435,7 +475,10 @@
     .project-image {
 
       width: 180px;
-      height: 180px;
+
+      height: auto;
+
+      aspect-ratio: 1 / 1;
 
       flex-shrink: 0;
 
@@ -444,8 +487,7 @@
       background: #ddd;
 
       transition:
-        width .7s cubic-bezier(.2,.8,.2,1),
-        height .7s cubic-bezier(.2,.8,.2,1);
+        width .75s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-image img {
@@ -473,6 +515,8 @@
       opacity: 1;
 
       max-height: 300px;
+
+      padding-top: 30px;
 
       transform: translateY(0);
     }
@@ -514,13 +558,6 @@
 
       gap: 30px;
     }
-
-    /*
-      DESKTOP
-
-      frase breve a sinistra
-      testo più lungo a destra
-    */
 
     .about-main {
 
@@ -911,6 +948,56 @@
 
 
       /* -------------------------------------------------------
+         INTRO SERVICES
+      ------------------------------------------------------- */
+
+      .intro-services {
+
+        padding-top: 50px;
+
+        padding-bottom: 20px;
+      }
+
+      .intro-services-head {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        margin-bottom: 25px;
+      }
+
+      .intro-services-copy {
+
+        font-size: 27px;
+
+        max-width: 100%;
+      }
+
+      .intro-services-grid {
+
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-block {
+
+        min-height: 190px;
+
+        padding: 18px;
+      }
+
+      .service-name {
+
+        font-size: 27px;
+      }
+
+      .service-description {
+
+        font-size: 11px;
+      }
+
+
+      /* -------------------------------------------------------
          SECTION TITLES
       ------------------------------------------------------- */
 
@@ -938,7 +1025,7 @@
 
       .works {
 
-        padding-top: 110px;
+        padding-top: 90px;
 
         padding-bottom: 120px;
       }
@@ -949,17 +1036,6 @@
 
         overflow: hidden;
       }
-
-      /*
-        CHIUSO:
-
-        ┌───────────────────┬───────────┐
-        │ categoria         │           │
-        │ titolo            │   foto    │
-        └───────────────────┴───────────┘
-
-        SOLO DUE COLONNE.
-      */
 
       .project-content {
 
@@ -972,14 +1048,7 @@
         align-items: center;
 
         min-height: 120px;
-
-        transition:
-          grid-template-columns .7s cubic-bezier(.2,.8,.2,1);
       }
-
-      /*
-        La categoria rimane SOPRA il titolo.
-      */
 
       .project-meta {
 
@@ -1043,8 +1112,9 @@
         transform: translateY(-10px);
 
         transition:
-          opacity .45s ease,
+          opacity .5s ease,
           max-height .7s cubic-bezier(.2,.8,.2,1),
+          padding-top .6s cubic-bezier(.2,.8,.2,1),
           transform .7s cubic-bezier(.2,.8,.2,1);
       }
 
@@ -1074,38 +1144,23 @@
         justify-content: center;
 
         overflow: visible;
-
-        transition:
-          width .7s cubic-bezier(.2,.8,.2,1),
-          height .7s cubic-bezier(.2,.8,.2,1);
       }
 
       .project-image {
 
         width: 120px;
 
-        height: 120px;
+        height: auto;
 
         aspect-ratio: 1 / 1;
 
         transition:
-          width .7s cubic-bezier(.2,.8,.2,1),
-          height .7s cubic-bezier(.2,.8,.2,1);
+          width .75s cubic-bezier(.2,.8,.2,1);
       }
 
 
       /* -------------------------------------------------------
          MOBILE — APERTO
-
-         Quando aperto:
-
-         categoria
-         titolo
-         testo
-
-         poi
-
-         FOTO
       ------------------------------------------------------- */
 
       .project.open {
@@ -1159,15 +1214,12 @@
 
         max-height: 400px;
 
+        padding-top: 22px;
+
         transform: translateY(0);
 
-        margin-top: 24px;
+        margin-top: 0;
       }
-
-      /*
-        La foto diventa una vera terza fase
-        dell'apertura.
-      */
 
       .project.open .project-image-wrap {
 
@@ -1392,6 +1444,16 @@
         font-size: 15vw;
       }
 
+      .intro-services-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+      .service-block {
+
+        min-height: 170px;
+      }
+
       .project-content {
 
         grid-template-columns: minmax(0, 1fr) 100px;
@@ -1410,7 +1472,7 @@
 
         width: 100px;
 
-        height: 100px;
+        height: auto;
       }
 
       .project-name {
@@ -1434,9 +1496,7 @@
 
 </head>
 
-
 <body>
-
 
   <!-- =========================================================
        HEADER
@@ -1444,683 +1504,761 @@
 
   <header>
 
-    <a href="#" class="logo">
-      DS / 26
-    </a>
+```
+<a href="#" class="logo">
+  DS / 26
+</a>
 
-    <nav class="header-right">
+<nav class="header-right">
 
-      <a href="#work">
-        Work
-      </a>
+  <a href="#work">
+    Work
+  </a>
 
-      <a href="#about">
-        About
-      </a>
+  <a href="#about">
+    About
+  </a>
 
-      <a href="#contact">
-        Contact
-      </a>
+  <a href="#contact">
+    Contact
+  </a>
 
-    </nav>
+</nav>
+```
 
   </header>
 
-
   <main>
 
+```
+<!-- =======================================================
+     HERO
+======================================================== -->
 
-    <!-- =======================================================
-         HERO
-    ======================================================== -->
+<section class="hero container">
 
-    <section class="hero container">
+  <div class="hero-top">
 
-      <div class="hero-top">
+    <div class="hero-role">
+      Graphic & Web Designer
+    </div>
 
-        <div class="hero-role">
-          Graphic & Web Designer
-        </div>
+  </div>
 
+
+  <h1 class="hero-title">
+
+    <span>
+      Diego
+    </span>
+
+    <span class="indent">
+      Scarponi
+    </span>
+
+  </h1>
+
+
+  <div class="hero-bottom">
+
+    <div>
+      Brand
+    </div>
+
+    <div>
+      Digital
+    </div>
+
+    <div>
+      Web / AI
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     INTRO SERVICES
+======================================================== -->
+
+<section
+  class="intro-services container"
+  aria-label="Aree di lavoro"
+>
+
+  <div class="intro-services-head">
+
+    <div class="eyebrow">
+      What I do
+    </div>
+
+    <p class="intro-services-copy reveal">
+      Identità, digitale e web. Progetto sistemi visivi
+      pensati per comunicare in modo chiaro, riconoscibile
+      e contemporaneo.
+    </p>
+
+  </div>
+
+
+  <div class="intro-services-grid">
+
+    <div class="service-block reveal">
+
+      <div class="service-number">
+        01
       </div>
 
-
-      <h1 class="hero-title">
-
-        <span>
-          Diego
-        </span>
-
-        <span class="indent">
-          Scarponi
-        </span>
-
-      </h1>
-
-
-      <div class="hero-bottom">
-
-        <div>
-          Brand
-        </div>
-
-        <div>
-          Digital
-        </div>
-
-        <div>
-          Web / AI
-        </div>
-
+      <div class="service-name">
+        Brand<br>
+        Identity
       </div>
 
-    </section>
-
-
-    <!-- =======================================================
-         MARQUEE
-    ======================================================== -->
-
-    <div class="marquee">
-
-      <div class="marquee-track">
-
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
-
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
-
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
-
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
-
+      <div class="service-description">
+        Identità visive, loghi, sistemi grafici e direzione
+        creativa.
       </div>
 
     </div>
 
 
-    <!-- =======================================================
-         SELECTED WORK
-    ======================================================== -->
+    <div class="service-block reveal">
 
-    <section
-      class="works container"
-      id="work"
-    >
+      <div class="service-number">
+        02
+      </div>
 
-      <div class="section-heading reveal">
+      <div class="service-name">
+        Web<br>
+        Design
+      </div>
 
-        <div class="section-number">
-          01 / 05
-        </div>
+      <div class="service-description">
+        Siti web, landing page e interfacce responsive
+        progettate con WordPress ed Elementor.
+      </div>
 
-        <h2 class="section-title">
-          Selected<br>
-          Work
-        </h2>
+    </div>
+
+
+    <div class="service-block reveal">
+
+      <div class="service-number">
+        03
+      </div>
+
+      <div class="service-name">
+        Digital<br>
+        Design
+      </div>
+
+      <div class="service-description">
+        Comunicazione digitale, contenuti e sistemi visivi
+        per il mondo online.
+      </div>
+
+    </div>
+
+
+    <div class="service-block reveal">
+
+      <div class="service-number">
+        04
+      </div>
+
+      <div class="service-name">
+        AI &<br>
+        Creative
+      </div>
+
+      <div class="service-description">
+        AI e nuovi strumenti integrati nel workflow creativo
+        e nello sviluppo web.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     SELECTED WORK
+======================================================== -->
+
+<section
+  class="works container"
+  id="work"
+>
+
+  <div class="section-heading reveal">
+
+    <div class="section-number">
+      01 / 05
+    </div>
+
+    <h2 class="section-title">
+      Selected<br>
+      Work
+    </h2>
+
+  </div>
+
+
+  <!-- =====================================================
+       PROGETTO 01
+  ====================================================== -->
+
+  <article class="project reveal">
+
+    <div class="project-content">
+
+      <div class="project-meta">
+        Brand Identity
+      </div>
+
+      <div class="project-info">
+
+        <h3 class="project-name">
+          Conero<br>
+          Sports Hub
+        </h3>
+
+        <p class="project-description">
+          Conero Sports Hub è una nuova polisportiva con sede
+          a Sirolo. L'identità visiva è stata sviluppata
+          ispirandosi agli stemmi delle società sportive,
+          creando un marchio essenziale, riconoscibile e
+          strettamente legato al territorio attraverso forme
+          pulite e una palette cromatica che richiama il mare
+          della Riviera del Conero.
+        </p>
 
       </div>
 
+      <div class="project-image-wrap">
 
-      <!-- =====================================================
-           PROGETTO 01
-      ====================================================== -->
+        <div class="project-image">
 
-      <article class="project reveal">
-
-        <div class="project-content">
-
-          <div class="project-meta">
-            Brand Identity
-          </div>
-
-          <div class="project-info">
-
-            <h3 class="project-name">
-              Conero<br>
-              Sports Hub
-            </h3>
-
-            <p class="project-description">
-              Conero Sports Hub è una nuova polisportiva con sede
-              a Sirolo. L'identità visiva è stata sviluppata
-              ispirandosi agli stemmi delle società sportive,
-              creando un marchio essenziale, riconoscibile e
-              strettamente legato al territorio attraverso forme
-              pulite e una palette cromatica che richiama il mare
-              della Riviera del Conero.
-            </p>
-
-          </div>
-
-          <div class="project-image-wrap">
-
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85"
-                alt="Conero Sports Hub"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- =====================================================
-           PROGETTO 02
-      ====================================================== -->
-
-      <article class="project reveal">
-
-        <div class="project-content">
-
-          <div class="project-meta">
-            Comunicazione
-          </div>
-
-          <div class="project-info">
-
-            <h3 class="project-name">
-              ATS<br>
-              Marche
-            </h3>
-
-            <p class="project-description">
-              Progettazione della comunicazione visiva per un
-              evento promosso dall'Ambito Territoriale Sociale
-              13 e rivolto a diversi comuni della Regione Marche.
-              Il progetto comprende concept visivo, sistema
-              grafico e materiali coordinati per la comunicazione
-              dell'evento.
-            </p>
-
-          </div>
-
-          <div class="project-image-wrap">
-
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85"
-                alt="Progetto comunicazione ATS Marche"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- =====================================================
-           PROGETTO 03
-      ====================================================== -->
-
-      <article class="project reveal">
-
-        <div class="project-content">
-
-          <div class="project-meta">
-            Packaging
-          </div>
-
-          <div class="project-info">
-
-            <h3 class="project-name">
-              Packaging
-            </h3>
-
-            <p class="project-description">
-              Progettazione di un sistema di packaging e di una
-              comunicazione visiva coordinata, sviluppati per
-              valorizzare il prodotto e costruire una presenza
-              coerente, riconoscibile e distintiva.
-            </p>
-
-          </div>
-
-          <div class="project-image-wrap">
-
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85"
-                alt="Progetto packaging"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- =====================================================
-           PROGETTO 04
-      ====================================================== -->
-
-      <article class="project reveal">
-
-        <div class="project-content">
-
-          <div class="project-meta">
-            Digital Design
-          </div>
-
-          <div class="project-info">
-
-            <h3 class="project-name">
-              Digital<br>
-              Design
-            </h3>
-
-            <p class="project-description">
-              Art direction e progettazione di contenuti digitali
-              e materiali per la comunicazione online, con
-              particolare attenzione alla coerenza del sistema
-              visivo e alla riconoscibilità del brand.
-            </p>
-
-          </div>
-
-          <div class="project-image-wrap">
-
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85"
-                alt="Progetto digital design"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- =====================================================
-           PROGETTO 05
-      ====================================================== -->
-
-      <article class="project reveal">
-
-        <div class="project-content">
-
-          <div class="project-meta">
-            Web Design
-          </div>
-
-          <div class="project-info">
-
-            <h3 class="project-name">
-              Web<br>
-              Design
-            </h3>
-
-            <p class="project-description">
-              Progettazione di siti web, landing page e interfacce
-              responsive, sviluppando strutture semplici e
-              funzionali capaci di tradurre l'identità del progetto
-              anche all'interno dell'esperienza digitale.
-            </p>
-
-          </div>
-
-          <div class="project-image-wrap">
-
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85"
-                alt="Progetto web design"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </article>
-
-    </section>
-
-
-    <!-- =======================================================
-         ABOUT
-    ======================================================== -->
-
-    <section
-      class="about container"
-      id="about"
-    >
-
-      <div class="about-grid">
-
-        <div class="section-number">
-          02 / 05
-        </div>
-
-        <div class="about-main">
-
-          <p class="about-text reveal">
-            Design che
-            <em>comunica.</em>
-          </p>
-
-          <div class="about-description">
-
-            <p class="reveal">
-              Sono un Graphic & Web Designer con esperienza nella
-              progettazione di identità visive, packaging,
-              comunicazione e soluzioni digitali.
-            </p>
-
-            <p class="reveal">
-              Collaboro con aziende, enti e associazioni
-              sviluppando progetti che uniscono creatività,
-              strategia e attenzione ai dettagli, con l'obiettivo
-              di creare una comunicazione chiara, funzionale
-              e riconoscibile.
-            </p>
-
-            <p class="reveal">
-              Negli ultimi anni ho inoltre integrato strumenti
-              di AI nei miei workflow creativi e nello sviluppo
-              web, sperimentando nuovi modi di progettare,
-              prototipare e produrre.
-            </p>
-
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85"
+            alt="Conero Sports Hub"
+          >
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </article>
 
 
-    <!-- =======================================================
-         SKILLS
-    ======================================================== -->
+  <!-- =====================================================
+       PROGETTO 02
+  ====================================================== -->
 
-    <section class="skills container">
+  <article class="project reveal">
 
-      <div class="section-heading reveal">
+    <div class="project-content">
 
-        <div class="section-number">
-          03 / 05
-        </div>
+      <div class="project-meta">
+        Comunicazione
+      </div>
 
-        <h2 class="section-title">
-          Skills
-        </h2>
+      <div class="project-info">
+
+        <h3 class="project-name">
+          ATS<br>
+          Marche
+        </h3>
+
+        <p class="project-description">
+          Progettazione della comunicazione visiva per un
+          evento promosso dall'Ambito Territoriale Sociale
+          13 e rivolto a diversi comuni della Regione Marche.
+          Il progetto comprende concept visivo, sistema
+          grafico e materiali coordinati per la comunicazione
+          dell'evento.
+        </p>
 
       </div>
 
+      <div class="project-image-wrap">
 
-      <div class="skills-list">
+        <div class="project-image">
 
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            01
-          </div>
-
-          <div class="skill-name">
-            Graphic Design
-          </div>
-
-          <div class="skill-type">
-            Core
-          </div>
-
-        </div>
-
-
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            02
-          </div>
-
-          <div class="skill-name">
-            Brand Identity
-          </div>
-
-          <div class="skill-type">
-            Branding
-          </div>
-
-        </div>
-
-
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            03
-          </div>
-
-          <div class="skill-name">
-            Packaging
-          </div>
-
-          <div class="skill-type">
-            Print
-          </div>
-
-        </div>
-
-
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            04
-          </div>
-
-          <div class="skill-name">
-            Web Design
-          </div>
-
-          <div class="skill-type">
-            Digital
-          </div>
-
-        </div>
-
-
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            05
-          </div>
-
-          <div class="skill-name">
-            WordPress / Elementor
-          </div>
-
-          <div class="skill-type">
-            Development
-          </div>
-
-        </div>
-
-
-        <div class="skill reveal">
-
-          <div class="skill-number">
-            06
-          </div>
-
-          <div class="skill-name">
-            AI-assisted Workflows
-          </div>
-
-          <div class="skill-type">
-            Experiment
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85"
+            alt="Progetto comunicazione ATS Marche"
+          >
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </article>
 
 
-    <!-- =======================================================
-         EXPERIENCE
-    ======================================================== -->
+  <!-- =====================================================
+       PROGETTO 03
+  ====================================================== -->
 
-    <section class="experience container">
+  <article class="project reveal">
 
-      <div class="experience-grid">
+    <div class="project-content">
 
-        <div class="section-number">
-          04 / 05
-        </div>
+      <div class="project-meta">
+        Packaging
+      </div>
 
-        <div>
+      <div class="project-info">
 
-          <h2 class="section-title reveal">
-            Experience
-          </h2>
+        <h3 class="project-name">
+          Packaging
+        </h3>
 
-          <div class="experience-list">
+        <p class="project-description">
+          Progettazione di un sistema di packaging e di una
+          comunicazione visiva coordinata, sviluppati per
+          valorizzare il prodotto e costruire una presenza
+          coerente, riconoscibile e distintiva.
+        </p>
 
-            <div class="experience-item reveal">
+      </div>
 
-              <div>
+      <div class="project-image-wrap">
 
-                <div class="experience-company">
-                  Graphic & Web Designer
-                </div>
+        <div class="project-image">
 
-                <div class="experience-role">
-                  Esperienza professionale
-                </div>
-
-              </div>
-
-              <div class="experience-year">
-                CURRENT
-              </div>
-
-            </div>
-
-
-            <div class="experience-item reveal">
-
-              <div>
-
-                <div class="experience-company">
-                  Freelance
-                </div>
-
-                <div class="experience-role">
-                  Graphic Design · Branding · Packaging · SMM
-                </div>
-
-              </div>
-
-              <div class="experience-year">
-                2020 — NOW
-              </div>
-
-            </div>
-
-
-            <div class="experience-item reveal">
-
-              <div>
-
-                <div class="experience-company">
-                  Progetti
-                </div>
-
-                <div class="experience-role">
-                  Graphic Design · Communication
-                </div>
-
-              </div>
-
-              <div class="experience-year">
-                PROJECTS
-              </div>
-
-            </div>
-
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85"
+            alt="Progetto packaging"
+          >
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </article>
 
 
-    <!-- =======================================================
-         CONTACT
-    ======================================================== -->
+  <!-- =====================================================
+       PROGETTO 04
+  ====================================================== -->
 
-    <section
-      class="contact container"
-      id="contact"
-    >
+  <article class="project reveal">
 
-      <div class="eyebrow">
-        05 / 05 — Contatti
+    <div class="project-content">
+
+      <div class="project-meta">
+        Digital Design
       </div>
 
-      <h2 class="contact-title">
+      <div class="project-info">
 
-        <span>
-          Parliamo
-        </span>
+        <h3 class="project-name">
+          Digital<br>
+          Design
+        </h3>
 
-        <span class="right">
-          insieme.
-        </span>
+        <p class="project-description">
+          Art direction e progettazione di contenuti digitali
+          e materiali per la comunicazione online, con
+          particolare attenzione alla coerenza del sistema
+          visivo e alla riconoscibilità del brand.
+        </p>
 
+      </div>
+
+      <div class="project-image-wrap">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85"
+            alt="Progetto digital design"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- =====================================================
+       PROGETTO 05
+  ====================================================== -->
+
+  <article class="project reveal">
+
+    <div class="project-content">
+
+      <div class="project-meta">
+        Web Design
+      </div>
+
+      <div class="project-info">
+
+        <h3 class="project-name">
+          Web<br>
+          Design
+        </h3>
+
+        <p class="project-description">
+          Progettazione di siti web, landing page e interfacce
+          responsive, sviluppando strutture semplici e
+          funzionali capaci di tradurre l'identità del progetto
+          anche all'interno dell'esperienza digitale.
+        </p>
+
+      </div>
+
+      <div class="project-image-wrap">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85"
+            alt="Progetto web design"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================== -->
+
+<section
+  class="about container"
+  id="about"
+>
+
+  <div class="about-grid">
+
+    <div class="section-number">
+      02 / 05
+    </div>
+
+    <div class="about-main">
+
+      <p class="about-text reveal">
+        Design che
+        <em>comunica.</em>
+      </p>
+
+      <div class="about-description">
+
+        <p class="reveal">
+          Sono un Graphic & Web Designer con esperienza nella
+          progettazione di identità visive, packaging,
+          comunicazione e soluzioni digitali.
+        </p>
+
+        <p class="reveal">
+          Collaboro con aziende, enti e associazioni
+          sviluppando progetti che uniscono creatività,
+          strategia e attenzione ai dettagli, con l'obiettivo
+          di creare una comunicazione chiara, funzionale
+          e riconoscibile.
+        </p>
+
+        <p class="reveal">
+          Negli ultimi anni ho inoltre integrato strumenti
+          di AI nei miei workflow creativi e nello sviluppo
+          web, sperimentando nuovi modi di progettare,
+          prototipare e produrre.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     SKILLS
+======================================================== -->
+
+<section class="skills container">
+
+  <div class="section-heading reveal">
+
+    <div class="section-number">
+      03 / 05
+    </div>
+
+    <h2 class="section-title">
+      Skills
+    </h2>
+
+  </div>
+
+
+  <div class="skills-list">
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        01
+      </div>
+
+      <div class="skill-name">
+        Graphic Design
+      </div>
+
+      <div class="skill-type">
+        Core
+      </div>
+
+    </div>
+
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        02
+      </div>
+
+      <div class="skill-name">
+        Brand Identity
+      </div>
+
+      <div class="skill-type">
+        Branding
+      </div>
+
+    </div>
+
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        03
+      </div>
+
+      <div class="skill-name">
+        Packaging
+      </div>
+
+      <div class="skill-type">
+        Print
+      </div>
+
+    </div>
+
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        04
+      </div>
+
+      <div class="skill-name">
+        Web Design
+      </div>
+
+      <div class="skill-type">
+        Digital
+      </div>
+
+    </div>
+
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        05
+      </div>
+
+      <div class="skill-name">
+        WordPress / Elementor
+      </div>
+
+      <div class="skill-type">
+        Development
+      </div>
+
+    </div>
+
+
+    <div class="skill reveal">
+
+      <div class="skill-number">
+        06
+      </div>
+
+      <div class="skill-name">
+        AI-assisted Workflows
+      </div>
+
+      <div class="skill-type">
+        Experiment
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     EXPERIENCE
+======================================================== -->
+
+<section class="experience container">
+
+  <div class="experience-grid">
+
+    <div class="section-number">
+      04 / 05
+    </div>
+
+    <div>
+
+      <h2 class="section-title reveal">
+        Experience
       </h2>
 
-      <div class="contact-bottom">
+      <div class="experience-list">
 
-        <a
-          class="contact-link"
-          href="mailto:tuamail@email.com"
-        >
-          tuamail@email.com
-        </a>
+        <div class="experience-item reveal">
 
-        <div class="eyebrow">
-          Disponibile per nuove opportunità
+          <div>
+
+            <div class="experience-company">
+              Graphic & Web Designer
+            </div>
+
+            <div class="experience-role">
+              Esperienza professionale
+            </div>
+
+          </div>
+
+          <div class="experience-year">
+            CURRENT
+          </div>
+
+        </div>
+
+
+        <div class="experience-item reveal">
+
+          <div>
+
+            <div class="experience-company">
+              Freelance
+            </div>
+
+            <div class="experience-role">
+              Graphic Design · Branding · Packaging · SMM
+            </div>
+
+          </div>
+
+          <div class="experience-year">
+            2020 — NOW
+          </div>
+
+        </div>
+
+
+        <div class="experience-item reveal">
+
+          <div>
+
+            <div class="experience-company">
+              Progetti
+            </div>
+
+            <div class="experience-role">
+              Graphic Design · Communication
+            </div>
+
+          </div>
+
+          <div class="experience-year">
+            PROJECTS
+          </div>
+
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================== -->
+
+<section
+  class="contact container"
+  id="contact"
+>
+
+  <div class="eyebrow">
+    05 / 05 — Contatti
+  </div>
+
+  <h2 class="contact-title">
+
+    <span>
+      Parliamo
+    </span>
+
+    <span class="right">
+      insieme.
+    </span>
+
+  </h2>
+
+  <div class="contact-bottom">
+
+    <a
+      class="contact-link"
+      href="mailto:tuamail@email.com"
+    >
+      tuamail@email.com
+    </a>
+
+    <div class="eyebrow">
+      Disponibile per nuove opportunità
+    </div>
+
+  </div>
+
+</section>
+```
 
   </main>
-
 
   <!-- =======================================================
        FOOTER
@@ -2128,20 +2266,21 @@
 
   <footer>
 
-    <span>
-      Diego Scarponi © 2026
-    </span>
+```
+<span>
+  Diego Scarponi © 2026
+</span>
 
-    <span>
-      Graphic & Web Designer
-    </span>
+<span>
+  Graphic & Web Designer
+</span>
 
-    <span>
-      Back to top ↑
-    </span>
+<span>
+  Back to top ↑
+</span>
+```
 
   </footer>
-
 
   <!-- =======================================================
        JAVASCRIPT
@@ -2245,22 +2384,7 @@
 
     });
 
-
-    /* =========================================================
-       MARQUEE — LOOP CONTINUO
-    ========================================================== */
-
-    const marqueeTrack =
-      document.querySelector(".marquee-track");
-
-    marqueeTrack.addEventListener("animationiteration", () => {
-
-      marqueeTrack.style.transform = "translateX(0)";
-
-    });
-
   </script>
-
 
 </body>
 
