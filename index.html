@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 
@@ -201,71 +200,83 @@
     }
 
     .hero-bottom {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr 1fr;
-
-      border-top: 1px solid var(--line);
-
-      padding-top: 12px;
-    }
-
-    .hero-bottom div {
-      font-family: "DM Mono", monospace;
-
-      font-size: 10px;
-
-      text-transform: uppercase;
+      min-height: 1px;
     }
 
 
     /* =========================================================
-       06 — MARQUEE
+       06 — INTRO SERVICES
     ========================================================== */
 
-    .marquee {
+    .intro-services {
+      padding-bottom: 150px;
+    }
+
+    .intro-services-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       border-top: 1px solid var(--black);
       border-bottom: 1px solid var(--black);
+    }
 
-      overflow: hidden;
+    .service-block {
+      min-height: 300px;
 
-      white-space: nowrap;
+      padding: 22px 25px;
 
-      padding: 18px 0;
+      border-right: 1px solid var(--black);
 
+      display: flex;
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      transition:
+        background .35s ease,
+        color .35s ease;
+    }
+
+    .service-block:first-child {
+      padding-left: 0;
+    }
+
+    .service-block:last-child {
+      border-right: 0;
+    }
+
+    .service-block:hover {
       background: var(--accent);
     }
 
-    .marquee-track {
-      display: flex;
+    .service-number {
+      font-family: "DM Mono", monospace;
 
-      width: max-content;
+      font-size: 10px;
 
-      animation: marquee 22s linear infinite;
+      color: var(--gray);
     }
 
-    .marquee span {
-      flex-shrink: 0;
+    .service-name {
+      font-size: clamp(28px, 3vw, 52px);
 
-      font-size: clamp(28px, 4vw, 60px);
+      line-height: .88;
 
-      font-weight: 700;
+      letter-spacing: -.06em;
 
-      letter-spacing: -.04em;
-
-      padding-right: 50px;
+      font-weight: 600;
     }
 
-    @keyframes marquee {
+    .service-description {
+      max-width: 230px;
 
-      from {
-        transform: translateX(0);
-      }
+      font-size: 12px;
 
-      to {
-        transform: translateX(-50%);
-      }
+      line-height: 1.5;
 
+      color: var(--gray);
     }
 
 
@@ -881,16 +892,58 @@
         margin-left: 8vw;
       }
 
-      .hero-bottom {
 
-        grid-template-columns: 1fr 1fr;
+      /* -------------------------------------------------------
+         INTRO SERVICES
+      ------------------------------------------------------- */
 
-        gap: 12px;
+      .intro-services {
+
+        padding-bottom: 100px;
       }
 
-      .hero-bottom div:last-child {
+      .intro-services-grid {
 
-        display: none;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-block {
+
+        min-height: 220px;
+
+        padding: 18px;
+
+        border-right: 1px solid var(--black);
+
+        border-bottom: 1px solid var(--black);
+      }
+
+      .service-block:nth-child(2n) {
+
+        border-right: 0;
+      }
+
+      .service-block:nth-child(3),
+      .service-block:nth-child(4) {
+
+        border-bottom: 0;
+      }
+
+      .service-block:first-child {
+
+        padding-left: 18px;
+      }
+
+      .service-name {
+
+        font-size: 29px;
+      }
+
+      .service-description {
+
+        font-size: 11px;
+
+        max-width: 170px;
       }
 
 
@@ -933,6 +986,14 @@
 
         overflow: hidden;
       }
+
+      /*
+        MOBILE CHIUSO
+
+        La struttura rimane stabile.
+        Evitiamo di animare il cambio della griglia:
+        è questo che rendeva la foto scattosa.
+      */
 
       .project-content {
 
@@ -1010,8 +1071,8 @@
 
         transition:
           opacity .45s ease,
-          max-height .7s cubic-bezier(.2,.8,.2,1),
-          transform .7s cubic-bezier(.2,.8,.2,1);
+          max-height .65s cubic-bezier(.2,.8,.2,1),
+          transform .65s cubic-bezier(.2,.8,.2,1);
       }
 
 
@@ -1041,6 +1102,11 @@
 
         overflow: visible;
 
+        transition:
+          width .75s cubic-bezier(.22,.8,.22,1),
+          height .75s cubic-bezier(.22,.8,.22,1),
+          margin-top .75s cubic-bezier(.22,.8,.22,1),
+          margin-bottom .75s cubic-bezier(.22,.8,.22,1);
       }
 
       .project-image {
@@ -1053,11 +1119,11 @@
 
         overflow: hidden;
 
-        transform-origin: center center;
+        will-change: width, height;
 
         transition:
-          transform .65s cubic-bezier(.22,1,.36,1),
-          opacity .25s ease;
+          width .75s cubic-bezier(.22,.8,.22,1),
+          height .75s cubic-bezier(.22,.8,.22,1);
       }
 
       .project-image img {
@@ -1068,14 +1134,27 @@
 
         object-fit: cover;
 
+        transform: scale(1);
+
+        will-change: transform;
+
         transition:
-          transform .8s cubic-bezier(.22,1,.36,1);
+          transform .9s cubic-bezier(.2,.8,.2,1);
       }
 
 
       /* -------------------------------------------------------
          MOBILE — APERTO
       ------------------------------------------------------- */
+
+      /*
+        IMPORTANTE:
+
+        Non animiamo più grid-template-columns.
+
+        La struttura passa alla disposizione aperta,
+        mentre la foto viene animata separatamente.
+      */
 
       .project.open {
 
@@ -1086,29 +1165,31 @@
 
       .project.open .project-content {
 
-        grid-template-columns: 1fr;
+        display: flex;
 
-        row-gap: 0;
+        flex-direction: column;
 
         min-height: 0;
+
+        row-gap: 0;
       }
 
       .project.open .project-meta {
 
-        grid-column: 1;
+        width: 100%;
 
-        grid-row: 1;
+        order: 1;
+
+        align-self: flex-start;
 
         padding-top: 0;
-
-        align-self: start;
       }
 
       .project.open .project-info {
 
-        grid-column: 1;
+        width: 100%;
 
-        grid-row: 2;
+        order: 2;
 
         min-height: auto;
 
@@ -1134,21 +1215,21 @@
       }
 
       /*
-        La foto viene mantenuta come elemento separato
-        e appare con una trasformazione fluida.
-        Evitiamo di animare width/height durante il cambio
-        di layout, che su mobile causava lo scatto.
+        La foto viene portata sotto il testo.
+
+        L'animazione avviene sulla dimensione della foto,
+        non sulla griglia.
       */
 
       .project.open .project-image-wrap {
 
-        grid-column: 1;
-
-        grid-row: 3;
-
         width: 100%;
 
         height: auto;
+
+        min-height: 0;
+
+        order: 3;
 
         margin-top: 50px;
 
@@ -1157,6 +1238,8 @@
         justify-self: stretch;
 
         align-self: auto;
+
+        overflow: visible;
       }
 
       .project.open .project-image {
@@ -1166,15 +1249,11 @@
         height: auto;
 
         aspect-ratio: 1 / 1;
-
-        transform: scale(1);
-
       }
 
       .project.open .project-image img {
 
         transform: scale(1);
-
       }
 
 
@@ -1418,9 +1497,9 @@
 <body>
 
 
-  <!-- =========================================================
+  <!-- =======================================================
        HEADER
-  ========================================================== -->
+  ======================================================== -->
 
   <header>
 
@@ -1478,52 +1557,100 @@
       </h1>
 
 
-      <div class="hero-bottom">
-
-        <div>
-          Brand
-        </div>
-
-        <div>
-          Digital
-        </div>
-
-        <div>
-          Web / AI
-        </div>
-
-      </div>
+      <div class="hero-bottom"></div>
 
     </section>
 
 
     <!-- =======================================================
-         MARQUEE
+         INTRO SERVICES
     ======================================================== -->
 
-    <div class="marquee">
+    <section
+      class="intro-services container"
+      aria-label="Aree di lavoro"
+    >
 
-      <div class="marquee-track">
+      <div class="intro-services-grid">
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
+        <div class="service-block reveal">
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
+          <div class="service-number">
+            01
+          </div>
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
+          <div class="service-name">
+            Brand<br>
+            Identity
+          </div>
 
-        <span>
-          DESIGN → BRAND → WEB → AI →
-        </span>
+          <div class="service-description">
+            Identità visive, loghi, sistemi grafici e direzione
+            creativa.
+          </div>
+
+        </div>
+
+
+        <div class="service-block reveal">
+
+          <div class="service-number">
+            02
+          </div>
+
+          <div class="service-name">
+            Web<br>
+            Design
+          </div>
+
+          <div class="service-description">
+            Siti web, landing page e interfacce responsive
+            progettate con WordPress ed Elementor.
+          </div>
+
+        </div>
+
+
+        <div class="service-block reveal">
+
+          <div class="service-number">
+            03
+          </div>
+
+          <div class="service-name">
+            Digital<br>
+            Design
+          </div>
+
+          <div class="service-description">
+            Comunicazione digitale, contenuti e sistemi visivi
+            per il mondo online.
+          </div>
+
+        </div>
+
+
+        <div class="service-block reveal">
+
+          <div class="service-number">
+            04
+          </div>
+
+          <div class="service-name">
+            AI &<br>
+            Creative
+          </div>
+
+          <div class="service-description">
+            AI e nuovi strumenti integrati nel workflow creativo
+            e nello sviluppo web.
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
+    </section>
 
 
     <!-- =======================================================
@@ -1542,7 +1669,7 @@
         </div>
 
         <h2 class="section-title">
-          Lavori<br>
+          Progetti<br>
           selezionati
         </h2>
 
@@ -2176,11 +2303,23 @@
 
         const wasOpen = project.classList.contains("open");
 
+
+        /*
+          Chiudiamo gli altri progetti.
+          Ne rimane sempre uno solo aperto.
+        */
+
         projects.forEach((item) => {
 
           item.classList.remove("open");
 
         });
+
+
+        /*
+          Se quello cliccato era chiuso,
+          lo apriamo.
+        */
 
         if (!wasOpen) {
 
@@ -2213,24 +2352,9 @@
 
     });
 
-
-    /* =========================================================
-       MARQUEE — LOOP CONTINUO
-    ========================================================== */
-
-    const marqueeTrack =
-      document.querySelector(".marquee-track");
-
-    marqueeTrack.addEventListener("animationiteration", () => {
-
-      marqueeTrack.style.transform = "translateX(0)";
-
-    });
-
   </script>
 
 
 </body>
 
 </html>
-```
