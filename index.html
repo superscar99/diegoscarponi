@@ -1,22 +1,20 @@
+```html
 <!DOCTYPE html>
-
 <html lang="it">
 
 <head>
 
   <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
->
-
-<meta
-name="description"
-content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
-
->
+  <meta
+    name="description"
+    content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, Digital, Web."
+  >
 
   <title>Diego Scarponi — Graphic & Web Designer</title>
 
@@ -203,7 +201,21 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     }
 
     .hero-bottom {
-      height: 1px;
+      display: grid;
+
+      grid-template-columns: 1fr 1fr 1fr;
+
+      border-top: 1px solid var(--line);
+
+      padding-top: 12px;
+    }
+
+    .hero-bottom div {
+      font-family: "DM Mono", monospace;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
     }
 
 
@@ -212,37 +224,35 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     ========================================================== */
 
     .intro-services {
-      padding-bottom: 150px;
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
 
     .intro-services-grid {
       display: grid;
 
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns:
+        repeat(4, 1fr);
 
       border-top: 1px solid var(--black);
-      border-bottom: 1px solid var(--black);
+      border-left: 1px solid var(--black);
     }
 
     .service-block {
-      min-height: 260px;
+      min-height: 280px;
 
-      padding: 25px;
+      padding: 24px;
+
+      border-right: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
 
       display: flex;
       flex-direction: column;
-
-      border-left: 1px solid var(--black);
-
-      position: relative;
+      justify-content: space-between;
 
       transition:
         background .35s ease,
         color .35s ease;
-    }
-
-    .service-block:last-child {
-      border-right: 1px solid var(--black);
     }
 
     .service-block:hover {
@@ -253,40 +263,26 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       font-family: "DM Mono", monospace;
 
       font-size: 10px;
-
-      margin-bottom: auto;
-    }
-
-    .service-icon {
-      width: 34px;
-      height: 34px;
-
-      margin-bottom: 25px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .service-icon svg {
-      width: 100%;
-      height: 100%;
-
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
     .service-name {
-      font-size: clamp(25px, 3vw, 45px);
+      font-size: clamp(32px, 4vw, 60px);
 
-      line-height: .9;
+      line-height: .88;
 
-      font-weight: 600;
+      letter-spacing: -.06em;
 
-      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+
+    .service-description {
+      max-width: 300px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+      color: var(--gray);
     }
 
 
@@ -295,7 +291,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     ========================================================== */
 
     .works {
-      padding-top: 0;
+      padding-top: 150px;
       padding-bottom: 180px;
     }
 
@@ -336,8 +332,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       padding: 50px 0;
 
       cursor: pointer;
-
-      overflow: hidden;
     }
 
     .project:last-child {
@@ -386,10 +380,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       justify-content: space-between;
 
       min-height: 180px;
-
-      transition:
-        opacity .55s ease,
-        transform .65s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-name {
@@ -403,8 +393,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       font-weight: 700;
 
       transition:
-        transform .65s cubic-bezier(.2,.8,.2,1),
-        opacity .45s ease;
+        transform .55s cubic-bezier(.2,.8,.2,1);
     }
 
     .project:hover .project-name {
@@ -427,12 +416,12 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
       overflow: hidden;
 
-      transform: translateY(-15px);
+      transform: translateY(-10px);
 
       transition:
-        opacity .55s ease,
-        max-height .8s cubic-bezier(.2,.8,.2,1),
-        transform .75s cubic-bezier(.2,.8,.2,1);
+        opacity .45s ease,
+        max-height .6s cubic-bezier(.2,.8,.2,1),
+        transform .6s cubic-bezier(.2,.8,.2,1);
     }
 
 
@@ -449,10 +438,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       justify-content: flex-end;
 
       min-width: 0;
-
-      transition:
-        opacity .55s ease,
-        transform .7s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-image {
@@ -467,8 +452,8 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       background: #ddd;
 
       transition:
-        width .8s cubic-bezier(.2,.8,.2,1),
-        height .8s cubic-bezier(.2,.8,.2,1);
+        width .7s cubic-bezier(.2,.8,.2,1),
+        height .7s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-image img {
@@ -479,8 +464,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       object-fit: cover;
 
       transition:
-        transform .9s cubic-bezier(.2,.8,.2,1),
-        opacity .55s ease;
+        transform .9s cubic-bezier(.2,.8,.2,1);
     }
 
     .project:hover .project-image img {
@@ -891,14 +875,17 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       ------------------------------------------------------- */
 
       .hero {
+
         padding-top: 100px;
       }
 
       .hero-role {
+
         font-size: 18px;
       }
 
       .hero-title {
+
         font-size: 15.5vw;
 
         line-height: .82;
@@ -907,64 +894,52 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       }
 
       .hero-title .indent {
+
         margin-left: 8vw;
+      }
+
+      .hero-bottom {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+      }
+
+      .hero-bottom div:last-child {
+
+        display: none;
       }
 
 
       /* -------------------------------------------------------
-         INTRO SERVICES MOBILE
+         INTRO SERVICES — MOBILE
+         1 COLONNA / 4 RIGHE
       ------------------------------------------------------- */
 
-      .intro-services {
-        padding-bottom: 110px;
-
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
       .intro-services-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
 
-        border-top: 1px solid var(--black);
-        border-bottom: 1px solid var(--black);
+        grid-template-columns: 1fr;
+
       }
 
       .service-block {
-        min-height: 125px;
 
-        padding: 14px 8px;
+        min-height: 180px;
 
-        border-left: 1px solid var(--black);
-      }
+        padding: 20px;
 
-      .service-block:last-child {
-        border-right: 1px solid var(--black);
-      }
-
-      .service-number {
-        font-size: 8px;
-
-        margin-bottom: 12px;
-      }
-
-      .service-icon {
-        width: 22px;
-        height: 22px;
-
-        margin-bottom: 0;
       }
 
       .service-name {
-        display: flex;
-        align-items: center;
 
-        font-size: 12px;
+        font-size: 11vw;
 
-        line-height: 1.05;
+      }
 
-        letter-spacing: -.03em;
+      .service-description {
 
-        margin-top: 8px;
+        font-size: 13px;
+
       }
 
 
@@ -996,7 +971,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
       .works {
 
-        padding-top: 0;
+        padding-top: 110px;
 
         padding-bottom: 120px;
       }
@@ -1021,7 +996,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         min-height: 120px;
 
         transition:
-          grid-template-columns 1s cubic-bezier(.2,.8,.2,1);
+          grid-template-columns .7s cubic-bezier(.2,.8,.2,1);
       }
 
       .project-meta {
@@ -1037,6 +1012,8 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         font-size: 9px;
 
         line-height: 1.4;
+
+        order: initial;
       }
 
       .project-info {
@@ -1055,9 +1032,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
         padding-top: 22px;
 
-        transition:
-          opacity .65s ease,
-          transform .85s cubic-bezier(.2,.8,.2,1);
+        order: initial;
       }
 
       .project-name {
@@ -1067,10 +1042,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         line-height: .88;
 
         letter-spacing: -.06em;
-
-        transition:
-          transform .75s cubic-bezier(.2,.8,.2,1),
-          opacity .5s ease;
       }
 
       .project-description {
@@ -1087,12 +1058,12 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
         overflow: hidden;
 
-        transform: translateY(-15px);
+        transform: translateY(-10px);
 
         transition:
-          opacity .7s ease,
-          max-height 1s cubic-bezier(.2,.8,.2,1),
-          transform .9s cubic-bezier(.2,.8,.2,1);
+          opacity .45s ease,
+          max-height .7s cubic-bezier(.2,.8,.2,1),
+          transform .7s cubic-bezier(.2,.8,.2,1);
       }
 
 
@@ -1123,10 +1094,8 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         overflow: visible;
 
         transition:
-          width 1s cubic-bezier(.2,.8,.2,1),
-          height 1s cubic-bezier(.2,.8,.2,1),
-          opacity .65s ease,
-          transform 1s cubic-bezier(.2,.8,.2,1);
+          width .7s cubic-bezier(.2,.8,.2,1),
+          height .7s cubic-bezier(.2,.8,.2,1);
       }
 
       .project-image {
@@ -1138,8 +1107,8 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         aspect-ratio: 1 / 1;
 
         transition:
-          width 1s cubic-bezier(.2,.8,.2,1),
-          height 1s cubic-bezier(.2,.8,.2,1);
+          width .7s cubic-bezier(.2,.8,.2,1),
+          height .7s cubic-bezier(.2,.8,.2,1);
       }
 
 
@@ -1190,8 +1159,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       .project.open .project-name {
 
         font-size: clamp(32px, 9vw, 46px);
-
-        transform: translateY(0);
       }
 
       .project.open .project-description {
@@ -1464,27 +1431,15 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         font-size: 12.5px;
       }
 
-      .service-block {
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-
-      .service-name {
-        font-size: 10px;
-      }
-
-      .service-icon {
-        width: 19px;
-        height: 19px;
-      }
-
     }
 
   </style>
 
 </head>
 
+
 <body>
+
 
   <!-- =======================================================
        HEADER
@@ -1492,775 +1447,721 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
   <header>
 
-```
-<a href="#" class="logo">
-  DS / 26
-</a>
+    <a href="#" class="logo">
+      DS / 26
+    </a>
 
-<nav class="header-right">
+    <nav class="header-right">
 
-  <a href="#work">
-    Work
-  </a>
+      <a href="#work">
+        Work
+      </a>
 
-  <a href="#about">
-    About
-  </a>
+      <a href="#about">
+        About
+      </a>
 
-  <a href="#contact">
-    Contact
-  </a>
+      <a href="#contact">
+        Contact
+      </a>
 
-</nav>
-```
+    </nav>
 
   </header>
 
+
   <main>
 
-```
-<!-- =======================================================
-     HERO
-======================================================== -->
 
-<section class="hero container">
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
 
-  <div class="hero-top">
+    <section class="hero container">
 
-    <div class="hero-role">
-      Graphic & Web Designer
-    </div>
+      <div class="hero-top">
 
-  </div>
-
-
-  <h1 class="hero-title">
-
-    <span>
-      Diego
-    </span>
-
-    <span class="indent">
-      Scarponi
-    </span>
-
-  </h1>
-
-
-  <div class="hero-bottom"></div>
-
-</section>
-
-
-<!-- =======================================================
-     INTRO SERVICES
-======================================================== -->
-
-<section
-  class="intro-services container"
-  aria-label="Aree di lavoro"
->
-
-  <div class="intro-services-grid">
-
-
-    <!-- BRAND IDENTITY -->
-
-    <div class="service-block reveal">
-
-      <div class="service-number">
-        01
-      </div>
-
-      <div class="service-icon">
-
-        <svg viewBox="0 0 32 32">
-
-          <rect
-            x="6"
-            y="6"
-            width="20"
-            height="20"
-          />
-
-          <circle
-            cx="16"
-            cy="16"
-            r="4"
-          />
-
-        </svg>
+        <div class="hero-role">
+          Graphic & Web Designer
+        </div>
 
       </div>
 
-      <div class="service-name">
-        Brand<br>
-        Identity
-      </div>
 
-    </div>
+      <h1 class="hero-title">
 
+        <span>
+          Diego
+        </span>
 
-    <!-- WEB DESIGN -->
+        <span class="indent">
+          Scarponi
+        </span>
 
-    <div class="service-block reveal">
+      </h1>
 
-      <div class="service-number">
-        02
-      </div>
 
-      <div class="service-icon">
+      <div class="hero-bottom"></div>
 
-        <svg viewBox="0 0 32 32">
+    </section>
 
-          <rect
-            x="4"
-            y="6"
-            width="24"
-            height="19"
-            rx="1"
-          />
 
-          <line
-            x1="4"
-            y1="11"
-            x2="28"
-            y2="11"
-          />
+    <!-- =======================================================
+         INTRO SERVICES
+    ======================================================== -->
 
-          <line
-            x1="9"
-            y1="16"
-            x2="23"
-            y2="16"
-          />
+    <section
+      class="intro-services container"
+      aria-label="Aree di lavoro"
+    >
 
-          <line
-            x1="9"
-            y1="20"
-            x2="18"
-            y2="20"
-          />
+      <div class="intro-services-grid">
 
-        </svg>
+        <div class="service-block reveal">
 
-      </div>
+          <div class="service-number">
+            01
+          </div>
 
-      <div class="service-name">
-        Web<br>
-        Design
-      </div>
+          <div class="service-name">
+            Brand<br>
+            Identity
+          </div>
 
-    </div>
+          <div class="service-description">
+            Identità visive, loghi, sistemi grafici e direzione
+            creativa.
+          </div>
 
+        </div>
 
-    <!-- DIGITAL DESIGN -->
 
-    <div class="service-block reveal">
+        <div class="service-block reveal">
 
-      <div class="service-number">
-        03
-      </div>
+          <div class="service-number">
+            02
+          </div>
 
-      <div class="service-icon">
+          <div class="service-name">
+            Web<br>
+            Design
+          </div>
 
-        <svg viewBox="0 0 32 32">
+          <div class="service-description">
+            Siti web, landing page e interfacce responsive
+            progettate con WordPress ed Elementor.
+          </div>
 
-          <rect
-            x="7"
-            y="4"
-            width="18"
-            height="24"
-            rx="2"
-          />
+        </div>
 
-          <line
-            x1="12"
-            y1="8"
-            x2="20"
-            y2="8"
-          />
 
-          <circle
-            cx="16"
-            cy="23"
-            r="1.5"
-          />
+        <div class="service-block reveal">
 
-        </svg>
+          <div class="service-number">
+            03
+          </div>
 
-      </div>
+          <div class="service-name">
+            Digital<br>
+            Design
+          </div>
 
-      <div class="service-name">
-        Digital<br>
-        Design
-      </div>
+          <div class="service-description">
+            Comunicazione digitale, contenuti e sistemi visivi
+            per il mondo online.
+          </div>
 
-    </div>
+        </div>
 
 
-    <!-- AI -->
+        <div class="service-block reveal">
 
-    <div class="service-block reveal">
+          <div class="service-number">
+            04
+          </div>
 
-      <div class="service-number">
-        04
-      </div>
+          <div class="service-name">
+            AI &<br>
+            Creative
+          </div>
 
-      <div class="service-icon">
-
-        <svg viewBox="0 0 32 32">
-
-          <circle
-            cx="16"
-            cy="16"
-            r="9"
-          />
-
-          <circle
-            cx="16"
-            cy="16"
-            r="3"
-          />
-
-          <line
-            x1="16"
-            y1="3"
-            x2="16"
-            y2="7"
-          />
-
-          <line
-            x1="16"
-            y1="25"
-            x2="16"
-            y2="29"
-          />
-
-          <line
-            x1="3"
-            y1="16"
-            x2="7"
-            y2="16"
-          />
-
-          <line
-            x1="25"
-            y1="16"
-            x2="29"
-            y2="16"
-          />
-
-        </svg>
-
-      </div>
-
-      <div class="service-name">
-        AI &<br>
-        Creative
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     PROGETTI
-======================================================== -->
-
-<section
-  class="works container"
-  id="work"
->
-
-  <div class="section-heading reveal">
-
-    <div class="section-number">
-      01 / 05
-    </div>
-
-    <h2 class="section-title">
-      Progetti<br>
-      selezionati
-    </h2>
-
-  </div>
-
-
-  <!-- PROGETTO 01 -->
-
-  <article class="project reveal">
-
-    <div class="project-content">
-
-      <div class="project-meta">
-        Brand Identity
-      </div>
-
-      <div class="project-info">
-
-        <h3 class="project-name">
-          Conero<br>
-          Sports Hub
-        </h3>
-
-        <p class="project-description">
-          Conero Sports Hub è una nuova polisportiva con sede
-          a Sirolo. L'identità visiva è stata sviluppata
-          ispirandosi agli stemmi delle società sportive,
-          creando un marchio essenziale, riconoscibile e
-          strettamente legato al territorio attraverso forme
-          pulite e una palette cromatica che richiama il mare
-          della Riviera del Conero.
-        </p>
-
-      </div>
-
-      <div class="project-image-wrap">
-
-        <div class="project-image">
-
-          <img
-            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85"
-            alt="Conero Sports Hub"
-          >
+          <div class="service-description">
+            AI e nuovi strumenti integrati nel workflow creativo
+            e nello sviluppo web.
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </article>
+    </section>
 
 
-  <!-- PROGETTO 02 -->
+    <!-- =======================================================
+         SELECTED WORK
+    ======================================================== -->
 
-  <article class="project reveal">
+    <section
+      class="works container"
+      id="work"
+    >
 
-    <div class="project-content">
+      <div class="section-heading reveal">
 
-      <div class="project-meta">
-        Comunicazione
-      </div>
+        <div class="section-number">
+          01 / 05
+        </div>
 
-      <div class="project-info">
-
-        <h3 class="project-name">
-          ATS<br>
-          Marche
-        </h3>
-
-        <p class="project-description">
-          Progettazione della comunicazione visiva per un
-          evento promosso dall'Ambito Territoriale Sociale
-          13 e rivolto a diversi comuni della Regione Marche.
-          Il progetto comprende concept visivo, sistema
-          grafico e materiali coordinati per la comunicazione
-          dell'evento.
-        </p>
+        <h2 class="section-title">
+          Progetti<br>
+          selezionati
+        </h2>
 
       </div>
 
-      <div class="project-image-wrap">
 
-        <div class="project-image">
+      <!-- PROGETTO 01 -->
 
-          <img
-            src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85"
-            alt="Progetto comunicazione ATS Marche"
-          >
+      <article class="project reveal">
+
+        <div class="project-content">
+
+          <div class="project-meta">
+            Brand Identity
+          </div>
+
+          <div class="project-info">
+
+            <h3 class="project-name">
+              Conero<br>
+              Sports Hub
+            </h3>
+
+            <p class="project-description">
+              Conero Sports Hub è una nuova polisportiva con sede
+              a Sirolo. L'identità visiva è stata sviluppata
+              ispirandosi agli stemmi delle società sportive,
+              creando un marchio essenziale, riconoscibile e
+              strettamente legato al territorio attraverso forme
+              pulite e una palette cromatica che richiama il mare
+              della Riviera del Conero.
+            </p>
+
+          </div>
+
+          <div class="project-image-wrap">
+
+            <div class="project-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85"
+                alt="Conero Sports Hub"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROGETTO 02 -->
+
+      <article class="project reveal">
+
+        <div class="project-content">
+
+          <div class="project-meta">
+            Comunicazione
+          </div>
+
+          <div class="project-info">
+
+            <h3 class="project-name">
+              ATS<br>
+              Marche
+            </h3>
+
+            <p class="project-description">
+              Progettazione della comunicazione visiva per un
+              evento promosso dall'Ambito Territoriale Sociale
+              13 e rivolto a diversi comuni della Regione Marche.
+              Il progetto comprende concept visivo, sistema
+              grafico e materiali coordinati per la comunicazione
+              dell'evento.
+            </p>
+
+          </div>
+
+          <div class="project-image-wrap">
+
+            <div class="project-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85"
+                alt="Progetto comunicazione ATS Marche"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROGETTO 03 -->
+
+      <article class="project reveal">
+
+        <div class="project-content">
+
+          <div class="project-meta">
+            Packaging
+          </div>
+
+          <div class="project-info">
+
+            <h3 class="project-name">
+              Packaging
+            </h3>
+
+            <p class="project-description">
+              Progettazione di un sistema di packaging e di una
+              comunicazione visiva coordinata, sviluppati per
+              valorizzare il prodotto e costruire una presenza
+              coerente, riconoscibile e distintiva.
+            </p>
+
+          </div>
+
+          <div class="project-image-wrap">
+
+            <div class="project-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85"
+                alt="Progetto packaging"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROGETTO 04 -->
+
+      <article class="project reveal">
+
+        <div class="project-content">
+
+          <div class="project-meta">
+            Digital Design
+          </div>
+
+          <div class="project-info">
+
+            <h3 class="project-name">
+              Digital<br>
+              Design
+            </h3>
+
+            <p class="project-description">
+              Art direction e progettazione di contenuti digitali
+              e materiali per la comunicazione online, con
+              particolare attenzione alla coerenza del sistema
+              visivo e alla riconoscibilità del brand.
+            </p>
+
+          </div>
+
+          <div class="project-image-wrap">
+
+            <div class="project-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85"
+                alt="Progetto digital design"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROGETTO 05 -->
+
+      <article class="project reveal">
+
+        <div class="project-content">
+
+          <div class="project-meta">
+            Web Design
+          </div>
+
+          <div class="project-info">
+
+            <h3 class="project-name">
+              Web<br>
+              Design
+            </h3>
+
+            <p class="project-description">
+              Progettazione di siti web, landing page e interfacce
+              responsive, sviluppando strutture semplici e
+              funzionali capaci di tradurre l'identità del progetto
+              anche all'interno dell'esperienza digitale.
+            </p>
+
+          </div>
+
+          <div class="project-image-wrap">
+
+            <div class="project-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85"
+                alt="Progetto web design"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =======================================================
+         ABOUT
+    ======================================================== -->
+
+    <section
+      class="about container"
+      id="about"
+    >
+
+      <div class="about-grid">
+
+        <div class="section-number">
+          02 / 05
+        </div>
+
+        <div class="about-main">
+
+          <p class="about-text reveal">
+            Design che
+            <em>comunica.</em>
+          </p>
+
+          <div class="about-description">
+
+            <p class="reveal">
+              Sono un Graphic & Web Designer con esperienza nella
+              progettazione di identità visive, packaging,
+              comunicazione e soluzioni digitali.
+            </p>
+
+            <p class="reveal">
+              Collaboro con aziende, enti e associazioni
+              sviluppando progetti che uniscono creatività,
+              strategia e attenzione ai dettagli, con l'obiettivo
+              di creare una comunicazione chiara, funzionale
+              e riconoscibile.
+            </p>
+
+            <p class="reveal">
+              Negli ultimi anni ho inoltre integrato strumenti
+              di AI nei miei workflow creativi e nello sviluppo
+              web, sperimentando nuovi modi di progettare,
+              prototipare e produrre.
+            </p>
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </article>
+    </section>
 
 
-  <!-- PROGETTO 03 -->
+    <!-- =======================================================
+         SKILLS
+    ======================================================== -->
 
-  <article class="project reveal">
+    <section class="skills container">
 
-    <div class="project-content">
+      <div class="section-heading reveal">
 
-      <div class="project-meta">
-        Packaging
-      </div>
+        <div class="section-number">
+          03 / 05
+        </div>
 
-      <div class="project-info">
-
-        <h3 class="project-name">
-          Packaging
-        </h3>
-
-        <p class="project-description">
-          Progettazione di un sistema di packaging e di una
-          comunicazione visiva coordinata, sviluppati per
-          valorizzare il prodotto e costruire una presenza
-          coerente, riconoscibile e distintiva.
-        </p>
+        <h2 class="section-title">
+          Skills
+        </h2>
 
       </div>
 
-      <div class="project-image-wrap">
 
-        <div class="project-image">
+      <div class="skills-list">
 
-          <img
-            src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85"
-            alt="Progetto packaging"
-          >
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            01
+          </div>
+
+          <div class="skill-name">
+            Graphic Design
+          </div>
+
+          <div class="skill-type">
+            Core
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            02
+          </div>
+
+          <div class="skill-name">
+            Brand Identity
+          </div>
+
+          <div class="skill-type">
+            Branding
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            03
+          </div>
+
+          <div class="skill-name">
+            Packaging
+          </div>
+
+          <div class="skill-type">
+            Print
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            04
+          </div>
+
+          <div class="skill-name">
+            Web Design
+          </div>
+
+          <div class="skill-type">
+            Digital
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            05
+          </div>
+
+          <div class="skill-name">
+            WordPress / Elementor
+          </div>
+
+          <div class="skill-type">
+            Development
+          </div>
+
+        </div>
+
+
+        <div class="skill reveal">
+
+          <div class="skill-number">
+            06
+          </div>
+
+          <div class="skill-name">
+            AI-assisted Workflows
+          </div>
+
+          <div class="skill-type">
+            Experiment
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </article>
+    </section>
 
 
-  <!-- PROGETTO 04 -->
+    <!-- =======================================================
+         EXPERIENCE
+    ======================================================== -->
 
-  <article class="project reveal">
+    <section class="experience container">
 
-    <div class="project-content">
+      <div class="experience-grid">
 
-      <div class="project-meta">
-        Digital Design
-      </div>
+        <div class="section-number">
+          04 / 05
+        </div>
 
-      <div class="project-info">
+        <div>
 
-        <h3 class="project-name">
-          Digital<br>
-          Design
-        </h3>
+          <h2 class="section-title reveal">
+            Experience
+          </h2>
 
-        <p class="project-description">
-          Art direction e progettazione di contenuti digitali
-          e materiali per la comunicazione online, con
-          particolare attenzione alla coerenza del sistema
-          visivo e alla riconoscibilità del brand.
-        </p>
+          <div class="experience-list">
 
-      </div>
+            <div class="experience-item reveal">
 
-      <div class="project-image-wrap">
+              <div>
 
-        <div class="project-image">
+                <div class="experience-company">
+                  Graphic & Web Designer
+                </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85"
-            alt="Progetto digital design"
-          >
+                <div class="experience-role">
+                  Esperienza professionale
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                CURRENT
+              </div>
+
+            </div>
+
+
+            <div class="experience-item reveal">
+
+              <div>
+
+                <div class="experience-company">
+                  Freelance
+                </div>
+
+                <div class="experience-role">
+                  Graphic Design · Branding · Packaging · SMM
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                2020 — NOW
+              </div>
+
+            </div>
+
+
+            <div class="experience-item reveal">
+
+              <div>
+
+                <div class="experience-company">
+                  Progetti
+                </div>
+
+                <div class="experience-role">
+                  Graphic Design · Communication
+                </div>
+
+              </div>
+
+              <div class="experience-year">
+                PROJECTS
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </article>
+    </section>
 
 
-  <!-- PROGETTO 05 -->
+    <!-- =======================================================
+         CONTACT
+    ======================================================== -->
 
-  <article class="project reveal">
+    <section
+      class="contact container"
+      id="contact"
+    >
 
-    <div class="project-content">
-
-      <div class="project-meta">
-        Web Design
+      <div class="eyebrow">
+        05 / 05 — Contatti
       </div>
 
-      <div class="project-info">
+      <h2 class="contact-title">
 
-        <h3 class="project-name">
-          Web<br>
-          Design
-        </h3>
+        <span>
+          Parliamo
+        </span>
 
-        <p class="project-description">
-          Progettazione di siti web, landing page e interfacce
-          responsive, sviluppando strutture semplici e
-          funzionali capaci di tradurre l'identità del progetto
-          anche all'interno dell'esperienza digitale.
-        </p>
+        <span class="right">
+          insieme.
+        </span>
 
-      </div>
-
-      <div class="project-image-wrap">
-
-        <div class="project-image">
-
-          <img
-            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85"
-            alt="Progetto web design"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </article>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================== -->
-
-<section
-  class="about container"
-  id="about"
->
-
-  <div class="about-grid">
-
-    <div class="section-number">
-      02 / 05
-    </div>
-
-    <div class="about-main">
-
-      <p class="about-text reveal">
-        Design che
-        <em>comunica.</em>
-      </p>
-
-      <div class="about-description">
-
-        <p class="reveal">
-          Sono un Graphic & Web Designer con esperienza nella
-          progettazione di identità visive, packaging,
-          comunicazione e soluzioni digitali.
-        </p>
-
-        <p class="reveal">
-          Collaboro con aziende, enti e associazioni
-          sviluppando progetti che uniscono creatività,
-          strategia e attenzione ai dettagli, con l'obiettivo
-          di creare una comunicazione chiara, funzionale
-          e riconoscibile.
-        </p>
-
-        <p class="reveal">
-          Negli ultimi anni ho inoltre integrato strumenti
-          di AI nei miei workflow creativi e nello sviluppo
-          web, sperimentando nuovi modi di progettare,
-          prototipare e produrre.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     SKILLS
-======================================================== -->
-
-<section class="skills container">
-
-  <div class="section-heading reveal">
-
-    <div class="section-number">
-      03 / 05
-    </div>
-
-    <h2 class="section-title">
-      Skills
-    </h2>
-
-  </div>
-
-
-  <div class="skills-list">
-
-    <div class="skill reveal">
-      <div class="skill-number">01</div>
-      <div class="skill-name">Graphic Design</div>
-      <div class="skill-type">Core</div>
-    </div>
-
-    <div class="skill reveal">
-      <div class="skill-number">02</div>
-      <div class="skill-name">Brand Identity</div>
-      <div class="skill-type">Branding</div>
-    </div>
-
-    <div class="skill reveal">
-      <div class="skill-number">03</div>
-      <div class="skill-name">Packaging</div>
-      <div class="skill-type">Print</div>
-    </div>
-
-    <div class="skill reveal">
-      <div class="skill-number">04</div>
-      <div class="skill-name">Web Design</div>
-      <div class="skill-type">Digital</div>
-    </div>
-
-    <div class="skill reveal">
-      <div class="skill-number">05</div>
-      <div class="skill-name">WordPress / Elementor</div>
-      <div class="skill-type">Development</div>
-    </div>
-
-    <div class="skill reveal">
-      <div class="skill-number">06</div>
-      <div class="skill-name">AI-assisted Workflows</div>
-      <div class="skill-type">Experiment</div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     EXPERIENCE
-======================================================== -->
-
-<section class="experience container">
-
-  <div class="experience-grid">
-
-    <div class="section-number">
-      04 / 05
-    </div>
-
-    <div>
-
-      <h2 class="section-title reveal">
-        Experience
       </h2>
 
-      <div class="experience-list">
+      <div class="contact-bottom">
 
-        <div class="experience-item reveal">
+        <a
+          class="contact-link"
+          href="mailto:tuamail@email.com"
+        >
+          tuamail@email.com
+        </a>
 
-          <div>
-            <div class="experience-company">
-              Graphic & Web Designer
-            </div>
-
-            <div class="experience-role">
-              Esperienza professionale
-            </div>
-          </div>
-
-          <div class="experience-year">
-            CURRENT
-          </div>
-
-        </div>
-
-
-        <div class="experience-item reveal">
-
-          <div>
-            <div class="experience-company">
-              Freelance
-            </div>
-
-            <div class="experience-role">
-              Graphic Design · Branding · Packaging · SMM
-            </div>
-          </div>
-
-          <div class="experience-year">
-            2020 — NOW
-          </div>
-
-        </div>
-
-
-        <div class="experience-item reveal">
-
-          <div>
-            <div class="experience-company">
-              Progetti
-            </div>
-
-            <div class="experience-role">
-              Graphic Design · Communication
-            </div>
-          </div>
-
-          <div class="experience-year">
-            PROJECTS
-          </div>
-
+        <div class="eyebrow">
+          Disponibile per nuove opportunità
         </div>
 
       </div>
 
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =======================================================
-     CONTACT
-======================================================== -->
-
-<section
-  class="contact container"
-  id="contact"
->
-
-  <div class="eyebrow">
-    05 / 05 — Contatti
-  </div>
-
-  <h2 class="contact-title">
-
-    <span>
-      Parliamo
-    </span>
-
-    <span class="right">
-      insieme.
-    </span>
-
-  </h2>
-
-  <div class="contact-bottom">
-
-    <a
-      class="contact-link"
-      href="mailto:tuamail@email.com"
-    >
-      tuamail@email.com
-    </a>
-
-    <div class="eyebrow">
-      Disponibile per nuove opportunità
-    </div>
-
-  </div>
-
-</section>
-```
+    </section>
 
   </main>
+
 
   <!-- =======================================================
        FOOTER
@@ -2268,21 +2169,20 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
   <footer>
 
-```
-<span>
-  Diego Scarponi © 2026
-</span>
+    <span>
+      Diego Scarponi © 2026
+    </span>
 
-<span>
-  Graphic & Web Designer
-</span>
+    <span>
+      Graphic & Web Designer
+    </span>
 
-<span>
-  Back to top ↑
-</span>
-```
+    <span>
+      Back to top ↑
+    </span>
 
   </footer>
+
 
   <!-- =======================================================
        JAVASCRIPT
@@ -2335,16 +2235,13 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
       project.addEventListener("click", () => {
 
-        const wasOpen =
-          project.classList.contains("open");
-
+        const wasOpen = project.classList.contains("open");
 
         projects.forEach((item) => {
 
           item.classList.remove("open");
 
         });
-
 
         if (!wasOpen) {
 
@@ -2377,8 +2274,11 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
     });
 
+
   </script>
+
 
 </body>
 
 </html>
+```
