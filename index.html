@@ -203,21 +203,9 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     }
 
     .hero-bottom {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr 1fr;
-
       border-top: 1px solid var(--line);
 
       padding-top: 12px;
-    }
-
-    .hero-bottom div {
-      font-family: "DM Mono", monospace;
-
-      font-size: 10px;
-
-      text-transform: uppercase;
     }
 
 
@@ -228,30 +216,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     .intro-services {
       padding-top: 70px;
       padding-bottom: 40px;
-    }
-
-    .intro-services-head {
-      display: grid;
-
-      grid-template-columns: 120px 1fr;
-
-      gap: 30px;
-
-      border-top: 1px solid var(--black);
-
-      padding-top: 12px;
-
-      margin-bottom: 35px;
-    }
-
-    .intro-services-copy {
-      font-size: clamp(22px, 3vw, 42px);
-
-      line-height: .98;
-
-      letter-spacing: -.045em;
-
-      max-width: 850px;
     }
 
     .intro-services-grid {
@@ -439,7 +403,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
       max-width: 480px;
 
-      padding-top: 30px;
+      padding-top: 0;
 
       opacity: 0;
 
@@ -452,7 +416,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
       transition:
         opacity .5s ease,
         max-height .7s cubic-bezier(.2,.8,.2,1),
-        padding-top .6s cubic-bezier(.2,.8,.2,1),
+        padding-top .7s cubic-bezier(.2,.8,.2,1),
         transform .7s cubic-bezier(.2,.8,.2,1);
     }
 
@@ -936,14 +900,9 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
       .hero-bottom {
 
-        grid-template-columns: 1fr 1fr;
+        padding-top: 0;
 
-        gap: 12px;
-      }
-
-      .hero-bottom div:last-child {
-
-        display: none;
+        border-top: 0;
       }
 
 
@@ -956,22 +915,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         padding-top: 50px;
 
         padding-bottom: 20px;
-      }
-
-      .intro-services-head {
-
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-
-        margin-bottom: 25px;
-      }
-
-      .intro-services-copy {
-
-        font-size: 27px;
-
-        max-width: 100%;
       }
 
       .intro-services-grid {
@@ -1101,7 +1044,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
         line-height: 1.5;
 
-        padding-top: 22px;
+        padding-top: 0;
 
         opacity: 0;
 
@@ -1114,7 +1057,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         transition:
           opacity .5s ease,
           max-height .7s cubic-bezier(.2,.8,.2,1),
-          padding-top .6s cubic-bezier(.2,.8,.2,1),
+          padding-top .7s cubic-bezier(.2,.8,.2,1),
           transform .7s cubic-bezier(.2,.8,.2,1);
       }
 
@@ -1217,8 +1160,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
         padding-top: 22px;
 
         transform: translateY(0);
-
-        margin-top: 0;
       }
 
       .project.open .project-image-wrap {
@@ -1559,21 +1500,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
   </h1>
 
 
-  <div class="hero-bottom">
-
-    <div>
-      Brand
-    </div>
-
-    <div>
-      Digital
-    </div>
-
-    <div>
-      Web / AI
-    </div>
-
-  </div>
+  <div class="hero-bottom"></div>
 
 </section>
 
@@ -1586,21 +1513,6 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
   class="intro-services container"
   aria-label="Aree di lavoro"
 >
-
-  <div class="intro-services-head">
-
-    <div class="eyebrow">
-      What I do
-    </div>
-
-    <p class="intro-services-copy reveal">
-      Identità, digitale e web. Progetto sistemi visivi
-      pensati per comunicare in modo chiaro, riconoscibile
-      e contemporaneo.
-    </p>
-
-  </div>
-
 
   <div class="intro-services-grid">
 
@@ -1700,8 +1612,8 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
     </div>
 
     <h2 class="section-title">
-      Selected<br>
-      Work
+      Progetti<br>
+      selezionati
     </h2>
 
   </div>
@@ -2262,7 +2174,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
   <!-- =======================================================
        FOOTER
-  ======================================================== -->
+    ======================================================== -->
 
   <footer>
 
@@ -2284,7 +2196,7 @@ content="Diego Scarponi — Graphic & Web Designer. Brand Identity, Packaging, D
 
   <!-- =======================================================
        JAVASCRIPT
-  ======================================================== -->
+    ======================================================== -->
 
   <script>
 
