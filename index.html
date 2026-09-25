@@ -249,15 +249,25 @@
     /* =========================================================
        PROJECT ACCORDION
        - il testo apre/chiude con un pannello a "fisarmonica" (CSS)
-       - la foto passa da piccola a grande con un'animazione
-         calcolata via JS (FLIP), fluida anche su mobile
+       - la foto è quella che comanda tutto: da chiusa la sua
+         altezza determina l'altezza del blocco, e categoria +
+         titolo sono centrati rispetto ad essa; da aperta il
+         titolo resta allineato in alto e la descrizione si
+         allinea in basso, sempre rispetto alla foto
+       - la crescita della foto è animata via JS (tecnica FLIP),
+         usata sia per aprire sia per chiudere, così l'animazione
+         è identica ed è sempre fluida in entrambe le direzioni
        - dentro la foto principale c'è una piccola gallery
-         (swipe/scroll orizzontale + pallini di navigazione)
+         (frecce + pallini di navigazione)
+       - --project-gutter è lo spazio fisso sopra/sotto la foto:
+         non cambia mai, che il progetto sia aperto o chiuso, ed
+         è quello che fissa la posizione delle righe separatrici
     ========================================================== */
 
     .project {
+      --project-gutter: 40px;
       border-top: 1px solid var(--black);
-      padding: 50px 0;
+      padding: var(--project-gutter) 0;
       cursor: pointer;
     }
 
@@ -267,10 +277,20 @@
 
     .project-content {
       display: grid;
-      grid-template-columns: 15% 40% 40%;
-      column-gap: 2.5%;
+      grid-template-columns: 1fr 40%;
+      column-gap: 4%;
       align-items: stretch;
-      min-height: 180px;
+    }
+
+    .project-text {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project.open .project-text {
+      justify-content: space-between;
     }
 
     .project-meta {
@@ -279,18 +299,10 @@
       line-height: 1.5;
       text-transform: uppercase;
       color: var(--gray);
-      padding-top: 4px;
-    }
-
-    .project-info {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 180px;
     }
 
     .project-name {
+      margin-top: 6px;
       font-size: clamp(38px, 5vw, 76px);
       line-height: .86;
       letter-spacing: -.065em;
@@ -310,7 +322,6 @@
 
     .project-panel-inner {
       overflow: hidden;
-      padding-left: 17.5%;
     }
 
     .project-description {
@@ -333,14 +344,11 @@
 
     .project-image {
       position: relative;
-      width: 180px;
+      width: 100%;
       height: 180px;
       flex-shrink: 0;
       overflow: hidden;
       background: #ddd;
-      transition:
-        width .7s cubic-bezier(.2,.8,.2,1),
-        height .7s cubic-bezier(.2,.8,.2,1);
     }
 
     .project:hover .project-image img {
@@ -348,15 +356,14 @@
     }
 
     .project.open .project-image {
-      width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;
     }
 
     /* Gallery dentro la foto principale: le foto extra vivono qui,
        non sotto il testo. Da chiusa si vede solo la prima foto;
-       da aperta si può scorrere/swipare tra tutte, con i pallini
-       come indicatore e navigazione. */
+       da aperta si naviga con le frecce (o swipe) tra tutte,
+       con i pallini come indicatore. */
 
     .project-image-gallery {
       display: flex;
@@ -366,7 +373,7 @@
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      transition: transform .9s cubic-bezier(.2,.8,.2,1);
+      touch-action: pan-x;
     }
 
     .project-image-gallery::-webkit-scrollbar {
@@ -383,6 +390,7 @@
       height: 100%;
       object-fit: cover;
       scroll-snap-align: start;
+      transition: transform .9s cubic-bezier(.2,.8,.2,1);
     }
 
     .project-image-dots {
@@ -395,6 +403,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .3s ease;
+      z-index: 2;
     }
 
     .project.open .project-image-dots {
@@ -414,6 +423,55 @@
     .dot.active {
       background: #fff;
       transform: scale(1.35);
+    }
+
+    /* Frecce di navigazione: cerchio ben visibile sopra la foto */
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(17, 17, 17, .55);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease, background .2s ease;
+      z-index: 2;
+    }
+
+    .gallery-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .gallery-arrow:hover {
+      background: rgba(17, 17, 17, .8);
+    }
+
+    .gallery-arrow:disabled {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+
+    .project.open .gallery-arrow {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-arrow.prev {
+      left: 14px;
+    }
+
+    .gallery-arrow.next {
+      right: 14px;
     }
 
     .about {
@@ -713,36 +771,24 @@
       }
 
       .project {
-        padding: 50px 0;
         overflow: hidden;
       }
+
+      /* Chiuso: 2 colonne come da richiesta — testo (categoria +
+         titolo, centrati rispetto alla foto) a sinistra, foto a
+         destra. Aperto: una sola colonna, testo sopra e foto
+         grande sotto. */
 
       .project-content {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 120px;
         column-gap: 20px;
-        align-items: center;
-        min-height: 120px;
-        transition: grid-template-columns .6s cubic-bezier(.4, 0, .2, 1);
+        align-items: stretch;
       }
 
-      .project-meta {
-        grid-column: 1;
-        grid-row: 1;
-        align-self: start;
-        padding-top: 0;
-        font-size: 9px;
-        line-height: 1.4;
-      }
-
-      .project-info {
-        grid-column: 1;
-        grid-row: 1;
-        min-height: 120px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding-top: 22px;
+      .project.open .project-content {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
       }
 
       .project-name {
@@ -751,77 +797,30 @@
         letter-spacing: -.06em;
       }
 
-      .project-panel-inner {
-        padding-left: 0;
+      .project.open .project-name {
+        font-size: clamp(24px, 6.5vw, 34px);
       }
 
       .project-description {
         font-size: 13px;
         line-height: 1.5;
-        padding-top: 22px;
+        padding-top: 18px;
       }
 
       .project-image-wrap {
-        grid-column: 2;
-        grid-row: 1;
         width: 120px;
         height: 120px;
-        align-self: center;
-        justify-self: end;
-        display: flex;
-        align-items: center;
         justify-content: center;
+      }
+
+      .project.open .project-image-wrap {
+        width: 100%;
+        height: auto;
       }
 
       .project-image {
         width: 120px;
         height: 120px;
-        aspect-ratio: 1 / 1;
-        /* su mobile la crescita è gestita via JavaScript (FLIP),
-           non con la transizione CSS: evita lo scatto dovuto al
-           cambio di posizione nella griglia */
-        transition: none;
-      }
-
-      .project.open {
-        padding-top: 50px;
-        padding-bottom: 50px;
-      }
-
-      .project.open .project-content {
-        grid-template-columns: 1fr;
-        row-gap: 0;
-        min-height: 0;
-      }
-
-      .project.open .project-meta {
-        grid-column: 1;
-        grid-row: 1;
-        padding-top: 0;
-        align-self: start;
-      }
-
-      .project.open .project-info {
-        grid-column: 1;
-        grid-row: 2;
-        min-height: auto;
-        padding-top: 22px;
-        display: block;
-      }
-
-      .project.open .project-name {
-        font-size: clamp(24px, 6.5vw, 34px);
-      }
-
-      .project.open .project-image-wrap {
-        grid-column: 1;
-        grid-row: 3;
-        width: 100%;
-        height: auto;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        justify-self: stretch;
-        align-self: auto;
       }
 
       .project.open .project-image {
@@ -1087,9 +1086,24 @@
 
       <article class="project reveal">
         <div class="project-content">
-          <div class="project-meta">Brand Identity</div>
-          <div class="project-info">
-            <h3 class="project-name">Conero<br>Sports Hub</h3>
+          <div class="project-text">
+            <div>
+              <div class="project-meta">Brand Identity</div>
+              <h3 class="project-name">Conero<br>Sports Hub</h3>
+            </div>
+            <div class="project-panel">
+              <div class="project-panel-inner">
+                <p class="project-description">
+                  Conero Sports Hub è una nuova polisportiva con sede
+                  a Sirolo. L'identità visiva è stata sviluppata
+                  ispirandosi agli stemmi delle società sportive,
+                  creando un marchio essenziale, riconoscibile e
+                  strettamente legato al territorio attraverso forme
+                  pulite e una palette cromatica che richiama il mare
+                  della Riviera del Conero.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
@@ -1099,6 +1113,12 @@
                 <img src="https://picsum.photos/seed/conero2/1200/1200" alt="Conero Sports Hub - immagine 3">
                 <img src="https://picsum.photos/seed/conero3/1200/1200" alt="Conero Sports Hub - immagine 4">
               </div>
+              <button type="button" class="gallery-arrow prev" aria-label="Immagine precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow next" aria-label="Immagine successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
               <div class="project-image-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1108,26 +1128,27 @@
             </div>
           </div>
         </div>
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="project-description">
-              Conero Sports Hub è una nuova polisportiva con sede
-              a Sirolo. L'identità visiva è stata sviluppata
-              ispirandosi agli stemmi delle società sportive,
-              creando un marchio essenziale, riconoscibile e
-              strettamente legato al territorio attraverso forme
-              pulite e una palette cromatica che richiama il mare
-              della Riviera del Conero.
-            </p>
-          </div>
-        </div>
       </article>
 
       <article class="project reveal">
         <div class="project-content">
-          <div class="project-meta">Comunicazione</div>
-          <div class="project-info">
-            <h3 class="project-name">ATS<br>Marche</h3>
+          <div class="project-text">
+            <div>
+              <div class="project-meta">Comunicazione</div>
+              <h3 class="project-name">ATS<br>Marche</h3>
+            </div>
+            <div class="project-panel">
+              <div class="project-panel-inner">
+                <p class="project-description">
+                  Progettazione della comunicazione visiva per un
+                  evento promosso dall'Ambito Territoriale Sociale
+                  13 e rivolto a diversi comuni della Regione Marche.
+                  Il progetto comprende concept visivo, sistema
+                  grafico e materiali coordinati per la comunicazione
+                  dell'evento.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
@@ -1137,6 +1158,12 @@
                 <img src="https://picsum.photos/seed/atsmarche2/1200/1200" alt="ATS Marche - immagine 3">
                 <img src="https://picsum.photos/seed/atsmarche3/1200/1200" alt="ATS Marche - immagine 4">
               </div>
+              <button type="button" class="gallery-arrow prev" aria-label="Immagine precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow next" aria-label="Immagine successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
               <div class="project-image-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1146,25 +1173,25 @@
             </div>
           </div>
         </div>
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="project-description">
-              Progettazione della comunicazione visiva per un
-              evento promosso dall'Ambito Territoriale Sociale
-              13 e rivolto a diversi comuni della Regione Marche.
-              Il progetto comprende concept visivo, sistema
-              grafico e materiali coordinati per la comunicazione
-              dell'evento.
-            </p>
-          </div>
-        </div>
       </article>
 
       <article class="project reveal">
         <div class="project-content">
-          <div class="project-meta">Packaging</div>
-          <div class="project-info">
-            <h3 class="project-name">Packaging</h3>
+          <div class="project-text">
+            <div>
+              <div class="project-meta">Packaging</div>
+              <h3 class="project-name">Packaging</h3>
+            </div>
+            <div class="project-panel">
+              <div class="project-panel-inner">
+                <p class="project-description">
+                  Progettazione di un sistema di packaging e di una
+                  comunicazione visiva coordinata, sviluppati per
+                  valorizzare il prodotto e costruire una presenza
+                  coerente, riconoscibile e distintiva.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
@@ -1174,6 +1201,12 @@
                 <img src="https://picsum.photos/seed/packaging2/1200/1200" alt="Packaging - immagine 3">
                 <img src="https://picsum.photos/seed/packaging3/1200/1200" alt="Packaging - immagine 4">
               </div>
+              <button type="button" class="gallery-arrow prev" aria-label="Immagine precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow next" aria-label="Immagine successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
               <div class="project-image-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1183,23 +1216,25 @@
             </div>
           </div>
         </div>
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="project-description">
-              Progettazione di un sistema di packaging e di una
-              comunicazione visiva coordinata, sviluppati per
-              valorizzare il prodotto e costruire una presenza
-              coerente, riconoscibile e distintiva.
-            </p>
-          </div>
-        </div>
       </article>
 
       <article class="project reveal">
         <div class="project-content">
-          <div class="project-meta">Digital Design</div>
-          <div class="project-info">
-            <h3 class="project-name">Digital<br>Design</h3>
+          <div class="project-text">
+            <div>
+              <div class="project-meta">Digital Design</div>
+              <h3 class="project-name">Digital<br>Design</h3>
+            </div>
+            <div class="project-panel">
+              <div class="project-panel-inner">
+                <p class="project-description">
+                  Art direction e progettazione di contenuti digitali
+                  e materiali per la comunicazione online, con
+                  particolare attenzione alla coerenza del sistema
+                  visivo e alla riconoscibilità del brand.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
@@ -1209,6 +1244,12 @@
                 <img src="https://picsum.photos/seed/digital2/1200/1200" alt="Digital Design - immagine 3">
                 <img src="https://picsum.photos/seed/digital3/1200/1200" alt="Digital Design - immagine 4">
               </div>
+              <button type="button" class="gallery-arrow prev" aria-label="Immagine precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow next" aria-label="Immagine successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
               <div class="project-image-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1218,23 +1259,25 @@
             </div>
           </div>
         </div>
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="project-description">
-              Art direction e progettazione di contenuti digitali
-              e materiali per la comunicazione online, con
-              particolare attenzione alla coerenza del sistema
-              visivo e alla riconoscibilità del brand.
-            </p>
-          </div>
-        </div>
       </article>
 
       <article class="project reveal">
         <div class="project-content">
-          <div class="project-meta">Web Design</div>
-          <div class="project-info">
-            <h3 class="project-name">Web<br>Design</h3>
+          <div class="project-text">
+            <div>
+              <div class="project-meta">Web Design</div>
+              <h3 class="project-name">Web<br>Design</h3>
+            </div>
+            <div class="project-panel">
+              <div class="project-panel-inner">
+                <p class="project-description">
+                  Progettazione di siti web, landing page e interfacce
+                  responsive, sviluppando strutture semplici e
+                  funzionali capaci di tradurre l'identità del progetto
+                  anche all'interno dell'esperienza digitale.
+                </p>
+              </div>
+            </div>
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
@@ -1244,6 +1287,12 @@
                 <img src="https://picsum.photos/seed/webdesign2/1200/1200" alt="Web Design - immagine 3">
                 <img src="https://picsum.photos/seed/webdesign3/1200/1200" alt="Web Design - immagine 4">
               </div>
+              <button type="button" class="gallery-arrow prev" aria-label="Immagine precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="gallery-arrow next" aria-label="Immagine successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
               <div class="project-image-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -1251,16 +1300,6 @@
                 <span class="dot"></span>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="project-panel">
-          <div class="project-panel-inner">
-            <p class="project-description">
-              Progettazione di siti web, landing page e interfacce
-              responsive, sviluppando strutture semplici e
-              funzionali capaci di tradurre l'identità del progetto
-              anche all'interno dell'esperienza digitale.
-            </p>
           </div>
         </div>
       </article>
@@ -1453,59 +1492,122 @@
 
     /* =========================================================
        ACCORDION PROGETTI
-       Il testo si apre/chiude con una transizione CSS fluida.
+       Il testo si apre/chiude con una transizione CSS fluida
+       (pannello a fisarmonica).
 
-       Su DESKTOP la foto cresce con una normale transizione CSS
-       (width/height): niente scatti, perché lì la foto non
-       cambia mai posizione, cambia solo dimensione.
-
-       Su MOBILE, invece, la foto cambia anche posizione
-       (da fianco al testo a sotto il testo), e quel salto non è
-       animabile col CSS: per questo lì usiamo una tecnica via
-       JavaScript (FLIP) che calcola posizione di partenza e
-       arrivo e le collega con un movimento fluido.
+       La foto, invece, cambia sia dimensione sia posizione
+       quando l'accordion si apre/chiude (su mobile passa da
+       fianco al testo a sotto il testo; su desktop passa da
+       colonna stretta a larghezza piena). Un salto così non è
+       animabile in modo affidabile col solo CSS (width/height
+       non interpolano bene da/verso "auto"), quindi usiamo
+       sempre la stessa tecnica via JavaScript (FLIP): calcolo
+       posizione/dimensione di partenza e arrivo e le collego con
+       un'unica animazione a transform, identica sia per aprire
+       sia per chiudere.
     ========================================================== */
 
     const projects = document.querySelectorAll(".project");
-    const isMobileLayout = () => window.matchMedia("(max-width: 800px)").matches;
+
+    function animateImage(imageWrap, first) {
+      // LAST: dove si trova la foto adesso, dopo il cambio di stato
+      const last = imageWrap.getBoundingClientRect();
+
+      const deltaX = first.left - last.left;
+      const deltaY = first.top - last.top;
+      const scaleX = first.width / last.width;
+      const scaleY = first.height / last.height;
+
+      // INVERT: la piazzo (visivamente) ancora nella posizione di partenza
+      imageWrap.style.transition = "none";
+      imageWrap.style.transformOrigin = "top left";
+      imageWrap.style.transform =
+        "translate(" + deltaX + "px, " + deltaY + "px) scale(" + scaleX + ", " + scaleY + ")";
+
+      // forzo il ricalcolo del layout prima di animare
+      imageWrap.getBoundingClientRect();
+
+      // PLAY: animo verso la posizione/dimensione reale finale.
+      // Stessa curva e stessa durata sia per aprire sia per chiudere.
+      requestAnimationFrame(() => {
+        imageWrap.style.transition = "transform .6s cubic-bezier(.4, 0, .2, 1)";
+        imageWrap.style.transform = "";
+      });
+    }
 
     projects.forEach((project) => {
 
       const imageWrap = project.querySelector(".project-image-wrap");
       const gallery = project.querySelector(".project-image-gallery");
       const dots = project.querySelectorAll(".dot");
+      const prevArrow = project.querySelector(".gallery-arrow.prev");
+      const nextArrow = project.querySelector(".gallery-arrow.next");
+      const slideCount = gallery ? gallery.children.length : 0;
 
       const setActiveDot = (index) => {
         dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+        if (prevArrow) prevArrow.disabled = index <= 0;
+        if (nextArrow) nextArrow.disabled = index >= slideCount - 1;
       };
 
-      // pallini: cliccandoli si passa alla foto corrispondente
-      // senza aprire/chiudere l'accordion
+      const goToSlide = (index) => {
+        if (!gallery) return;
+        const clamped = Math.max(0, Math.min(slideCount - 1, index));
+        gallery.scrollTo({ left: gallery.children[clamped].offsetLeft, behavior: "smooth" });
+        setActiveDot(clamped);
+      };
+
+      const currentSlide = () => (gallery ? Math.round(gallery.scrollLeft / gallery.clientWidth) : 0);
+
+      // pallini e frecce: navigano la gallery senza mai aprire/chiudere
+      // l'accordion (altrimenti un tentativo di scorrere le foto
+      // chiuderebbe il progetto)
       dots.forEach((dot, index) => {
         dot.addEventListener("click", (event) => {
           event.stopPropagation();
-          if (!gallery) return;
-          const targetImage = gallery.children[index];
-          gallery.scrollTo({ left: targetImage.offsetLeft, behavior: "smooth" });
-          setActiveDot(index);
+          goToSlide(index);
         });
       });
 
-      // scorrendo la gallery (swipe / drag) aggiorno il pallino attivo
+      if (prevArrow) {
+        prevArrow.addEventListener("click", (event) => {
+          event.stopPropagation();
+          goToSlide(currentSlide() - 1);
+        });
+      }
+
+      if (nextArrow) {
+        nextArrow.addEventListener("click", (event) => {
+          event.stopPropagation();
+          goToSlide(currentSlide() + 1);
+        });
+      }
+
+      // scorrendo la gallery (swipe / trascinamento) aggiorno pallino
+      // e frecce attive
       if (gallery) {
         gallery.addEventListener("scroll", () => {
-          const index = Math.round(gallery.scrollLeft / gallery.clientWidth);
-          setActiveDot(index);
+          setActiveDot(currentSlide());
+        });
+      }
+
+      // qualunque click dentro la foto, a progetto aperto, non deve
+      // mai propagarsi e chiudere l'accordion: così si può cliccare,
+      // trascinare o scorrere la gallery in tutta libertà
+      if (imageWrap) {
+        imageWrap.addEventListener("click", (event) => {
+          if (project.classList.contains("open")) {
+            event.stopPropagation();
+          }
         });
       }
 
       project.addEventListener("click", () => {
 
         const wasOpen = project.classList.contains("open");
-        const useFlip = isMobileLayout();
 
-        // FIRST: dove si trova la foto ora (solo se serve il FLIP)
-        const first = useFlip ? imageWrap.getBoundingClientRect() : null;
+        // FIRST: dove si trova la foto ora, prima del cambio di stato
+        const first = imageWrap.getBoundingClientRect();
 
         // chiudo tutti i progetti, apro/chiudo quello cliccato
         projects.forEach((item) => item.classList.remove("open"));
@@ -1517,35 +1619,11 @@
           setActiveDot(0);
         }
 
-        if (!useFlip) {
-          // desktop: la transizione CSS su width/height fa già tutto
-          return;
-        }
-
-        // LAST: dove si troverà la foto dopo il cambio di stato
-        const last = imageWrap.getBoundingClientRect();
-
-        const deltaX = first.left - last.left;
-        const deltaY = first.top - last.top;
-        const scaleX = first.width / last.width;
-        const scaleY = first.height / last.height;
-
-        // INVERT: la piazzo (visivamente) ancora nella posizione di partenza
-        imageWrap.style.transition = "none";
-        imageWrap.style.transformOrigin = "top left";
-        imageWrap.style.transform =
-          "translate(" + deltaX + "px, " + deltaY + "px) scale(" + scaleX + ", " + scaleY + ")";
-
-        // forzo il ricalcolo del layout prima di animare
-        imageWrap.getBoundingClientRect();
-
-        // PLAY: animo verso la posizione/dimensione reale finale
-        requestAnimationFrame(() => {
-          imageWrap.style.transition = "transform .6s cubic-bezier(.4, 0, .2, 1)";
-          imageWrap.style.transform = "";
-        });
+        animateImage(imageWrap, first);
 
       });
+
+      setActiveDot(0);
 
     });
 
