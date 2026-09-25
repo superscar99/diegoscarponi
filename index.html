@@ -302,7 +302,7 @@
     }
 
     .project-name {
-      margin-top: 6px;
+      margin-top: 10px;
       font-size: clamp(38px, 5vw, 76px);
       line-height: .86;
       letter-spacing: -.065em;
@@ -344,8 +344,8 @@
 
     .project-image {
       position: relative;
-      width: 100%;
-      height: 180px;
+      width: 180px;
+      aspect-ratio: 1 / 1;
       flex-shrink: 0;
       overflow: hidden;
       background: #ddd;
@@ -356,8 +356,7 @@
     }
 
     .project.open .project-image {
-      height: auto;
-      aspect-ratio: 1 / 1;
+      width: 100%;
     }
 
     /* Gallery dentro la foto principale: le foto extra vivono qui,
@@ -788,7 +787,7 @@
 
       .project.open .project-content {
         grid-template-columns: 1fr;
-        row-gap: 30px;
+        row-gap: 44px;
       }
 
       .project-name {
@@ -804,7 +803,7 @@
       .project-description {
         font-size: 13px;
         line-height: 1.5;
-        padding-top: 18px;
+        padding-top: 28px;
       }
 
       .project-image-wrap {
@@ -820,13 +819,10 @@
 
       .project-image {
         width: 120px;
-        height: 120px;
       }
 
       .project.open .project-image {
         width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
       }
 
       .about {
@@ -963,7 +959,6 @@
 
       .project-image {
         width: 100px;
-        height: 100px;
       }
 
       .project-description {
