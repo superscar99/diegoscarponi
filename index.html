@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+"<!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -251,6 +251,8 @@
        - il testo apre/chiude con un pannello a "fisarmonica" (CSS)
        - la foto passa da piccola a grande con un'animazione
          calcolata via JS (FLIP), fluida anche su mobile
+       - dentro la foto principale c'è una piccola gallery
+         (swipe/scroll orizzontale + pallini di navigazione)
     ========================================================== */
 
     .project {
@@ -318,29 +320,6 @@
       padding-top: 30px;
     }
 
-    .project-gallery {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      max-width: 700px;
-      margin-top: 24px;
-    }
-
-    .project-gallery::-webkit-scrollbar {
-      display: none;
-    }
-
-    .project-gallery img {
-      flex: 0 0 190px;
-      width: 190px;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      scroll-snap-align: start;
-    }
-
     .project.open .project-panel {
       grid-template-rows: 1fr;
     }
@@ -353,6 +332,7 @@
     }
 
     .project-image {
+      position: relative;
       width: 180px;
       height: 180px;
       flex-shrink: 0;
@@ -363,13 +343,6 @@
         height .7s cubic-bezier(.2,.8,.2,1);
     }
 
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .9s cubic-bezier(.2,.8,.2,1);
-    }
-
     .project:hover .project-image img {
       transform: scale(1.025);
     }
@@ -378,6 +351,69 @@
       width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;
+    }
+
+    /* Gallery dentro la foto principale: le foto extra vivono qui,
+       non sotto il testo. Da chiusa si vede solo la prima foto;
+       da aperta si può scorrere/swipare tra tutte, con i pallini
+       come indicatore e navigazione. */
+
+    .project-image-gallery {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      transition: transform .9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project-image-gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .project.open .project-image-gallery {
+      overflow-x: auto;
+    }
+
+    .project-image-gallery img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      scroll-snap-align: start;
+    }
+
+    .project-image-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .project.open .project-image-dots {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.55);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .dot.active {
+      background: #fff;
+      transform: scale(1.35);
     }
 
     .about {
@@ -725,16 +761,6 @@
         padding-top: 22px;
       }
 
-      .project-gallery {
-        gap: 10px;
-        margin-top: 18px;
-      }
-
-      .project-gallery img {
-        flex: 0 0 120px;
-        width: 120px;
-      }
-
       .project-image-wrap {
         grid-column: 2;
         grid-row: 1;
@@ -1067,7 +1093,18 @@
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85" alt="Conero Sports Hub">
+              <div class="project-image-gallery">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85" alt="Conero Sports Hub">
+                <img src="https://picsum.photos/seed/conero1/1200/1200" alt="Conero Sports Hub - immagine 2">
+                <img src="https://picsum.photos/seed/conero2/1200/1200" alt="Conero Sports Hub - immagine 3">
+                <img src="https://picsum.photos/seed/conero3/1200/1200" alt="Conero Sports Hub - immagine 4">
+              </div>
+              <div class="project-image-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1082,11 +1119,6 @@
               pulite e una palette cromatica che richiama il mare
               della Riviera del Conero.
             </p>
-            <div class="project-gallery">
-              <img src="https://picsum.photos/seed/conero1/400/400" alt="Conero Sports Hub - immagine 1">
-              <img src="https://picsum.photos/seed/conero2/400/400" alt="Conero Sports Hub - immagine 2">
-              <img src="https://picsum.photos/seed/conero3/400/400" alt="Conero Sports Hub - immagine 3">
-            </div>
           </div>
         </div>
       </article>
@@ -1099,7 +1131,18 @@
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85" alt="Progetto comunicazione ATS Marche">
+              <div class="project-image-gallery">
+                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85" alt="Progetto comunicazione ATS Marche">
+                <img src="https://picsum.photos/seed/atsmarche1/1200/1200" alt="ATS Marche - immagine 2">
+                <img src="https://picsum.photos/seed/atsmarche2/1200/1200" alt="ATS Marche - immagine 3">
+                <img src="https://picsum.photos/seed/atsmarche3/1200/1200" alt="ATS Marche - immagine 4">
+              </div>
+              <div class="project-image-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1113,11 +1156,6 @@
               grafico e materiali coordinati per la comunicazione
               dell'evento.
             </p>
-            <div class="project-gallery">
-              <img src="https://picsum.photos/seed/atsmarche1/400/400" alt="ATS Marche - immagine 1">
-              <img src="https://picsum.photos/seed/atsmarche2/400/400" alt="ATS Marche - immagine 2">
-              <img src="https://picsum.photos/seed/atsmarche3/400/400" alt="ATS Marche - immagine 3">
-            </div>
           </div>
         </div>
       </article>
@@ -1130,7 +1168,18 @@
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85" alt="Progetto packaging">
+              <div class="project-image-gallery">
+                <img src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?auto=format&fit=crop&w=1200&q=85" alt="Progetto packaging">
+                <img src="https://picsum.photos/seed/packaging1/1200/1200" alt="Packaging - immagine 2">
+                <img src="https://picsum.photos/seed/packaging2/1200/1200" alt="Packaging - immagine 3">
+                <img src="https://picsum.photos/seed/packaging3/1200/1200" alt="Packaging - immagine 4">
+              </div>
+              <div class="project-image-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1142,11 +1191,6 @@
               valorizzare il prodotto e costruire una presenza
               coerente, riconoscibile e distintiva.
             </p>
-            <div class="project-gallery">
-              <img src="https://picsum.photos/seed/packaging1/400/400" alt="Packaging - immagine 1">
-              <img src="https://picsum.photos/seed/packaging2/400/400" alt="Packaging - immagine 2">
-              <img src="https://picsum.photos/seed/packaging3/400/400" alt="Packaging - immagine 3">
-            </div>
           </div>
         </div>
       </article>
@@ -1159,7 +1203,18 @@
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85" alt="Progetto digital design">
+              <div class="project-image-gallery">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85" alt="Progetto digital design">
+                <img src="https://picsum.photos/seed/digital1/1200/1200" alt="Digital Design - immagine 2">
+                <img src="https://picsum.photos/seed/digital2/1200/1200" alt="Digital Design - immagine 3">
+                <img src="https://picsum.photos/seed/digital3/1200/1200" alt="Digital Design - immagine 4">
+              </div>
+              <div class="project-image-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1171,11 +1226,6 @@
               particolare attenzione alla coerenza del sistema
               visivo e alla riconoscibilità del brand.
             </p>
-            <div class="project-gallery">
-              <img src="https://picsum.photos/seed/digital1/400/400" alt="Digital Design - immagine 1">
-              <img src="https://picsum.photos/seed/digital2/400/400" alt="Digital Design - immagine 2">
-              <img src="https://picsum.photos/seed/digital3/400/400" alt="Digital Design - immagine 3">
-            </div>
           </div>
         </div>
       </article>
@@ -1188,7 +1238,18 @@
           </div>
           <div class="project-image-wrap">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85" alt="Progetto web design">
+              <div class="project-image-gallery">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85" alt="Progetto web design">
+                <img src="https://picsum.photos/seed/webdesign1/1200/1200" alt="Web Design - immagine 2">
+                <img src="https://picsum.photos/seed/webdesign2/1200/1200" alt="Web Design - immagine 3">
+                <img src="https://picsum.photos/seed/webdesign3/1200/1200" alt="Web Design - immagine 4">
+              </div>
+              <div class="project-image-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -1200,11 +1261,6 @@
               funzionali capaci di tradurre l'identità del progetto
               anche all'interno dell'esperienza digitale.
             </p>
-            <div class="project-gallery">
-              <img src="https://picsum.photos/seed/webdesign1/400/400" alt="Web Design - immagine 1">
-              <img src="https://picsum.photos/seed/webdesign2/400/400" alt="Web Design - immagine 2">
-              <img src="https://picsum.photos/seed/webdesign3/400/400" alt="Web Design - immagine 3">
-            </div>
           </div>
         </div>
       </article>
@@ -1416,6 +1472,32 @@
     projects.forEach((project) => {
 
       const imageWrap = project.querySelector(".project-image-wrap");
+      const gallery = project.querySelector(".project-image-gallery");
+      const dots = project.querySelectorAll(".dot");
+
+      const setActiveDot = (index) => {
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+      };
+
+      // pallini: cliccandoli si passa alla foto corrispondente
+      // senza aprire/chiudere l'accordion
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (!gallery) return;
+          const targetImage = gallery.children[index];
+          gallery.scrollTo({ left: targetImage.offsetLeft, behavior: "smooth" });
+          setActiveDot(index);
+        });
+      });
+
+      // scorrendo la gallery (swipe / drag) aggiorno il pallino attivo
+      if (gallery) {
+        gallery.addEventListener("scroll", () => {
+          const index = Math.round(gallery.scrollLeft / gallery.clientWidth);
+          setActiveDot(index);
+        });
+      }
 
       project.addEventListener("click", () => {
 
@@ -1429,6 +1511,10 @@
         projects.forEach((item) => item.classList.remove("open"));
         if (!wasOpen) {
           project.classList.add("open");
+        } else if (gallery) {
+          // progetto appena chiuso: riporto la gallery alla prima foto
+          gallery.scrollLeft = 0;
+          setActiveDot(0);
         }
 
         if (!useFlip) {
@@ -1479,4 +1565,4 @@
 
 </body>
 
-</html>
+</html>"
