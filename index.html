@@ -1504,35 +1504,57 @@
 
     const projects = document.querySelectorAll(".project");
 
-    function animateImage(imageWrap, first) {
+    function animateImage(imageEl, first) {
       // LAST: dove si trova la foto adesso, dopo il cambio di stato
-      const last = imageWrap.getBoundingClientRect();
+      const last = imageEl.getBoundingClientRect();
 
-      const deltaX = first.left - last.left;
-      const deltaY = first.top - last.top;
       const scaleX = first.width / last.width;
       const scaleY = first.height / last.height;
 
-      // INVERT: la piazzo (visivamente) ancora nella posizione di partenza
-      imageWrap.style.transition = "none";
-      imageWrap.style.transformOrigin = "top left";
-      imageWrap.style.transform =
+      // Uso i CENTRI dei due rettangoli, non gli angoli in alto a
+      // sinistra: ancorando la crescita al centro la foto si vede
+      // "ingrandire" in modo uniforme in tutte le direzioni, invece
+      // di restare ferma in alto e allungarsi verso il basso (che è
+      // l'effetto "a comparsa dall'alto" che si vedeva prima).
+      const firstCenterX = first.left + first.width / 2;
+      const firstCenterY = first.top + first.height / 2;
+      const lastCenterX = last.left + last.width / 2;
+      const lastCenterY = last.top + last.height / 2;
+
+      const deltaX = firstCenterX - lastCenterX;
+      const deltaY = firstCenterY - lastCenterY;
+
+      // INVERT: la piazzo (visivamente) ancora nella posizione/dimensione
+      // di partenza, ma ancorata al proprio centro
+      imageEl.style.transition = "none";
+      imageEl.style.transformOrigin = "center center";
+      imageEl.style.transform =
         "translate(" + deltaX + "px, " + deltaY + "px) scale(" + scaleX + ", " + scaleY + ")";
 
       // forzo il ricalcolo del layout prima di animare
-      imageWrap.getBoundingClientRect();
+      imageEl.getBoundingClientRect();
 
       // PLAY: animo verso la posizione/dimensione reale finale.
-      // Stessa curva e stessa durata sia per aprire sia per chiudere.
+      // Curva più morbida (decelerazione marcata) per un ingrandimento
+      // più fluido; stessa animazione sia per aprire sia per chiudere.
       requestAnimationFrame(() => {
-        imageWrap.style.transition = "transform .6s cubic-bezier(.4, 0, .2, 1)";
-        imageWrap.style.transform = "";
+        imageEl.style.transition = "transform .65s cubic-bezier(.22, 1, .36, 1)";
+        imageEl.style.transform = "";
       });
     }
 
     projects.forEach((project) => {
 
       const imageWrap = project.querySelector(".project-image-wrap");
+      // La FOTO stessa (non il suo contenitore) è ciò che
+      // realmente cambia dimensione: su desktop il contenitore
+      // (colonna della griglia) resta largo uguale, cambia solo
+      // la larghezza della foto al suo interno. Misurando/animando
+      // il contenitore si otteneva uno scale non uniforme (X quasi
+      // fermo, Y molto diverso) → da qui lo scatto e la
+      // deformazione. Misurando la foto stessa, che cresce sempre
+      // in proporzione 1:1, lo scale è sempre uniforme e fluido.
+      const imageEl = project.querySelector(".project-image");
       const gallery = project.querySelector(".project-image-gallery");
       const dots = project.querySelectorAll(".dot");
       const prevArrow = project.querySelector(".gallery-arrow.prev");
@@ -1602,7 +1624,7 @@
         const wasOpen = project.classList.contains("open");
 
         // FIRST: dove si trova la foto ora, prima del cambio di stato
-        const first = imageWrap.getBoundingClientRect();
+        const first = imageEl.getBoundingClientRect();
 
         // chiudo tutti i progetti, apro/chiudo quello cliccato
         projects.forEach((item) => item.classList.remove("open"));
@@ -1614,7 +1636,7 @@
           setActiveDot(0);
         }
 
-        animateImage(imageWrap, first);
+        animateImage(imageEl, first);
 
       });
 
